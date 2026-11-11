@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ru" class="gsap-ready">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Digital-решения для отраслей бизнеса — KINETIA</title>
+<meta name="description" content="Отраслевые digital-решения KINETIA: сайты, реклама, CRM и автоматизация для салонов красоты, стоматологий, строительства, автосервисов и магазинов.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/industries">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KINETIA">
+<meta property="og:title" content="Industry Solutions — digital-решения для отраслей бизнеса | KINETIA">
+<meta property="og:description" content="Пять отраслей, пять разных систем привлечения и управления заявками. Сайт, реклама, CRM и автоматизация под процессы конкретной ниши.">
+<meta property="og:locale" content="ru_RU">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='5.8'%20y1='27'%20x2='26.2'%20y2='5'%20gradientUnits='userSpaceOnUse'%3E%3Cstop%20offset='0'%20stop-color='%23087A58'/%3E%3Cstop%20offset='.5'%20stop-color='%2319DFA0'/%3E%3Cstop%20offset='1'%20stop-color='%237AFFCB'/%3E%3C/linearGradient%3E%3CradialGradient%20id='h'%20cx='.5'%20cy='.5'%20r='.5'%3E%3Cstop%20offset='0'%20stop-color='%2319DFA0'%20stop-opacity='.5'/%3E%3Cstop%20offset='.65'%20stop-color='%23087A58'%20stop-opacity='.18'/%3E%3Cstop%20offset='1'%20stop-color='%23087A58'%20stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%23050807'/%3E%3Ccircle%20cx='16'%20cy='16'%20r='14'%20fill='url%28%23h%29'/%3E%3Cpath%20d='M16%202.2%2018.4%2013.6%2026.2%2016%2018.4%2018.4%2016%2029.8%2013.6%2018.4%205.8%2016%2013.6%2013.6Z'%20fill='url%28%23g%29'/%3E%3Cpath%20d='M16%2013.5%2018.5%2016%2016%2018.5%2013.5%2016Z'%20fill='%23E8FFF7'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/industries/assets/base.css">
+<style>
+/* hub concept: constellation of five systems */
+.hub-hero{padding:clamp(22px,3vw,38px) 0 clamp(40px,6vw,70px)}
+.hub-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(26px,4vw,58px);align-items:center}
+.hub-hero h1{font-size:clamp(36px,5.4vw,68px);max-width:15ch;margin-top:18px}
+.hub-hero .lead{max-width:46ch}
+.hub-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hub-stage{position:relative;aspect-ratio:1/.92;border-radius:24px;border:1px solid rgba(25,223,160,.16);background:radial-gradient(62% 58% at 50% 46%,rgba(8,122,88,.2),transparent 66%),linear-gradient(170deg,#060d0a,#040706);overflow:hidden}
+.hub-stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.hub-stage .node{position:absolute;transform:translate(-50%,-50%);display:grid;justify-items:center;gap:6px;z-index:2;text-align:center;width:92px}
+.hub-stage .node i{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1px solid rgba(25,223,160,.35);background:rgba(5,8,7,.82);color:var(--em3);font:700 10px/1 var(--mono);box-shadow:0 0 24px -6px rgba(25,223,160,.45);transition:.35s}
+.hub-stage .node span{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);line-height:1.3}
+.hub-stage .node:hover i{border-color:var(--mint);color:var(--mint);transform:scale(1.08)}
+.hub-stage .core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;text-align:center;pointer-events:none}
+.hub-stage .core b{display:block;font-size:clamp(18px,2vw,24px);letter-spacing:.16em;font-weight:800;text-shadow:0 0 24px rgba(25,223,160,.5)}
+.hub-stage .core span{display:block;margin-top:6px;font:700 8px/1 var(--font);letter-spacing:.24em;color:var(--em3);text-transform:uppercase}
+.hub-stage .scan{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(25,223,160,.5),transparent);animation:scan 7s linear infinite;z-index:1}
+@keyframes scan{0%{top:6%;opacity:0}12%{opacity:1}88%{opacity:1}100%{top:94%;opacity:0}}
+.hub-intro{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:clamp(34px,5vw,54px)}
+.hub-intro div{padding:22px 24px;background:var(--bg)}
+.hub-intro b{display:block;color:var(--em3);font:700 10px/1 var(--mono);letter-spacing:.16em;margin-bottom:10px}
+.hub-intro p{font-size:13.5px;color:var(--mut);line-height:1.55;max-width:26ch}
+.hub-list{display:grid;gap:14px;margin-top:clamp(34px,5vw,48px)}
+.hub-card{position:relative;display:grid;grid-template-columns:74px 1fr auto;gap:clamp(16px,2.6vw,32px);align-items:center;padding:clamp(20px,2.8vw,30px);border:1px solid var(--line);border-radius:20px;background:linear-gradient(120deg,rgba(10,16,14,.9),rgba(5,8,7,.5));transition:border-color .35s,background .35s,transform .35s;overflow:hidden}
+.hub-card:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(80% 120% at 100% 0,rgba(8,122,88,.16),transparent 60%);opacity:0;transition:opacity .4s}
+.hub-card:hover{border-color:rgba(25,223,160,.36);transform:translateY(-2px)}
+.hub-card:hover:before{opacity:1}
+.hub-glyph{position:relative;width:74px;height:74px;border-radius:18px;border:1px solid rgba(25,223,160,.24);background:radial-gradient(80% 80% at 30% 20%,rgba(8,122,88,.3),rgba(5,8,7,.6));display:grid;place-items:center;color:var(--em3)}
+.hub-glyph svg{width:34px;height:34px;overflow:visible}
+.hub-card h2{font-size:clamp(19px,2.2vw,25px);letter-spacing:-.02em}
+.hub-card p{font-size:14px;color:var(--mut);margin-top:7px;max-width:62ch}
+.hub-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.hub-tags span{font:600 9.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(25,223,160,.8);border:1px solid rgba(25,223,160,.22);border-radius:999px;padding:5px 8px}
+.hub-go{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);color:var(--em3);transition:.35s;flex:none}
+.hub-card:hover .hub-go{background:var(--em3);color:#03130e;border-color:transparent;transform:rotate(-45deg)}
+.hub-approach{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(26px,4vw,56px);align-items:start}
+.hub-steps{display:grid;gap:0;border-top:1px solid var(--line)}
+.hub-step{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+.hub-step b{font:700 11px/1.6 var(--mono);letter-spacing:.12em;color:var(--em3)}
+.hub-step h3{font-size:16.5px;margin-bottom:6px}
+.hub-step p{font-size:14px;color:var(--mut);max-width:54ch}
+@media(max-width:960px){.hub-grid{grid-template-columns:1fr}.hub-stage{max-width:520px;width:100%;margin:auto}.hub-intro{grid-template-columns:1fr}.hub-approach{grid-template-columns:1fr}.hub-card{grid-template-columns:58px 1fr}.hub-go{display:none}.hub-glyph{width:58px;height:58px}.hub-glyph svg{width:28px;height:28px}}
+@media(max-width:560px){.hub-card{grid-template-columns:1fr;gap:14px}.hub-glyph{width:48px;height:48px}.hub-intro div{padding:18px}.hub-stage .node{width:74px}.hub-stage .node i{width:32px;height:32px}}
+</style>
+</head>
+<body data-industry="Отраслевые решения">
+<header id="hd"><div class="wrap nav">
+<a href="/" class="logo" aria-label="KINETIA — на главную"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><defs><linearGradient id="kstarNav" x1="5.8" y1="27" x2="26.2" y2="5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#087A58"/><stop offset=".5" stop-color="#19DFA0"/><stop offset="1" stop-color="#7AFFCB"/></linearGradient><radialGradient id="kstarCoreNav" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#F2FFFA"/><stop offset=".55" stop-color="#9BFFDD"/><stop offset="1" stop-color="#7AFFCB" stop-opacity="0"/></radialGradient></defs><path d="M16 3.6 18.19 13.81 26.2 16 18.19 18.19 16 28.4 13.81 18.19 5.8 16 13.81 13.81Z" fill="url(#kstarNav)"/><path d="M16 13.8 18.2 16 16 18.2 13.8 16Z" fill="url(#kstarCoreNav)"/></svg>KINETIA</a>
+<ul><li><a href="/#services">Услуги</a></li><li><a href="/industries" aria-current="page">Решения</a></li><li><a href="/#results">Результаты</a></li><li><a href="/#faq">FAQ</a></li></ul>
+<a class="btn pri" href="/#form">Обсудить проект</a>
+<button class="burger" id="bg" aria-label="Меню" aria-expanded="false"><i></i><i></i></button>
+</div></header>
+<nav class="menu" id="mn" aria-label="Мобильное меню">
+<a href="/#services">Услуги</a><a href="/industries">Решения</a><a href="/#results">Результаты</a><a href="/#faq">FAQ</a><a href="/#form">Обсудить проект</a>
+<div class="menu-sub"><a href="/industries/beauty">Beauty</a><a href="/industries/dentistry">Dentistry</a><a href="/industries/construction">Construction</a><a href="/industries/auto">Auto</a><a href="/industries/ecommerce">E-commerce</a></div>
+</nav>
+
+<main>
+<nav class="crumbs wrap" aria-label="Хлебные крошки"><a href="/">Главная</a><span class="sep">/</span><span>Решения для отраслей</span></nav>
+
+<section class="hub-hero"><div class="wrap">
+<div class="hub-grid">
+<div>
+<p class="kicker" data-anim>Industry Solutions</p>
+<h1 data-anim>Digital-системы для конкретных отраслей.</h1>
+<p class="lead" data-anim>Один и тот же набор инструментов работает по-разному. В салоне красоты важна запись и возврат клиента, в строительстве — длинный цикл сделки и смета, в интернет-магазине — повторные покупки. Мы начинаем с процессов ниши, а не с шаблона.</p>
+<div class="hub-ctas" data-anim><a class="btn pri" href="/#form">Получить консультацию<span class="arw">→</span></a><a class="btn sec" href="/#services">Смотреть услуги</a></div>
+</div>
+<div class="hub-stage" data-anim="fade">
+<canvas id="hubviz" aria-hidden="true"></canvas>
+<div class="scan" aria-hidden="true"></div>
+<div class="core"><b>KINETIA</b><span>Industry Layer</span></div>
+<a class="node" href="/industries/beauty" style="left:22%;top:24%"><i>01</i><span>Beauty</span></a>
+<a class="node" href="/industries/dentistry" style="left:78%;top:22%"><i>02</i><span>Dentistry</span></a>
+<a class="node" href="/industries/construction" style="left:82%;top:70%"><i>03</i><span>Construction</span></a>
+<a class="node" href="/industries/auto" style="left:18%;top:72%"><i>04</i><span>Auto</span></a>
+<a class="node" href="/industries/ecommerce" style="left:50%;top:88%"><i>05</i><span>E-commerce</span></a>
+</div>
+</div>
+<div class="hub-intro" data-anim>
+<div><b>01 / ДИАГНОСТИКА</b><p>Разбираем, как в нише появляется клиент и где теряется заявка.</p></div>
+<div><b>02 / СБОРКА</b><p>Соединяем сайт, трафик, CRM и автоматизацию в один маршрут.</p></div>
+<div><b>03 / УПРАВЛЕНИЕ</b><p>Оставляем прозрачные этапы и точки контроля вместо ручного хаоса.</p></div>
+</div>
+</div></section>
+
+<section id="list"><div class="wrap">
+<div class="sec-head" data-anim>
+<p class="kicker">Пять направлений</p>
+<h2>Выберите отрасль — увидите свою систему.</h2>
+<p class="lead">На каждой странице — проблемы ниши, состав решения, демонстрационный макет интерфейса и пример стратегии. Без выдуманных кейсов и обещанных цифр.</p>
+</div>
+
+<div class="hub-list">
+<a class="hub-card" href="/industries/beauty" data-anim>
+<span class="hub-glyph" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="20" cy="20" r="13"/><circle cx="20" cy="20" r="7.5" opacity=".6"/><path d="M20 4v6M20 30v6M4 20h6M30 20h6"/></svg></span>
+<div><h2>Салоны красоты и косметология</h2><p>Запись без переписок, напоминания, возврат клиентов и понятная загрузка мастеров.</p><div class="hub-tags"><span>booking</span><span>local SEO</span><span>retention</span></div></div>
+<span class="hub-go" aria-hidden="true">→</span>
+</a>
+<a class="hub-card" href="/industries/dentistry" data-anim>
+<span class="hub-glyph" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13 6c-4 0-6 3-6 7 0 6 3 9 4 15 .5 3 3.5 3 4 0 .6-4 1-8 5-8s4.4 4 5 8c.5 3 3.5 3 4 0 1-6 4-9 4-15 0-4-2-7-6-7-2 0-3 1-5 1s-3-1-5-1Z"/><path d="M15 14c2 2 8 2 10 0" opacity=".6"/></svg></span>
+<div><h2>Стоматологии и клиники</h2><p>Длинный выбор, доверие до звонка и распределение обращений по услугам и врачам.</p><div class="hub-tags"><span>trust</span><span>routing</span><span>content</span></div></div>
+<span class="hub-go" aria-hidden="true">→</span>
+</a>
+<a class="hub-card" href="/industries/construction" data-anim>
+<span class="hub-glyph" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 34h28M10 34V18l10-8 10 8v16"/><path d="M16 34V24h8v10" opacity=".6"/><path d="M4 18 20 6l16 12" opacity=".5"/></svg></span>
+<div><h2>Строительные компании</h2><p>Дорогая заявка, долгое решение и смета, которую нужно собрать без потерь.</p><div class="hub-tags"><span>b2b</span><span>estimate</span><span>portfolio</span></div></div>
+<span class="hub-go" aria-hidden="true">→</span>
+</a>
+<a class="hub-card" href="/industries/auto" data-anim>
+<span class="hub-glyph" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 25h26M10 25l2-7h16l2 7"/><path d="M13 25v5M27 25v5"/><circle cx="13" cy="20" r="1.6" fill="currentColor" stroke="none"/><path d="M20 6v6M14 9l3 4M26 9l-3 4" opacity=".55"/></svg></span>
+<div><h2>Автосервисы и детейлинг</h2><p>Загрузка боксов, повторные визиты и заявки, которые не теряются в телефоне.</p><div class="hub-tags"><span>local</span><span>booking</span><span>repeat</span></div></div>
+<span class="hub-go" aria-hidden="true">→</span>
+</a>
+<a class="hub-card" href="/industries/ecommerce" data-anim>
+<span class="hub-glyph" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 13h24l-2 18H10L8 13Z"/><path d="M15 13a5 5 0 0 1 10 0" opacity=".7"/><path d="M15 22h10" opacity=".5"/></svg></span>
+<div><h2>Интернет-магазины</h2><p>Трафик дорожает, корзина пустеет. Собираем путь от карточки до повторного заказа.</p><div class="hub-tags"><span>feed</span><span>cart</span><span>ltv</span></div></div>
+<span class="hub-go" aria-hidden="true">→</span>
+</a>
+</div>
+</div></section>
+
+<section id="approach"><div class="wrap">
+<div class="hub-approach">
+<div class="sec-head" data-anim>
+<p class="kicker">Принцип работы</p>
+<h2>Отрасль задаёт процесс. Процесс задаёт инструменты.</h2>
+<p class="lead">Мы не продаём одинаковый пакет пяти разным бизнесам. Сначала описываем, как у вас появляется и закрывается клиент, затем собираем минимальную систему, которая это выдерживает.</p>
+<a class="btn sec" href="/#process" style="margin-top:26px">Как мы работаем</a>
+</div>
+<div class="hub-steps">
+<div class="hub-step" data-anim><b>01</b><div><h3>Карта клиентского пути</h3><p>Где человек узнаёт о вас, что читает, в какой момент оставляет контакт и что происходит дальше.</p></div></div>
+<div class="hub-step" data-anim><b>02</b><div><h3>Точки потерь</h3><p>Медленный ответ, неудобная запись, отсутствие напоминаний, ручное перекладывание заявок.</p></div></div>
+<div class="hub-step" data-anim><b>03</b><div><h3>Состав системы</h3><p>Сайт, реклама, CRM, автоматизация и аналитика — только те элементы, которые закрывают потери.</p></div></div>
+<div class="hub-step" data-anim><b>04</b><div><h3>Запуск и контроль</h3><p>Этапы, сроки и точки приёмки фиксируем до старта. Дальше — улучшения по фактическим данным.</p></div></div>
+</div>
+</div>
+</div></section>
+
+<section id="cta"><div class="wrap">
+<div class="cta-band" data-anim>
+<div class="cta-row">
+<div><h2>Не нашли свою отрасль?</h2><p>Опишите задачу — скажем прямо, подходит ли вам отраслевой сценарий или нужен индивидуальный разбор.</p></div>
+<a class="btn pri" href="/#form">Обсудить проект<span class="arw">→</span></a>
+</div>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+<div class="fgrid">
+<div><a href="/" class="logo" aria-label="KINETIA — на главную"><svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><defs><linearGradient id="kstarFoot" x1="5.8" y1="27" x2="26.2" y2="5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#087A58"/><stop offset=".5" stop-color="#19DFA0"/><stop offset="1" stop-color="#7AFFCB"/></linearGradient></defs><path d="M16 3.6 18.19 13.81 26.2 16 18.19 18.19 16 28.4 13.81 18.19 5.8 16 13.81 13.81Z" fill="url(#kstarFoot)"/><path d="M16 13.8 18.2 16 16 18.2 13.8 16Z" fill="#F2FFFA"/></svg>KINETIA</a><p>Digital Growth Agency.<br>Создаём движение. Системно развиваем бизнес.</p></div>
+<ul><li><a href="/">Главная</a></li><li><a href="/#services">Услуги</a></li><li><a href="/#process">Процесс</a></li><li><a href="/#results">Результаты</a></li><li><a href="/#faq">FAQ</a></li><li><a href="/#form">Контакты</a></li></ul>
+<ul><li><a href="/industries">Все решения</a></li><li><a href="/industries/beauty">Beauty</a></li><li><a href="/industries/dentistry">Dentistry</a></li><li><a href="/industries/construction">Construction</a></li><li><a href="/industries/auto">Auto</a></li><li><a href="/industries/ecommerce">E-commerce</a></li><li><a href="/privacy-policy">Политика конфиденциальности</a></li></ul>
+</div>
+<div class="fniche"><b>Отрасли</b><a href="/industries/beauty">Салоны красоты</a><a href="/industries/dentistry">Стоматологии</a><a href="/industries/construction">Строительство</a><a href="/industries/auto">Автосервисы</a><a href="/industries/ecommerce">E-commerce</a></div>
+<p class="copy">© <span data-year>2026</span> KINETIA. All rights reserved.</p>
+</div></footer>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Industry Solutions — решения для отраслей бизнеса","inLanguage":"ru","description":"Отраслевые digital-решения KINETIA для салонов красоты, стоматологий, строительных компаний, автосервисов и интернет-магазинов.","isPartOf":{"@type":"WebSite","name":"KINETIA"},"mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"name":"Салоны красоты и косметология","url":"/industries/beauty"},{"@type":"ListItem","position":2,"name":"Стоматологии и клиники","url":"/industries/dentistry"},{"@type":"ListItem","position":3,"name":"Строительные компании","url":"/industries/construction"},{"@type":"ListItem","position":4,"name":"Автосервисы и детейлинг","url":"/industries/auto"},{"@type":"ListItem","position":5,"name":"Интернет-магазины","url":"/industries/ecommerce"}]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"/"},{"@type":"ListItem","position":2,"name":"Решения для отраслей","item":"/industries"}]}</script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="/industries/assets/base.js"></script>
+<script>
+(function(){
+  var cv=document.getElementById('hubviz');
+  var pts=[[.22,.24],[.78,.22],[.82,.70],[.18,.72],[.50,.88]];
+  var nodes=pts.map(function(p){return {x:p[0],y:p[1],ph:Math.random()*6.28,r:Math.random()*.5+.5};});
+  window.KViz(cv,function(ctx,w,h,t){
+    var cx=w/2,cy=h/2,R=Math.min(w,h);
+    ctx.lineWidth=1;
+    for(var i=0;i<nodes.length;i++){
+      var a=nodes[i],b=nodes[(i+1)%nodes.length];
+      var ax=a.x*w,ay=a.y*h,bx=b.x*w,by=b.y*h;
+      var g=ctx.createLinearGradient(ax,ay,bx,by);
+      g.addColorStop(0,'rgba(25,223,160,'+(.14+.10*Math.sin(t*.9+a.ph))+')');
+      g.addColorStop(1,'rgba(8,122,88,'+(.08+.06*Math.sin(t*.9+b.ph))+')');
+      ctx.strokeStyle=g;
+      ctx.beginPath();ctx.moveTo(ax,ay);ctx.lineTo(cx,cy);ctx.lineTo(bx,by);ctx.stroke();
+      var dx=bx-ax,dy=by-ay,d=Math.sqrt(dx*dx+dy*dy);
+      var u=((t*.14+a.ph)%1);
+      ctx.fillStyle='rgba(122,255,203,.85)';
+      ctx.beginPath();ctx.arc(ax+dx*u,ay+dy*u,1.7,0,6.283);ctx.fill();
+      /* node orbit */
+      ctx.strokeStyle='rgba(25,223,160,.2)';ctx.beginPath();ctx.arc(ax,ay,10+Math.sin(t*1.4+a.ph)*2,0,6.283);ctx.stroke();
+    }
+    for(var j=0;j<3;j++){
+      ctx.strokeStyle='rgba(25,223,160,'+(.05+.03*Math.sin(t*.6+j))+')';
+      ctx.beginPath();ctx.arc(cx,cy,R*(.16+j*.1)+Math.sin(t*.5+j)*3,0,6.283);ctx.stroke();
+    }
+  });
+})();
+</script>
+</body>
+</html>

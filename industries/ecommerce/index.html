@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="ru" class="gsap-ready">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Сайт, реклама и CRM для интернет-магазина — KINETIA</title>
+<meta name="description" content="Digital-система для интернет-магазина: карточки, фиды, реклама, CRM, брошенная корзина и повторные покупки без лишних потерь.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/industries/ecommerce">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KINETIA">
+<meta property="og:title" content="Digital-решения для интернет-магазинов — KINETIA">
+<meta property="og:description" content="Карточки, фиды, реклама, брошенная корзина и повторные покупки: система для интернет-магазина.">
+<meta property="og:locale" content="ru_RU">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='5.8'%20y1='27'%20x2='26.2'%20y2='5'%20gradientUnits='userSpaceOnUse'%3E%3Cstop%20offset='0'%20stop-color='%23087A58'/%3E%3Cstop%20offset='.5'%20stop-color='%2319DFA0'/%3E%3Cstop%20offset='1'%20stop-color='%237AFFCB'/%3E%3C/linearGradient%3E%3CradialGradient%20id='h'%20cx='.5'%20cy='.5'%20r='.5'%3E%3Cstop%20offset='0'%20stop-color='%2319DFA0'%20stop-opacity='.5'/%3E%3Cstop%20offset='.65'%20stop-color='%23087A58'%20stop-opacity='.18'/%3E%3Cstop%20offset='1'%20stop-color='%23087A58'%20stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%23050807'/%3E%3Ccircle%20cx='16'%20cy='16'%20r='14'%20fill='url%28%23h%29'/%3E%3Cpath%20d='M16%202.2%2018.4%2013.6%2026.2%2016%2018.4%2018.4%2016%2029.8%2013.6%2018.4%205.8%2016%2013.6%2013.6Z'%20fill='url%28%23g%29'/%3E%3Cpath%20d='M16%2013.5%2018.5%2016%2016%2018.5%2013.5%2016Z'%20fill='%23E8FFF7'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/industries/assets/base.css">
+<style>
+/* ecommerce concept: feed grid, funnel density, cart handoff */
+.ec-hero{padding:clamp(18px,2.6vw,30px) 0 clamp(28px,4.4vw,56px);overflow:hidden}
+.ec-hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(24px,3.8vw,54px);align-items:center}
+.ec-hero h1{font-size:clamp(33px,5vw,60px);max-width:15ch;margin-top:16px}
+.ec-hero .lead{max-width:46ch}
+.ec-flags{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:26px;max-width:440px}
+.ec-flags div{padding:12px 14px;background:rgba(5,8,7,.6)}
+.ec-flags b{display:block;font:700 8px/1 var(--mono);letter-spacing:.16em;color:var(--em3);text-transform:uppercase;margin-bottom:6px}
+.ec-flags span{font-size:11px;color:var(--mut);line-height:1.4}
+.ec-vis{position:relative;min-height:440px;padding:16px;border:1px solid rgba(25,223,160,.14);border-radius:20px;background:radial-gradient(70% 60% at 60% 30%,rgba(8,122,88,.16),transparent 70%),#040706;overflow:hidden}
+.ec-vis canvas{position:absolute;inset:0;width:100%;height:100%}
+.ec-feed{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:8px;align-content:start}
+.ec-card{border:1px solid var(--line);border-radius:9px;background:rgba(10,16,14,.9);overflow:hidden;transition:border-color .3s,transform .3s}
+.ec-card:hover{border-color:rgba(25,223,160,.35);transform:translateY(-2px)}
+.ec-thumb{height:64px;display:grid;place-items:center;border-bottom:1px solid var(--line2);background:
+ radial-gradient(60% 70% at 50% 40%,rgba(25,223,160,.16),transparent 70%),
+ repeating-linear-gradient(45deg,rgba(244,247,245,.035) 0 1px,transparent 1px 7px)}
+.ec-thumb svg{width:30px;height:30px;color:rgba(25,223,160,.6)}
+.ec-card-b{padding:8px 9px 10px}
+.ec-card-b b{display:block;font-size:10.5px;font-weight:700;line-height:1.3}
+.ec-card-b span{display:block;margin-top:3px;font:600 7.5px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:rgba(146,157,151,.65)}
+.ec-card-b em{display:block;margin-top:6px;font-style:normal;font:700 9px/1 var(--mono);color:var(--em3)}
+.ec-feed-note{grid-column:1/-1;font:600 7.5px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(146,157,151,.5);margin-top:2px}
+.ec-cart{position:absolute;right:14px;bottom:14px;z-index:3;width:min(224px,72%);border:1px solid rgba(25,223,160,.3);border-radius:10px;background:rgba(5,8,7,.94);box-shadow:0 20px 40px -24px rgba(25,223,160,.6);backdrop-filter:blur(6px);padding:11px 12px}
+.ec-cart b{display:flex;align-items:center;gap:6px;font:700 8px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--em3)}
+.ec-cart b:before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
+.ec-cart p{margin-top:7px;font-size:10px;line-height:1.45;color:var(--mut)}
+.ec-cart em{display:block;margin-top:7px;font-style:normal;font:700 7.5px/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:rgba(146,157,151,.55)}
+/* problems: leak rows */
+.ec-probs{margin-top:clamp(24px,3.4vw,38px);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.ec-prob{display:grid;grid-template-columns:46px 1fr auto;gap:clamp(12px,2.2vw,24px);align-items:center;padding:clamp(16px,2.2vw,22px) clamp(14px,2.2vw,22px);border-bottom:1px solid var(--line);background:rgba(255,255,255,.012);transition:background .3s}
+.ec-prob:last-child{border:0}
+.ec-prob:hover{background:rgba(8,122,88,.07)}
+.ec-prob>b{font:700 9px/1 var(--mono);letter-spacing:.1em;color:rgba(255,196,107,.85)}
+.ec-prob h3{font-size:clamp(15.5px,1.8vw,18.5px);margin-bottom:4px}
+.ec-prob p{font-size:13px;color:var(--mut);line-height:1.55;max-width:74ch}
+.ec-drip{width:74px;height:5px;border-radius:2px;background:rgba(244,247,245,.08);overflow:hidden;flex:none}
+.ec-drip i{display:block;height:100%;background:linear-gradient(90deg,rgba(255,196,107,.8),rgba(255,196,107,.2))}
+/* solutions: channel strip */
+.ec-sol{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:clamp(24px,3.4vw,38px)}
+.ec-sol-card{padding:clamp(18px,2.2vw,24px);background:var(--bg);grid-column:span 2;transition:background .35s}
+.ec-sol-card:hover{background:rgba(8,122,88,.07)}
+.ec-sol-card:nth-child(4),.ec-sol-card:nth-child(5){grid-column:span 3}
+.ec-sol-card b{display:block;font:700 8px/1 var(--mono);letter-spacing:.16em;color:var(--em3);text-transform:uppercase;margin-bottom:12px}
+.ec-sol-card h3{font-size:15.5px;margin-bottom:6px}
+.ec-sol-card p{font-size:12.5px;color:var(--mut);line-height:1.6}
+/* system: event chain */
+.ec-sys{background:linear-gradient(180deg,transparent,rgba(6,61,48,.12) 46%,transparent)}
+.ec-sys-grid{display:grid;grid-template-columns:.96fr 1.04fr;gap:clamp(22px,3.6vw,46px);align-items:start;margin-top:clamp(24px,3.4vw,38px)}
+.ec-chain{display:grid;gap:0;border-top:1px solid var(--line)}
+.ec-ev{display:grid;grid-template-columns:96px 1fr;gap:clamp(10px,2vw,20px);padding:15px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.ec-ev b{font:700 8.5px/1.5 var(--mono);letter-spacing:.12em;color:var(--em3);text-transform:uppercase}
+.ec-ev h3{font-size:14px;margin-bottom:3px}
+.ec-ev p{font-size:12.5px;color:var(--mut);line-height:1.5}
+.ec-console{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:rgba(5,8,7,.75)}
+.ec-console-bar{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid var(--line2);background:rgba(255,255,255,.015)}
+.ec-console-bar b{font:700 8px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:rgba(146,157,151,.8)}
+.ec-console-body{padding:12px;min-height:214px}
+.ec-tabs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:11px}
+.ec-tab{appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.02);border-radius:4px;padding:6px 8px;font:600 9.5px/1.2 var(--mono);color:var(--mut);cursor:pointer;transition:.2s}
+.ec-tab[aria-pressed=true]{background:rgba(25,223,160,.12);border-color:rgba(25,223,160,.55);color:var(--em3)}
+.ec-log{list-style:none;padding:0;display:grid;gap:5px}
+.ec-log li{display:flex;align-items:flex-start;gap:8px;font:500 10px/1.5 var(--mono);color:var(--mut);padding:4px 0;border-bottom:1px dashed rgba(244,247,245,.06)}
+.ec-log li:last-child{border:0}
+.ec-log em{font-style:normal;color:rgba(25,223,160,.6);flex:none}
+.ec-log b{color:var(--fg);font-weight:600}
+.ec-console-note{padding:8px 12px;border-top:1px solid var(--line2);font:600 7.5px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(146,157,151,.5)}
+/* strategy: stage density */
+.ec-strat{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(22px,3.6vw,48px);align-items:start}
+.ec-ladder{display:grid;gap:7px}
+.ec-l{display:grid;grid-template-columns:1fr 96px;gap:14px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.012);transition:border-color .3s,background .3s}
+.ec-l:hover{border-color:rgba(25,223,160,.3);background:rgba(8,122,88,.05)}
+.ec-l b{display:block;font:700 8px/1 var(--mono);letter-spacing:.14em;color:var(--em3);text-transform:uppercase;margin-bottom:5px}
+.ec-l h3{font-size:14px;margin-bottom:3px}
+.ec-l p{font-size:12px;color:var(--mut);line-height:1.5}
+.ec-l .ec-bar{display:flex;gap:2px}
+.ec-l .ec-bar i{flex:1;height:22px;border-radius:2px;background:rgba(244,247,245,.07)}
+.ec-l .ec-bar i.on{background:linear-gradient(180deg,rgba(25,223,160,.75),rgba(8,122,88,.4))}
+.ec-note{padding:14px 16px;border:1px dashed rgba(25,223,160,.26);border-radius:10px;font-size:12px;color:var(--mut);line-height:1.55}
+/* process: compact grid */
+.ec-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:clamp(24px,3.4vw,38px)}
+.ec-step{padding:16px 13px;border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.012)}
+.ec-step b{display:block;font:700 8px/1 var(--mono);color:var(--em3);letter-spacing:.14em;margin-bottom:11px}
+.ec-step h3{font-size:13px;line-height:1.25;margin-bottom:4px}
+.ec-step p{font-size:11px;color:var(--mut);line-height:1.45}
+@media(max-width:1040px){
+.ec-hero-grid{grid-template-columns:1fr}.ec-vis{min-height:400px;order:-1}
+.ec-sys-grid,.ec-strat{grid-template-columns:1fr}
+.ec-sol{grid-template-columns:1fr 1fr}
+.ec-sol-card:nth-child(n){grid-column:span 1}
+.ec-steps{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:760px){
+.ec-prob{grid-template-columns:36px 1fr;gap:6px 12px}
+.ec-drip{display:none}
+.ec-sol{grid-template-columns:1fr}
+.ec-steps{grid-template-columns:1fr 1fr}
+.ec-ev{grid-template-columns:1fr;gap:4px}
+.ec-cart{position:relative;right:auto;bottom:auto;width:100%;margin-top:10px}
+.ec-vis{min-height:0}
+.ec-flags{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body data-industry="Интернет-магазины">
+<header id="hd"><div class="wrap nav">
+<a href="/" class="logo" aria-label="KINETIA — на главную"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><defs><linearGradient id="kstarNav" x1="5.8" y1="27" x2="26.2" y2="5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#087A58"/><stop offset=".5" stop-color="#19DFA0"/><stop offset="1" stop-color="#7AFFCB"/></linearGradient><radialGradient id="kstarCoreNav" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#F2FFFA"/><stop offset=".55" stop-color="#9BFFDD"/><stop offset="1" stop-color="#7AFFCB" stop-opacity="0"/></radialGradient></defs><path d="M16 3.6 18.19 13.81 26.2 16 18.19 18.19 16 28.4 13.81 18.19 5.8 16 13.81 13.81Z" fill="url(#kstarNav)"/><path d="M16 13.8 18.2 16 16 18.2 13.8 16Z" fill="url(#kstarCoreNav)"/></svg>KINETIA</a>
+<ul><li><a href="/#services">Услуги</a></li><li><a href="/industries" aria-current="page">Решения</a></li><li><a href="/#results">Результаты</a></li><li><a href="/#faq">FAQ</a></li></ul>
+<a class="btn pri" href="#consult">Обсудить проект</a>
+<button class="burger" id="bg" aria-label="Меню" aria-expanded="false"><i></i><i></i></button>
+</div></header>
+<nav class="menu" id="mn" aria-label="Мобильное меню">
+<a href="/#services">Услуги</a><a href="/industries">Решения</a><a href="/#results">Результаты</a><a href="/#faq">FAQ</a><a href="#consult">Обсудить проект</a>
+<div class="menu-sub"><a href="/industries/beauty">Beauty</a><a href="/industries/dentistry">Dentistry</a><a href="/industries/construction">Construction</a><a href="/industries/auto">Auto</a></div>
+</nav>
+
+<main>
+<nav class="crumbs wrap" aria-label="Хлебные крошки"><a href="/">Главная</a><span class="sep">/</span><a href="/industries">Решения</a><span class="sep">/</span><span>Интернет-магазины</span></nav>
+
+<section class="ec-hero"><div class="wrap">
+<div class="ec-hero-grid">
+<div>
+<p class="kicker" data-anim>E-commerce / Интернет-магазины</p>
+<h1 data-anim>Трафик дорожает. Корзина всё равно пустеет.</h1>
+<p class="lead" data-anim>Магазин редко проигрывает на этапе показа товара. Он проигрывает на стыках: между карточкой и корзиной, между корзиной и оплатой, между первым заказом и вторым. Каждый стык — потеря, которую можно измерить.</p>
+<div class="ec-flags" data-anim>
+<div><b>Карточка</b><span>Понятность товара и доставки</span></div>
+<div><b>Корзина</b><span>Причина отказа, а не догадка</span></div>
+<div><b>Оплата</b><span>Технические потери на последнем шаге</span></div>
+<div><b>Повтор</b><span>Второй заказ дешевле первого</span></div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px" data-anim><a class="btn pri" href="#consult">Обсудить магазин<span class="arw">→</span></a><a class="btn sec" href="#system">Цепочка событий</a></div>
+</div>
+<div class="ec-vis" data-anim="fade">
+<canvas id="ecviz" aria-hidden="true"></canvas>
+<div class="ec-feed">
+<article class="ec-card"><div class="ec-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M8 8h8l1.5 10h-11L8 8Z"/><path d="M10 8a2 2 0 0 1 4 0"/></svg></div><div class="ec-card-b"><b>Товар A</b><span>карточка</span><em>демо</em></div></article>
+<article class="ec-card"><div class="ec-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></div><div class="ec-card-b"><b>Товар B</b><span>фид</span><em>демо</em></div></article>
+<article class="ec-card"><div class="ec-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M12 8v4l2.5 2"/></svg></div><div class="ec-card-b"><b>Товар C</b><span>напоминание</span><em>демо</em></div></article>
+<article class="ec-card"><div class="ec-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 7h16v10H4z"/><path d="M4 11h16"/></svg></div><div class="ec-card-b"><b>Товар D</b><span>оплата</span><em>демо</em></div></article>
+<p class="ec-feed-note">Демонстрационные карточки. Товары и данные условные.</p>
+</div>
+<div class="ec-cart"><b>Брошенная корзина</b><p>Статус зафиксирован. Сценарий возврата запускается по правилу магазина.</p><em>пример интерфейса</em></div>
+</div>
+</div>
+</div></section>
+
+<section id="problems"><div class="wrap">
+<div class="sec-head" data-anim>
+<p class="kicker">Проблемы ниши</p>
+<h2>Утечки, которые не видно в отчёте о трафике.</h2>
+<p class="lead">Реклама может быть настроена хорошо, а магазин всё равно не зарабатывать. Причина обычно в стыках между этапами.</p>
+</div>
+<div class="ec-probs">
+<div class="ec-prob" data-anim><b>УТЕЧКА</b><div><h3>Карточка не отвечает на вопрос</h3><p>Нет размеров, состава, сроков доставки или условий возврата. Человек уходит искать ответ у конкурента, а магазин считает это «плохим трафиком».</p></div><span class="ec-drip" aria-hidden="true"><i style="width:72%"></i></span></div>
+<div class="ec-prob" data-anim><b>УТЕЧКА</b><div><h3>Корзина без причины отказа</h3><p>Есть цифра брошенных корзин, но нет понимания, что именно остановило: стоимость доставки, обязательная регистрация или непонятный шаг оплаты.</p></div><span class="ec-drip" aria-hidden="true"><i style="width:84%"></i></span></div>
+<div class="ec-prob" data-anim><b>УТЕЧКА</b><div><h3>Фид и сайт живут отдельно</h3><p>В рекламе один ассортимент, на сайте другой. Товар закончился, а объявление продолжает показываться и тратить бюджет.</p></div><span class="ec-drip" aria-hidden="true"><i style="width:63%"></i></span></div>
+<div class="ec-prob" data-anim><b>УТЕЧКА</b><div><h3>Первый заказ — единственный</h3><p>Магазин не знает, что купил клиент и когда ему может понадобиться повтор. Каждый новый заказ снова оплачивается рекламой.</p></div><span class="ec-drip" aria-hidden="true"><i style="width:90%"></i></span></div>
+</div>
+</div></section>
+
+<section id="solutions"><div class="wrap">
+<div class="sec-head-row">
+<div class="sec-head" data-anim><p class="kicker">Решения KINETIA</p><h2>Не «сайт и реклама», а цепочка.</h2><p class="lead">Пять узлов, между которыми перестают теряться деньги.</p></div>
+<a class="btn sec" href="/#services" data-anim>Все услуги агентства</a>
+</div>
+<div class="ec-sol">
+<article class="ec-sol-card" data-anim><b>01 / САЙТ</b><h3>Карточка и каталог</h3><p>Структура каталога, фильтры и карточка, которая отвечает на вопросы до покупки: состав, размеры, доставка, возврат.</p></article>
+<article class="ec-sol-card" data-anim><b>02 / ФИДЫ</b><h3>Товарные данные</h3><p>Актуальность остатков и цен в фиде. Товар, которого нет, не тратит бюджет и не приводит человека в пустоту.</p></article>
+<article class="ec-sol-card" data-anim><b>03 / РЕКЛАМА</b><h3>Кампании по категориям</h3><p>Отдельные кампании и посадочные под категории и товарные группы, а не один общий поток на главную.</p></article>
+<article class="ec-sol-card" data-anim><b>04 / CRM</b><h3>История заказов</h3><p>Клиент, покупки, категории интереса, статус обращения. Поддержка видит контекст, а не только номер заказа.</p></article>
+<article class="ec-sol-card" data-anim><b>05 / АВТОМАТИЗАЦИЯ</b><h3>Возврат и повтор</h3><p>Сценарии для брошенной корзины и повторных покупок по правилам магазина, с учётом согласий клиента.</p></article>
+</div>
+</div></section>
+
+<section id="system" class="ec-sys"><div class="wrap">
+<div class="sec-head" data-anim>
+<p class="kicker">Digital-система</p>
+<h2>Что фиксируется на каждом шаге покупки.</h2>
+<p class="lead">Демонстрационный макет. Выберите сценарий — увидите, какие события фиксируются и что запускается дальше. Это пример структуры, а не реальные данные магазина.</p>
+</div>
+<div class="ec-sys-grid">
+<div class="ec-chain" data-anim>
+<div class="ec-ev"><b>01 / показ</b><div><h3>Товар найден</h3><p>Источник, категория, устройство. Без этого нельзя понять, какая кампания приводит к заказу.</p></div></div>
+<div class="ec-ev"><b>02 / карточка</b><div><h3>Товар изучен</h3><p>Просмотр, добавление в избранное, вопросы по доставке. Сигнал интереса, который обычно не используется.</p></div></div>
+<div class="ec-ev"><b>03 / корзина</b><div><h3>Корзина создана</h3><p>Состав, сумма, шаг оформления. Здесь видно, на каком экране человек остановился.</p></div></div>
+<div class="ec-ev"><b>04 / оплата</b><div><h3>Заказ подтверждён</h3><p>Технические ошибки оплаты отделяются от реального отказа. Это разные потери и лечатся по-разному.</p></div></div>
+<div class="ec-ev"><b>05 / повтор</b><div><h3>Клиент вернулся</h3><p>Повторный заказ привязывается к клиенту, а не считается новым трафиком.</p></div></div>
+</div>
+<div data-anim>
+<div class="ec-console">
+<div class="ec-console-bar"><b>Event log / демо</b><span class="demo-tag" style="margin-left:auto">Макет</span></div>
+<div class="ec-console-body">
+<div class="ec-tabs" role="group" aria-label="Демонстрационный сценарий">
+<button class="ec-tab" type="button" data-scn="new" aria-pressed="true">Новый трафик</button>
+<button class="ec-tab" type="button" data-scn="cart" aria-pressed="false">Брошенная корзина</button>
+<button class="ec-tab" type="button" data-scn="repeat" aria-pressed="false">Повторная покупка</button>
+</div>
+<ul class="ec-log" id="ecLog" aria-live="polite"></ul>
+</div>
+<div class="ec-console-note" id="ecNote">Демонстрационный макет. События и сообщения условные.</div>
+</div>
+</div>
+</div>
+</div></section>
+
+<section id="strategy"><div class="wrap">
+<div class="ec-strat">
+<div class="sec-head" data-anim>
+<p class="kicker">Пример стратегии</p>
+<h2>Порядок работ важнее списка каналов.</h2>
+<p class="lead">Пример последовательности для магазина. Демонстрационный сценарий: приоритеты зависят от ассортимента, среднего чека и текущей аналитики.</p>
+<div class="ec-note" style="margin-top:18px">Мы не обещаем конкретный рост продаж. Сначала чиним измеримость, потом масштабируем то, что уже работает.</div>
+</div>
+<div class="ec-ladder">
+<div class="ec-l" data-anim><div><b>Этап 01</b><h3>Аналитика и события</h3><p>Проверяем, что покупка и её шаги фиксируются корректно.</p></div><span class="ec-bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+<div class="ec-l" data-anim><div><b>Этап 02</b><h3>Карточка и каталог</h3><p>Убираем вопросы без ответов и лишние шаги оформления.</p></div><span class="ec-bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+<div class="ec-l" data-anim><div><b>Этап 03</b><h3>Фиды и кампании</h3><p>Приводим товарные данные в порядок и только потом масштабируем трафик.</p></div><span class="ec-bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+<div class="ec-l" data-anim><div><b>Этап 04</b><h3>Возврат и повтор</h3><p>Подключаем сценарии для корзины и повторных покупок.</p></div><span class="ec-bar" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+</div>
+</div>
+</div></section>
+
+<section id="process"><div class="wrap">
+<div class="sec-head" data-anim><p class="kicker">Этапы сотрудничества</p><h2>От аудита данных до управляемых продаж.</h2></div>
+<div class="ec-steps">
+<div class="ec-step" data-anim><b>01</b><h3>Аудит</h3><p>События, каталог, фид, текущие кампании.</p></div>
+<div class="ec-step" data-anim><b>02</b><h3>Гипотезы</h3><p>Где именно теряются деньги и что проверяем первым.</p></div>
+<div class="ec-step" data-anim><b>03</b><h3>Сборка</h3><p>Карточки, формы, сценарии, интеграции.</p></div>
+<div class="ec-step" data-anim><b>04</b><h3>Запуск</h3><p>Кампании и автоматизация с контролем данных.</p></div>
+<div class="ec-step" data-anim><b>05</b><h3>Рост</h3><p>Улучшения по фактическим результатам.</p></div>
+</div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+<div class="faq-grid">
+<div class="faq-aside" data-anim>
+<p class="kicker">FAQ / E-commerce</p>
+<h2 style="font-size:clamp(26px,3.4vw,40px);margin-top:16px">Частые вопросы магазинов.</h2>
+<p class="lead">Если вашего вопроса нет — опишите магазин и текущую аналитику в форме.</p>
+<a class="btn sec" href="#consult" style="margin-top:22px">Задать вопрос</a>
+</div>
+<div class="faq-list">
+<div class="fq"><h3><button class="fq-q" type="button" id="eq1" aria-expanded="false" aria-controls="ea1"><span class="fq-i">01</span><span class="fq-t">С чего начинать, если продаж мало?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="ea1" role="region" aria-labelledby="eq1" inert><div><p>С проверки данных: корректно ли фиксируются просмотры, корзины и покупки. Если события работают неправильно, любое решение по рекламе принимается вслепую. Дальше — карточка и оформление, потому что трафик на слабую воронку просто увеличивает расход.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="eq2" aria-expanded="false" aria-controls="ea2"><span class="fq-i">02</span><span class="fq-t">Можно ли работать с существующим сайтом на конструкторе?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="ea2" role="region" aria-labelledby="eq2" inert><div><p>Зависит от платформы и объёма доработок. Иногда достаточно изменить карточку, фильтры и шаги оформления. Иногда ограничения конструктора не дают нужной структуры, и тогда честнее сказать об этом сразу, чем растягивать правки на месяцы.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="eq3" aria-expanded="false" aria-controls="ea3"><span class="fq-i">03</span><span class="fq-t">Как не превратить письма в спам?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="ea3" role="region" aria-labelledby="eq3" inert><div><p>Сценарии строятся на действии клиента, а не на общем графике рассылок. У человека должна быть возможность отказаться, а частота — оставаться разумной. Это вопрос не только вежливости, но и доставляемости писем.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="eq4" aria-expanded="false" aria-controls="ea4"><span class="fq-i">04</span><span class="fq-t">Нужен ли отдельный лендинг под каждую категорию?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="ea4" role="region" aria-labelledby="eq4" inert><div><p>Не под каждую, а под те, где рекламный запрос не совпадает с логикой каталога. Если человек ищет конкретный тип товара, ему полезнее страница с объяснением выбора, чем общий список из сотен позиций.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="eq5" aria-expanded="false" aria-controls="ea5"><span class="fq-i">05</span><span class="fq-t">Что важнее: реклама или карточка товара?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="ea5" role="region" aria-labelledby="eq5" inert><div><p>Карточка. Реклама приводит человека к решению, но не создаёт его. Если на странице нет ответа про доставку, размер или возврат, дополнительный бюджет просто ускоряет отказ. Сначала воронка, потом масштаб.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="eq6" aria-expanded="false" aria-controls="ea6"><span class="fq-i">06</span><span class="fq-t">Работаете ли вы с маркетплейсами?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="ea6" role="region" aria-labelledby="eq6" inert><div><p>Как с отдельным каналом продаж, а не заменой сайта. У маркетплейса свои правила, комиссия и аудитория. Решение зависит от ассортимента и экономики: иногда разумнее развивать собственный магазин, иногда — комбинировать.</p></div></div></div>
+</div>
+</div>
+</div></section>
+
+<section id="consult"><div class="wrap">
+<div class="cta-band" data-anim>
+<div class="cta-row" style="margin-bottom:8px">
+<div><h2>Разберём, где ваш магазин теряет заказы.</h2><p>Расскажите, что продаёте и на какой платформе работаете. Предложим первый шаг — без обязательств.</p></div>
+</div>
+<div class="form-wrap" style="margin-top:clamp(20px,3vw,30px)">
+<div class="form-side">
+<p class="small">Если удобнее в мессенджере — укажите Telegram в контакте, ответим туда.</p>
+<ul><li>Аудит событий и воронки</li><li>Разбор карточки и оформления</li><li>План работ по приоритетам</li></ul>
+</div>
+<form data-lead-form novalidate>
+<input type="hidden" name="industry" value="Интернет-магазины">
+<div class="fld" data-f="name"><label for="ec-name">Ваше имя <i>*</i></label><input type="text" id="ec-name" name="name" autocomplete="name" maxlength="100"><span class="msg"></span></div>
+<div class="fld" data-f="contact"><label for="ec-contact">Telegram или телефон <i>*</i></label><input type="text" id="ec-contact" name="contact" placeholder="@username или +380…" maxlength="120"><span class="msg"></span></div>
+<div class="fld full"><label for="ec-company">Магазин</label><input type="text" id="ec-company" name="company" autocomplete="organization" maxlength="150"></div>
+<div class="fld full"><label for="ec-msg">Что продаёте и что не работает</label><textarea id="ec-msg" name="message" maxlength="1500" placeholder="Например: магазин одежды, много трафика, мало заказов, корзина пустеет на доставке"></textarea></div>
+<input class="hp" type="text" name="website_hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="sub full">
+<div class="banner bad" role="alert">Не удалось отправить заявку. Попробуйте ещё раз или напишите нам в Telegram.</div>
+<div class="consent-wrap"><label class="consent" for="ec-consent"><input type="checkbox" id="ec-consent" name="consent" required aria-required="true"><span>Я согласен с <a href="/privacy-policy" target="_blank" rel="noopener">политикой конфиденциальности</a> и даю согласие на обработку персональных данных.</span></label><span class="msg" role="alert"></span></div>
+<button class="btn pri" type="submit"><span class="sp"></span><span class="sl">Отправить заявку</span></button>
+</div>
+<div class="thanks" role="status"><h3>Спасибо за обращение!</h3><p>Заявка отправлена. Команда KINETIA свяжется с вами, чтобы обсудить магазин.</p></div>
+</form>
+</div>
+</div>
+
+<div class="niche-strip">
+<h2>Другие отрасли</h2>
+<div class="niche-grid">
+<a class="niche-card" href="/industries/beauty"><b>Салоны красоты</b><span>Beauty</span></a>
+<a class="niche-card" href="/industries/dentistry"><b>Стоматологии</b><span>Dentistry</span></a>
+<a class="niche-card" href="/industries/construction"><b>Строительство</b><span>Construction</span></a>
+<a class="niche-card" href="/industries/auto"><b>Автосервисы</b><span>Auto</span></a>
+<a class="niche-card" href="/industries"><b>Все решения</b><span>Industry Solutions</span></a>
+</div>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+<div class="fgrid">
+<div><a href="/" class="logo" aria-label="KINETIA — на главную"><svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><defs><linearGradient id="kstarFoot" x1="5.8" y1="27" x2="26.2" y2="5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#087A58"/><stop offset=".5" stop-color="#19DFA0"/><stop offset="1" stop-color="#7AFFCB"/></linearGradient></defs><path d="M16 3.6 18.19 13.81 26.2 16 18.19 18.19 16 28.4 13.81 18.19 5.8 16 13.81 13.81Z" fill="url(#kstarFoot)"/><path d="M16 13.8 18.2 16 16 18.2 13.8 16Z" fill="#F2FFFA"/></svg>KINETIA</a><p>Digital Growth Agency.<br>Создаём движение. Системно развиваем бизнес.</p></div>
+<ul><li><a href="/">Главная</a></li><li><a href="/#services">Услуги</a></li><li><a href="/#process">Процесс</a></li><li><a href="/#results">Результаты</a></li><li><a href="/#faq">FAQ</a></li><li><a href="/#form">Контакты</a></li></ul>
+<ul><li><a href="/industries">Все решения</a></li><li><a href="/industries/beauty">Beauty</a></li><li><a href="/industries/dentistry">Dentistry</a></li><li><a href="/industries/construction">Construction</a></li><li><a href="/industries/auto">Auto</a></li><li><a href="/privacy-policy">Политика конфиденциальности</a></li></ul>
+</div>
+<div class="fniche"><b>Отрасли</b><a href="/industries/beauty">Салоны красоты</a><a href="/industries/dentistry">Стоматологии</a><a href="/industries/construction">Строительство</a><a href="/industries/auto">Автосервисы</a><a href="/industries/ecommerce">E-commerce</a></div>
+<p class="copy">© <span data-year>2026</span> KINETIA. All rights reserved.</p>
+</div></footer>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Digital-система для интернет-магазинов","serviceType":"Сайт, реклама, CRM и автоматизация для интернет-магазинов","provider":{"@type":"Organization","name":"KINETIA"},"areaServed":"UA","description":"Карточки товаров, товарные фиды, реклама по категориям, CRM и сценарии возврата корзины и повторных покупок для интернет-магазинов.","url":"/industries/ecommerce"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"С чего начинать, если продаж мало?","acceptedAnswer":{"@type":"Answer","text":"С проверки данных: корректно ли фиксируются просмотры, корзины и покупки. Если события работают неправильно, любое решение по рекламе принимается вслепую. Дальше — карточка и оформление, потому что трафик на слабую воронку просто увеличивает расход."}},{"@type":"Question","name":"Можно ли работать с существующим сайтом на конструкторе?","acceptedAnswer":{"@type":"Answer","text":"Зависит от платформы и объёма доработок. Иногда достаточно изменить карточку, фильтры и шаги оформления. Иногда ограничения конструктора не дают нужной структуры, и тогда честнее сказать об этом сразу, чем растягивать правки на месяцы."}},{"@type":"Question","name":"Как не превратить письма в спам?","acceptedAnswer":{"@type":"Answer","text":"Сценарии строятся на действии клиента, а не на общем графике рассылок. У человека должна быть возможность отказаться, а частота — оставаться разумной. Это вопрос не только вежливости, но и доставляемости писем."}},{"@type":"Question","name":"Нужен ли отдельный лендинг под каждую категорию?","acceptedAnswer":{"@type":"Answer","text":"Не под каждую, а под те, где рекламный запрос не совпадает с логикой каталога. Если человек ищет конкретный тип товара, ему полезнее страница с объяснением выбора, чем общий список из сотен позиций."}},{"@type":"Question","name":"Что важнее: реклама или карточка товара?","acceptedAnswer":{"@type":"Answer","text":"Карточка. Реклама приводит человека к решению, но не создаёт его. Если на странице нет ответа про доставку, размер или возврат, дополнительный бюджет просто ускоряет отказ. Сначала воронка, потом масштаб."}},{"@type":"Question","name":"Работаете ли вы с маркетплейсами?","acceptedAnswer":{"@type":"Answer","text":"Как с отдельным каналом продаж, а не заменой сайта. У маркетплейса свои правила, комиссия и аудитория. Решение зависит от ассортимента и экономики: иногда разумнее развивать собственный магазин, иногда — комбинировать."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"/"},{"@type":"ListItem","position":2,"name":"Решения для отраслей","item":"/industries"},{"@type":"ListItem","position":3,"name":"Интернет-магазины","item":"/industries/ecommerce"}]}</script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="/industries/assets/base.js"></script>
+<script>
+(function(){
+  /* funnel density */
+  window.KViz(document.getElementById('ecviz'),function(ctx,w,h,t){
+    var top=h*.14,bot=h*.86,left=w*.10,right=w*.62;
+    ctx.lineWidth=1;
+    for(var i=0;i<7;i++){
+      var y=top+(bot-top)*(i/6);
+      var spread=(right-left)*(.06+i*.10);
+      var x1=left+((right-left)-spread)/2;
+      ctx.strokeStyle='rgba(25,223,160,'+(.16-i*.014)+')';
+      ctx.beginPath();ctx.moveTo(x1,y);ctx.lineTo(x1+spread,y);ctx.stroke();
+    }
+    for(var j=0;j<5;j++){
+      var p=(t*.22+j*.2)%1;
+      var y2=top+(bot-top)*p;
+      var spread2=(right-left)*(.06+p*.66);
+      var x2=left+((right-left)-spread2)/2+Math.sin(t+j)*4;
+      ctx.fillStyle='rgba(122,255,203,.8)';
+      ctx.beginPath();ctx.arc(x2,y2,1.8,0,6.283);ctx.fill();
+      ctx.beginPath();ctx.arc(x2+spread2,y2,1.4,0,6.283);ctx.fill();
+    }
+    var g=ctx.createRadialGradient(w*.36,h*.5,0,w*.36,h*.5,Math.min(w,h)*.5);
+    g.addColorStop(0,'rgba(8,122,88,.14)');g.addColorStop(1,'rgba(5,8,7,0)');
+    ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+  });
+
+  var scn='new';
+  var data={
+    'new':[
+      ['01','<b>view_item</b> — карточка товара, источник кампании'],
+      ['02','<b>add_to_cart</b> — товар добавлен в корзину'],
+      ['03','<b>begin_checkout</b> — шаг оформления открыт'],
+      ['04','<b>purchase</b> — заказ подтверждён, источник сохранён'],
+      ['05','Клиент попадает в базу для повторных сценариев']
+    ],
+    'cart':[
+      ['01','<b>cart_abandoned</b> — корзина без оплаты, зафиксировано время'],
+      ['02','Правило магазина: напоминание в разрешённом канале'],
+      ['03','Возврат на сайт с сохранённой корзиной'],
+      ['04','<b>purchase</b> или отказ — статус обновлён'],
+      ['05','Причина отказа сохраняется для анализа']
+    ],
+    'repeat':[
+      ['01','<b>purchase</b> — история покупки привязана к клиенту'],
+      ['02','Категория и периодичность покупки сохранены'],
+      ['03','Сценарий повторной покупки по правилу магазина'],
+      ['04','Согласие клиента проверяется до отправки'],
+      ['05','<b>purchase</b> — повторный заказ в той же истории']
+    ]
+  };
+  var notes={
+    'new':'Пример цепочки для нового трафика. Названия событий — стандартные, данные условные.',
+    'cart':'Пример сценария возврата. Частота и канал определяются настройками магазина и согласием клиента.',
+    'repeat':'Пример сценария повторной покупки. Периодичность зависит от категории товара.'
+  };
+  var log=document.getElementById('ecLog'),note=document.getElementById('ecNote');
+  function render(){
+    log.innerHTML=data[scn].map(function(r){return '<li><em>'+r[0]+'</em><span>'+r[1]+'</span></li>';}).join('');
+    note.textContent=notes[scn];
+  }
+  document.querySelectorAll('[data-scn]').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('[data-scn]').forEach(function(x){x.setAttribute('aria-pressed','false');});
+      b.setAttribute('aria-pressed','true');scn=b.getAttribute('data-scn');render();
+    });
+  });
+  render();
+})();
+</script>
+</body>
+</html>

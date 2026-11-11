@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="ru" class="gsap-ready">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Сайт, запись и CRM для автосервиса и детейлинга — KINETIA</title>
+<meta name="description" content="Digital-система для автосервиса и детейлинга: сайт с записью, локальная реклама, загрузка постов, CRM и напоминания о ТО.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/industries/auto">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KINETIA">
+<meta property="og:title" content="Digital-решения для автосервисов и детейлинга — KINETIA">
+<meta property="og:description" content="Загрузка постов, запись без звонка, повторные визиты и CRM для автосервисов и детейлинг-студий.">
+<meta property="og:locale" content="ru_RU">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='5.8'%20y1='27'%20x2='26.2'%20y2='5'%20gradientUnits='userSpaceOnUse'%3E%3Cstop%20offset='0'%20stop-color='%23087A58'/%3E%3Cstop%20offset='.5'%20stop-color='%2319DFA0'/%3E%3Cstop%20offset='1'%20stop-color='%237AFFCB'/%3E%3C/linearGradient%3E%3CradialGradient%20id='h'%20cx='.5'%20cy='.5'%20r='.5'%3E%3Cstop%20offset='0'%20stop-color='%2319DFA0'%20stop-opacity='.5'/%3E%3Cstop%20offset='.65'%20stop-color='%23087A58'%20stop-opacity='.18'/%3E%3Cstop%20offset='1'%20stop-color='%23087A58'%20stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%23050807'/%3E%3Ccircle%20cx='16'%20cy='16'%20r='14'%20fill='url%28%23h%29'/%3E%3Cpath%20d='M16%202.2%2018.4%2013.6%2026.2%2016%2018.4%2018.4%2016%2029.8%2013.6%2018.4%205.8%2016%2013.6%2013.6Z'%20fill='url%28%23g%29'/%3E%3Cpath%20d='M16%2013.5%2018.5%2016%2016%2018.5%2013.5%2016Z'%20fill='%23E8FFF7'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/industries/assets/base.css">
+<style>
+/* auto concept: service-bay board, dark industrial, lane lights */
+.au-hero{padding:clamp(18px,2.6vw,30px) 0 clamp(28px,4.4vw,58px);overflow:hidden}
+.au-hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:clamp(24px,3.8vw,54px);align-items:center}
+.au-hero h1{font-size:clamp(33px,5vw,60px);max-width:15ch;margin-top:16px}
+.au-hero .lead{max-width:46ch}
+.au-stats{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.au-stats span{font:600 9.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(25,223,160,.8);border:1px solid rgba(25,223,160,.22);background:rgba(25,223,160,.045);border-radius:3px;padding:6px 8px}
+.au-vis{position:relative;min-height:440px;display:grid;align-items:end;padding:18px}
+.au-vis canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:20px}
+.au-board{position:relative;z-index:2;width:100%}
+.au-board-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.au-board-head b{font:700 9px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:rgba(244,247,245,.6)}
+.au-bay{display:grid;grid-template-columns:44px 1fr auto;gap:9px;align-items:center;padding:9px 11px;border:1px solid var(--line);border-radius:7px;background:rgba(5,8,7,.82);margin-bottom:6px;backdrop-filter:blur(4px)}
+.au-bay>b{font:700 9px/1 var(--mono);letter-spacing:.1em;color:rgba(25,223,160,.65)}
+.au-bay-t{min-width:0}
+.au-bay-t h3{font-size:11.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.au-bay-t span{display:block;font:600 8px/1.4 var(--mono);letter-spacing:.08em;color:rgba(146,157,151,.65);margin-top:2px;text-transform:uppercase}
+.au-chip{font:700 7.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:4px 6px;border-radius:3px;border:1px solid var(--line);color:var(--mut);white-space:nowrap}
+.au-chip.free{color:var(--em3);border-color:rgba(25,223,160,.4)}
+.au-chip.busy{color:#ffc46b;border-color:rgba(255,196,107,.32)}
+.au-note{font:600 8px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(146,157,151,.5);margin-top:8px}
+/* problems: diagnostic list */
+.au-probs{margin-top:clamp(24px,3.4vw,38px);display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.au-prob{position:relative;padding:clamp(20px,2.6vw,28px) clamp(18px,2.4vw,24px) clamp(18px,2.2vw,22px);border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.012);overflow:hidden;transition:border-color .35s,background .35s}
+.au-prob:hover{border-color:rgba(25,223,160,.3);background:rgba(8,122,88,.06)}
+.au-prob:before{content:"";position:absolute;left:0;top:0;width:2px;height:100%;background:linear-gradient(180deg,rgba(25,223,160,.7),transparent);opacity:.5}
+.au-prob b{display:inline-block;font:700 8.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:#ffc46b;border:1px solid rgba(255,196,107,.28);border-radius:3px;padding:4px 6px;margin-bottom:13px}
+.au-prob h3{font-size:clamp(16px,1.9vw,19.5px);margin-bottom:7px}
+.au-prob p{font-size:13.5px;color:var(--mut);line-height:1.6;max-width:44ch}
+/* solutions: pipeline cards */
+.au-sol{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:clamp(24px,3.4vw,38px)}
+.au-sol-card{position:relative;padding:20px 16px;border:1px solid var(--line);border-radius:10px;background:linear-gradient(180deg,rgba(10,16,14,.9),rgba(5,8,7,.4));transition:transform .35s,border-color .35s}
+.au-sol-card:hover{transform:translateY(-3px);border-color:rgba(25,223,160,.32)}
+.au-sol-card:after{content:"";position:absolute;top:26px;right:-8px;width:8px;height:1px;background:rgba(25,223,160,.28)}
+.au-sol-card:last-child:after{display:none}
+.au-sol-card i{display:block;font:700 8px/1 var(--mono);letter-spacing:.16em;color:rgba(25,223,160,.55);font-style:normal;margin-bottom:22px}
+.au-sol-card h3{font-size:14.5px;line-height:1.25;margin-bottom:7px}
+.au-sol-card p{font-size:12.5px;color:var(--mut);line-height:1.55}
+/* system: bay scheduler */
+.au-sys{background:linear-gradient(180deg,transparent,rgba(6,61,48,.12) 46%,transparent)}
+.au-sys-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:clamp(22px,3.6vw,46px);align-items:start;margin-top:clamp(24px,3.4vw,38px)}
+.au-sched-body{padding:clamp(13px,2vw,18px)}
+.au-lbl{display:block;font:700 8.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:rgba(146,157,151,.85);margin-bottom:7px}
+.au-opts{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:13px}
+.au-opt{appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.02);border-radius:4px;padding:7px 9px;font:600 10.5px/1.2 var(--mono);color:var(--mut);cursor:pointer;transition:.2s}
+.au-opt:hover{border-color:rgba(25,223,160,.4);color:var(--fg)}
+.au-opt[aria-pressed=true]{background:rgba(25,223,160,.12);border-color:rgba(25,223,160,.55);color:var(--em3)}
+.au-lanes{display:grid;gap:5px;margin-top:4px}
+.au-lane{display:grid;grid-template-columns:56px 1fr;gap:8px;align-items:center}
+.au-lane>b{font:700 8px/1 var(--mono);letter-spacing:.08em;color:rgba(146,157,151,.7)}
+.au-track{position:relative;height:22px;border:1px solid var(--line2);border-radius:3px;background:repeating-linear-gradient(90deg,rgba(244,247,245,.05) 0 1px,transparent 1px 25%)}
+.au-block{position:absolute;top:2px;bottom:2px;border-radius:2px;background:linear-gradient(90deg,rgba(8,122,88,.85),rgba(25,223,160,.7));border:1px solid rgba(25,223,160,.5);font:700 7.5px/18px var(--mono);color:#03130e;text-align:center;overflow:hidden;white-space:nowrap;transition:left .4s,width .4s}
+.au-block.alt{background:rgba(255,196,107,.2);border-color:rgba(255,196,107,.45);color:#ffd79a}
+.au-out{margin-top:12px;padding:10px 11px;border:1px dashed rgba(25,223,160,.28);border-radius:6px;background:rgba(8,122,88,.07);font-size:11px;line-height:1.55;color:var(--mut);min-height:62px}
+.au-out b{color:var(--em3);font-weight:700}
+.au-steps{display:grid;gap:0;border-top:1px solid var(--line)}
+.au-step{display:grid;grid-template-columns:38px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.au-step b{font:700 9px/1.6 var(--mono);letter-spacing:.1em;color:var(--em3)}
+.au-step h3{font-size:14px;margin-bottom:3px}
+.au-step p{font-size:12.5px;color:var(--mut);line-height:1.5;max-width:52ch}
+/* strategy: funnel lanes */
+.au-strat{margin-top:clamp(24px,3.4vw,38px);display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.au-srow{display:grid;grid-template-columns:54px 1fr 120px;gap:clamp(12px,2.2vw,24px);align-items:center;padding:clamp(16px,2.2vw,22px) clamp(14px,2.2vw,22px);background:var(--bg);transition:background .3s}
+.au-srow:hover{background:rgba(8,122,88,.07)}
+.au-srow>b{font:700 9px/1 var(--mono);letter-spacing:.1em;color:var(--em3)}
+.au-srow h3{font-size:15px;margin-bottom:4px}
+.au-srow p{font-size:12.5px;color:var(--mut);line-height:1.55;max-width:66ch}
+.au-meter{display:flex;gap:3px}
+.au-meter i{flex:1;height:5px;border-radius:1px;background:rgba(244,247,245,.1)}
+.au-meter i.on{background:var(--em3)}
+/* process: horizontal timing */
+.au-timing{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:clamp(24px,3.4vw,38px)}
+.au-t{padding:16px 14px;border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.012)}
+.au-t b{display:block;font:700 8.5px/1 var(--mono);color:var(--em3);letter-spacing:.14em;margin-bottom:12px}
+.au-t h3{font-size:13.5px;line-height:1.25;margin-bottom:5px}
+.au-t p{font-size:11.5px;color:var(--mut);line-height:1.45}
+@media(max-width:1040px){
+.au-hero-grid{grid-template-columns:1fr}.au-vis{min-height:380px;order:-1}
+.au-sys-grid{grid-template-columns:1fr}
+.au-sol{grid-template-columns:repeat(3,1fr)}
+.au-sol-card:after{display:none}
+.au-timing{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:760px){
+.au-probs{grid-template-columns:1fr}
+.au-sol{grid-template-columns:1fr 1fr}
+.au-srow{grid-template-columns:1fr;gap:7px}.au-meter{max-width:140px}
+.au-timing{grid-template-columns:1fr 1fr}
+.au-lane{grid-template-columns:44px 1fr}
+}
+@media(max-width:460px){.au-sol{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-industry="Автосервисы и детейлинг">
+<header id="hd"><div class="wrap nav">
+<a href="/" class="logo" aria-label="KINETIA — на главную"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><defs><linearGradient id="kstarNav" x1="5.8" y1="27" x2="26.2" y2="5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#087A58"/><stop offset=".5" stop-color="#19DFA0"/><stop offset="1" stop-color="#7AFFCB"/></linearGradient><radialGradient id="kstarCoreNav" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#F2FFFA"/><stop offset=".55" stop-color="#9BFFDD"/><stop offset="1" stop-color="#7AFFCB" stop-opacity="0"/></radialGradient></defs><path d="M16 3.6 18.19 13.81 26.2 16 18.19 18.19 16 28.4 13.81 18.19 5.8 16 13.81 13.81Z" fill="url(#kstarNav)"/><path d="M16 13.8 18.2 16 16 18.2 13.8 16Z" fill="url(#kstarCoreNav)"/></svg>KINETIA</a>
+<ul><li><a href="/#services">Услуги</a></li><li><a href="/industries" aria-current="page">Решения</a></li><li><a href="/#results">Результаты</a></li><li><a href="/#faq">FAQ</a></li></ul>
+<a class="btn pri" href="#consult">Обсудить проект</a>
+<button class="burger" id="bg" aria-label="Меню" aria-expanded="false"><i></i><i></i></button>
+</div></header>
+<nav class="menu" id="mn" aria-label="Мобильное меню">
+<a href="/#services">Услуги</a><a href="/industries">Решения</a><a href="/#results">Результаты</a><a href="/#faq">FAQ</a><a href="#consult">Обсудить проект</a>
+<div class="menu-sub"><a href="/industries/beauty">Beauty</a><a href="/industries/dentistry">Dentistry</a><a href="/industries/construction">Construction</a><a href="/industries/ecommerce">E-commerce</a></div>
+</nav>
+
+<main>
+<nav class="crumbs wrap" aria-label="Хлебные крошки"><a href="/">Главная</a><span class="sep">/</span><a href="/industries">Решения</a><span class="sep">/</span><span>Автосервисы</span></nav>
+
+<section class="au-hero"><div class="wrap">
+<div class="au-hero-grid">
+<div>
+<p class="kicker" data-anim>Auto / Автосервисы и детейлинг</p>
+<h1 data-anim>Когда все посты заняты, а заявки всё равно теряются.</h1>
+<p class="lead" data-anim>Владелец машины звонит в три сервиса подряд и едет туда, где ответили первыми. Если телефон занят, а запись ведётся в блокноте, сервис платит за рекламу, но получает пустой бокс.</p>
+<div class="au-stats" data-anim><span>запись</span><span>загрузка постов</span><span>повторные визиты</span><span>локальный спрос</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px" data-anim><a class="btn pri" href="#consult">Обсудить сервис<span class="arw">→</span></a><a class="btn sec" href="#system">Пример загрузки</a></div>
+</div>
+<div class="au-vis" data-anim="fade">
+<canvas id="auviz" aria-hidden="true"></canvas>
+<div class="au-board">
+<div class="au-board-head"><b>Загрузка постов / демо</b><span class="demo-tag">Пример</span></div>
+<div class="au-bay"><b>П01</b><div class="au-bay-t"><h3>Замена масла</h3><span>до 12:00 · пример</span></div><span class="au-chip busy">занято</span></div>
+<div class="au-bay"><b>П02</b><div class="au-bay-t"><h3>Диагностика</h3><span>до 13:30 · пример</span></div><span class="au-chip busy">занято</span></div>
+<div class="au-bay"><b>П03</b><div class="au-bay-t"><h3>Свободно</h3><span>после 14:00 · пример</span></div><span class="au-chip free">окно</span></div>
+<div class="au-bay"><b>П04</b><div class="au-bay-t"><h3>Детейлинг</h3><span>до 17:00 · пример</span></div><span class="au-chip busy">занято</span></div>
+<p class="au-note">Демонстрационный макет. Названия работ и время условные.</p>
+</div>
+</div>
+</div>
+</div></section>
+
+<section id="problems"><div class="wrap">
+<div class="sec-head" data-anim>
+<p class="kicker">Проблемы ниши</p>
+<h2>Телефон — самый дорогой сотрудник сервиса.</h2>
+<p class="lead">Пока мастер работает руками, администратор не всегда может ответить. Именно в эти минуты клиент уходит к конкуренту.</p>
+</div>
+<div class="au-probs">
+<article class="au-prob" data-anim><b>Потеря</b><h3>Пропущенный звонок = пропущенная машина</h3><p>Человек не оставляет заявку, если не дозвонился. Он просто звонит следующему. При этом сервис не знает, сколько обращений не дошло.</p></article>
+<article class="au-prob" data-anim><b>Потеря</b><h3>Расписание в голове мастера</h3><p>Два клиента на одно окно и «подождите, сейчас освободится». Пост простаивает, а владелец машины уезжает с испорченным впечатлением.</p></article>
+<article class="au-prob" data-anim><b>Потеря</b><h3>Клиент не помнит про ТО</h3><p>Про следующий визит никто не напомнил. Через полгода человек найдёт другой сервис, а первый даже не узнает, что потерял постоянного клиента.</p></article>
+<article class="au-prob" data-anim><b>Потеря</b><h3>Реклама на «всё»</h3><p>Кампании ведут на главную страницу, где смешаны полировка, шиномонтаж и ремонт двигателя. Клиент с конкретной задачей не понимает, что ему делать.</p></article>
+</div>
+</div></section>
+
+<section id="solutions"><div class="wrap">
+<div class="sec-head-row">
+<div class="sec-head" data-anim><p class="kicker">Решения KINETIA</p><h2>Пять элементов одной смены.</h2><p class="lead">Соединяем запись, загрузку, продажи и возврат в один рабочий день сервиса.</p></div>
+<a class="btn sec" href="/#services" data-anim>Все услуги агентства</a>
+</div>
+<div class="au-sol">
+<article class="au-sol-card" data-anim><i>01 / САЙТ</i><h3>Страницы под услуги</h3><p>Отдельно шины, диагностика, ремонт, детейлинг. С составом работ и честными сроками.</p></article>
+<article class="au-sol-card" data-anim><i>02 / РЕКЛАМА</i><h3>Локальный спрос</h3><p>Поиск и карты по району, кампании на конкретные работы. Радиус важнее охвата.</p></article>
+<article class="au-sol-card" data-anim><i>03 / CRM</i><h3>История по машине</h3><p>Клиент, автомобиль, визиты, работы. Мастер видит контекст до звонка.</p></article>
+<article class="au-sol-card" data-anim><i>04 / АВТОМАТИЗАЦИЯ</i><h3>Напоминания</h3><p>Подтверждение записи, напоминание о визите и о следующем ТО по пробегу или сроку.</p></article>
+<article class="au-sol-card" data-anim><i>05 / ЛИДОГЕНЕРАЦИЯ</i><h3>Запись без звонка</h3><p>Форма и мессенджер сводятся в один поток. Заявка сразу попадает на пост.</p></article>
+</div>
+</div></section>
+
+<section id="system" class="au-sys"><div class="wrap">
+<div class="sec-head" data-anim>
+<p class="kicker">Digital-система</p>
+<h2>Запись, которая видит свободные окна.</h2>
+<p class="lead">Демонстрационный макет распределения по постам. Выберите тип работ и срочность — макет покажет, куда попадёт заявка и что произойдёт дальше. Реальные слоты зависят от вашего графика.</p>
+</div>
+<div class="au-sys-grid">
+<div class="mock" data-anim>
+<div class="mock-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><b>Scheduler / демо</b><span class="demo-tag">Макет</span></div>
+<div class="au-sched-body">
+<span class="au-lbl">Тип работ</span>
+<div class="au-opts" role="group" aria-label="Тип работ (демо)">
+<button class="au-opt" type="button" data-job="ТО" aria-pressed="true">ТО</button>
+<button class="au-opt" type="button" data-job="Диагностика" aria-pressed="false">Диагностика</button>
+<button class="au-opt" type="button" data-job="Детейлинг" aria-pressed="false">Детейлинг</button>
+<button class="au-opt" type="button" data-job="Шины" aria-pressed="false">Шины</button>
+</div>
+<span class="au-lbl">Срочность</span>
+<div class="au-opts" role="group" aria-label="Срочность (демо)">
+<button class="au-opt" type="button" data-urg="Сегодня" aria-pressed="false">Сегодня</button>
+<button class="au-opt" type="button" data-urg="На неделе" aria-pressed="true">На неделе</button>
+</div>
+<div class="au-lanes" aria-hidden="true">
+<div class="au-lane"><b>ПОСТ 1</b><div class="au-track"><span class="au-block" style="left:0;width:44%">ТО</span><span class="au-block alt" style="left:52%;width:26%">шины</span></div></div>
+<div class="au-lane"><b>ПОСТ 2</b><div class="au-track"><span class="au-block" style="left:18%;width:52%">диагностика</span></div></div>
+<div class="au-lane"><b>ПОСТ 3</b><div class="au-track"><span class="au-block alt" style="left:6%;width:30%">детейлинг</span></div></div>
+</div>
+<div class="au-out" id="auOut" aria-live="polite"></div>
+</div>
+</div>
+<div data-anim>
+<div class="au-steps">
+<div class="au-step"><b>01</b><div><h3>Заявка приходит с контекстом</h3><p>Услуга, автомобиль, желаемое время. Администратор не собирает это по телефону заново.</p></div></div>
+<div class="au-step"><b>02</b><div><h3>Система предлагает окно</h3><p>Свободное время подбирается по длительности работы и загрузке поста, а не по памяти.</p></div></div>
+<div class="au-step"><b>03</b><div><h3>Клиент подтверждает</h3><p>Ответ приходит в мессенджер с адресом и временем. Перенос тоже не требует звонка.</p></div></div>
+<div class="au-step"><b>04</b><div><h3>Визит напоминается</h3><p>За день и за пару часов до записи. Меньше неявок и пустых окон в графике.</p></div></div>
+<div class="au-step"><b>05</b><div><h3>Возврат планируется</h3><p>После работ система подсказывает срок следующего ТО — по регламенту, а не по памяти клиента.</p></div></div>
+</div>
+</div>
+</div>
+</div></section>
+
+<section id="strategy"><div class="wrap">
+<div class="sec-head" data-anim>
+<p class="kicker">Пример стратегии</p>
+<h2>Сначала окна, потом трафик.</h2>
+<p class="lead">Пример последовательности для автосервиса. Демонстрационный сценарий: приоритеты зависят от города, конкуренции и текущей загрузки постов.</p>
+</div>
+<div class="au-strat">
+<div class="au-srow" data-anim><b>01</b><div><h3>Навести порядок в записи</h3><p>Единый список заявок, понятный график, подтверждение и перенос без звонка.</p></div><div class="au-meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+<div class="au-srow" data-anim><b>02</b><div><h3>Страницы под конкретные работы</h3><p>Шины, диагностика, детейлинг и ремонт получают свою страницу с составом работ и первым шагом.</p></div><div class="au-meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+<div class="au-srow" data-anim><b>03</b><div><h3>Локальные кампании</h3><p>Поиск и карты рядом с сервисом, ретаргетинг на тех, кто смотрел конкретную услугу.</p></div><div class="au-meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+<div class="au-srow" data-anim><b>04</b><div><h3>Повторные визиты</h3><p>Напоминание о ТО и работа с базой клиентов. Здесь не нужен новый бюджет, нужен порядок в данных.</p></div><div class="au-meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+</div>
+</div></section>
+
+<section id="process"><div class="wrap">
+<div class="sec-head" data-anim><p class="kicker">Этапы сотрудничества</p><h2>Как выглядит работа по шагам.</h2></div>
+<div class="au-timing">
+<div class="au-t" data-anim><b>01 / АУДИТ</b><h3>Разбор записи</h3><p>Откуда приходят обращения и где теряются.</p></div>
+<div class="au-t" data-anim><b>02 / СТРУКТУРА</b><h3>Услуги и посты</h3><p>Какие работы продвигаем и как распределяем.</p></div>
+<div class="au-t" data-anim><b>03 / СБОРКА</b><h3>Сайт и CRM</h3><p>Страницы, форма, карточка автомобиля.</p></div>
+<div class="au-t" data-anim><b>04 / ЗАПУСК</b><h3>Кампании</h3><p>Локальный трафик и аналитика источников.</p></div>
+<div class="au-t" data-anim><b>05 / КОНТРОЛЬ</b><h3>Улучшения</h3><p>Правки по фактической загрузке.</p></div>
+</div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+<div class="faq-grid">
+<div class="faq-aside" data-anim>
+<p class="kicker">FAQ / Auto</p>
+<h2 style="font-size:clamp(26px,3.4vw,40px);margin-top:16px">Частые вопросы автосервисов.</h2>
+<p class="lead">Если вашего вопроса нет — опишите сервис и текущую запись в форме.</p>
+<a class="btn sec" href="#consult" style="margin-top:22px">Задать вопрос</a>
+</div>
+<div class="faq-list">
+<div class="fq"><h3><button class="fq-q" type="button" id="aq1" aria-expanded="false" aria-controls="aa1"><span class="fq-i">01</span><span class="fq-t">Можно ли вести запись без администратора?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="aa1" role="region" aria-labelledby="aq1" inert><div><p>Частично. Форма и мессенджер принимают заявку и показывают свободные окна, но сложные случаи — нестандартная работа, уточнение по автомобилю — всё равно требуют человека. Задача системы не заменить администратора, а снять с него рутину и не терять обращения в занятые часы.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="aq2" aria-expanded="false" aria-controls="aa2"><span class="fq-i">02</span><span class="fq-t">Как система понимает длительность работы?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="aa2" role="region" aria-labelledby="aq2" inert><div><p>Длительность задаётся для каждого типа работ и может зависеть от автомобиля. Если точной нормы нет, ставим запас и подтверждаем время вручную. Ошибочная оценка хуже, чем честное «уточним после осмотра».</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="aq3" aria-expanded="false" aria-controls="aa3"><span class="fq-i">03</span><span class="fq-t">Что делать с клиентами, которые не приехали?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="aa3" role="region" aria-labelledby="aq3" inert><div><p>Во-первых, напоминать до визита — это снижает неявки. Во-вторых, фиксировать статус в CRM, чтобы окно можно было предложить другому клиенту. Без статусов неявка выглядит как «просто пустой день».</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="aq4" aria-expanded="false" aria-controls="aa4"><span class="fq-i">04</span><span class="fq-t">Нужен ли отдельный сайт для детейлинга?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="aa4" role="region" aria-labelledby="aq4" inert><div><p>Если детейлинг — отдельное направление с другим клиентом и другим чеком, ему нужна своя страница или отдельный раздел с примерами работ. Смешивать полировку и ремонт двигателя в одном списке неудобно и для клиента, и для рекламы.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="aq5" aria-expanded="false" aria-controls="aa5"><span class="fq-i">05</span><span class="fq-t">Можно ли сохранить текущую CRM или таблицу?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="aa5" role="region" aria-labelledby="aq5" inert><div><p>Таблица подходит, пока заявок немного и с ней работает один человек. Когда подключаются несколько мастеров и каналов, она начинает дублировать записи. Мы смотрим на фактический процесс и не меняем инструмент, если он справляется.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="aq6" aria-expanded="false" aria-controls="aa6"><span class="fq-i">06</span><span class="fq-t">Работает ли реклама автосервиса в соцсетях?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="aa6" role="region" aria-labelledby="aq6" inert><div><p>Да, особенно для детейлинга и нестандартных работ, где важны фото и видео процесса. Для срочных сервисных задач поиск и карты обычно дают более горячий спрос. Обычно это два разных слоя, а не замена одного другим.</p></div></div></div>
+</div>
+</div>
+</div></section>
+
+<section id="consult"><div class="wrap">
+<div class="cta-band" data-anim>
+<div class="cta-row" style="margin-bottom:8px">
+<div><h2>Покажем, где ваш сервис теряет окна.</h2><p>Расскажите, сколько постов и откуда приходят клиенты. Предложим последовательность — без обязательств.</p></div>
+</div>
+<div class="form-wrap" style="margin-top:clamp(20px,3vw,30px)">
+<div class="form-side">
+<p class="small">Если удобнее в мессенджере — укажите Telegram в контакте, ответим туда.</p>
+<ul><li>Разбор записи и загрузки постов</li><li>Структура страниц услуг</li><li>План внедрения по этапам</li></ul>
+</div>
+<form data-lead-form novalidate>
+<input type="hidden" name="industry" value="Автосервисы и детейлинг">
+<div class="fld" data-f="name"><label for="au-name">Ваше имя <i>*</i></label><input type="text" id="au-name" name="name" autocomplete="name" maxlength="100"><span class="msg"></span></div>
+<div class="fld" data-f="contact"><label for="au-contact">Telegram или телефон <i>*</i></label><input type="text" id="au-contact" name="contact" placeholder="@username или +380…" maxlength="120"><span class="msg"></span></div>
+<div class="fld full"><label for="au-company">Сервис или студия</label><input type="text" id="au-company" name="company" autocomplete="organization" maxlength="150"></div>
+<div class="fld full"><label for="au-msg">Что хотите изменить</label><textarea id="au-msg" name="message" maxlength="1500" placeholder="Например: 4 поста, запись по телефону, часть звонков теряется в занятые часы"></textarea></div>
+<input class="hp" type="text" name="website_hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="sub full">
+<div class="banner bad" role="alert">Не удалось отправить заявку. Попробуйте ещё раз или напишите нам в Telegram.</div>
+<div class="consent-wrap"><label class="consent" for="au-consent"><input type="checkbox" id="au-consent" name="consent" required aria-required="true"><span>Я согласен с <a href="/privacy-policy" target="_blank" rel="noopener">политикой конфиденциальности</a> и даю согласие на обработку персональных данных.</span></label><span class="msg" role="alert"></span></div>
+<button class="btn pri" type="submit"><span class="sp"></span><span class="sl">Отправить заявку</span></button>
+</div>
+<div class="thanks" role="status"><h3>Спасибо за обращение!</h3><p>Заявка отправлена. Команда KINETIA свяжется с вами, чтобы обсудить сервис.</p></div>
+</form>
+</div>
+</div>
+
+<div class="niche-strip">
+<h2>Другие отрасли</h2>
+<div class="niche-grid">
+<a class="niche-card" href="/industries/beauty"><b>Салоны красоты</b><span>Beauty</span></a>
+<a class="niche-card" href="/industries/dentistry"><b>Стоматологии</b><span>Dentistry</span></a>
+<a class="niche-card" href="/industries/construction"><b>Строительство</b><span>Construction</span></a>
+<a class="niche-card" href="/industries/ecommerce"><b>Интернет-магазины</b><span>E-commerce</span></a>
+<a class="niche-card" href="/industries"><b>Все решения</b><span>Industry Solutions</span></a>
+</div>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+<div class="fgrid">
+<div><a href="/" class="logo" aria-label="KINETIA — на главную"><svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><defs><linearGradient id="kstarFoot" x1="5.8" y1="27" x2="26.2" y2="5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#087A58"/><stop offset=".5" stop-color="#19DFA0"/><stop offset="1" stop-color="#7AFFCB"/></linearGradient></defs><path d="M16 3.6 18.19 13.81 26.2 16 18.19 18.19 16 28.4 13.81 18.19 5.8 16 13.81 13.81Z" fill="url(#kstarFoot)"/><path d="M16 13.8 18.2 16 16 18.2 13.8 16Z" fill="#F2FFFA"/></svg>KINETIA</a><p>Digital Growth Agency.<br>Создаём движение. Системно развиваем бизнес.</p></div>
+<ul><li><a href="/">Главная</a></li><li><a href="/#services">Услуги</a></li><li><a href="/#process">Процесс</a></li><li><a href="/#results">Результаты</a></li><li><a href="/#faq">FAQ</a></li><li><a href="/#form">Контакты</a></li></ul>
+<ul><li><a href="/industries">Все решения</a></li><li><a href="/industries/beauty">Beauty</a></li><li><a href="/industries/dentistry">Dentistry</a></li><li><a href="/industries/construction">Construction</a></li><li><a href="/industries/ecommerce">E-commerce</a></li><li><a href="/privacy-policy">Политика конфиденциальности</a></li></ul>
+</div>
+<div class="fniche"><b>Отрасли</b><a href="/industries/beauty">Салоны красоты</a><a href="/industries/dentistry">Стоматологии</a><a href="/industries/construction">Строительство</a><a href="/industries/auto">Автосервисы</a><a href="/industries/ecommerce">E-commerce</a></div>
+<p class="copy">© <span data-year>2026</span> KINETIA. All rights reserved.</p>
+</div></footer>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Digital-система для автосервисов и детейлинга","serviceType":"Сайт, реклама, CRM и автоматизация для автосервисов","provider":{"@type":"Organization","name":"KINETIA"},"areaServed":"UA","description":"Сайт с записью, локальная реклама, CRM с историей по автомобилю и автоматизация напоминаний для автосервисов и детейлинг-студий.","url":"/industries/auto"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Можно ли вести запись без администратора?","acceptedAnswer":{"@type":"Answer","text":"Частично. Форма и мессенджер принимают заявку и показывают свободные окна, но сложные случаи — нестандартная работа, уточнение по автомобилю — всё равно требуют человека. Задача системы не заменить администратора, а снять с него рутину и не терять обращения в занятые часы."}},{"@type":"Question","name":"Как система понимает длительность работы?","acceptedAnswer":{"@type":"Answer","text":"Длительность задаётся для каждого типа работ и может зависеть от автомобиля. Если точной нормы нет, ставим запас и подтверждаем время вручную. Ошибочная оценка хуже, чем честное «уточним после осмотра»."}},{"@type":"Question","name":"Что делать с клиентами, которые не приехали?","acceptedAnswer":{"@type":"Answer","text":"Во-первых, напоминать до визита — это снижает неявки. Во-вторых, фиксировать статус в CRM, чтобы окно можно было предложить другому клиенту. Без статусов неявка выглядит как «просто пустой день»."}},{"@type":"Question","name":"Нужен ли отдельный сайт для детейлинга?","acceptedAnswer":{"@type":"Answer","text":"Если детейлинг — отдельное направление с другим клиентом и другим чеком, ему нужна своя страница или отдельный раздел с примерами работ. Смешивать полировку и ремонт двигателя в одном списке неудобно и для клиента, и для рекламы."}},{"@type":"Question","name":"Можно ли сохранить текущую CRM или таблицу?","acceptedAnswer":{"@type":"Answer","text":"Таблица подходит, пока заявок немного и с ней работает один человек. Когда подключаются несколько мастеров и каналов, она начинает дублировать записи. Мы смотрим на фактический процесс и не меняем инструмент, если он справляется."}},{"@type":"Question","name":"Работает ли реклама автосервиса в соцсетях?","acceptedAnswer":{"@type":"Answer","text":"Да, особенно для детейлинга и нестандартных работ, где важны фото и видео процесса. Для срочных сервисных задач поиск и карты обычно дают более горячий спрос. Обычно это два разных слоя, а не замена одного другим."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"/"},{"@type":"ListItem","position":2,"name":"Решения для отраслей","item":"/industries"},{"@type":"ListItem","position":3,"name":"Автосервисы и детейлинг","item":"/industries/auto"}]}</script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="/industries/assets/base.js"></script>
+<script>
+(function(){
+  /* lane light field */
+  window.KViz(document.getElementById('auviz'),function(ctx,w,h,t){
+    ctx.save();
+    ctx.translate(w*.5,h*.42);
+    ctx.rotate(-.16);
+    var S=Math.max(w,h);
+    for(var i=-6;i<=6;i++){
+      var y=i*S*.11;
+      ctx.strokeStyle='rgba(25,223,160,'+(.04+(i%3===0?.05:0))+')';
+      ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(-S,y);ctx.lineTo(S,y);ctx.stroke();
+    }
+    for(var j=0;j<7;j++){
+      var p=((t*.16+j*.143)%1);
+      var x=-S+p*S*2;
+      ctx.strokeStyle='rgba(122,255,203,'+(.10+.10*Math.sin(t*.9+j))+')';
+      ctx.beginPath();ctx.moveTo(x,-S);ctx.lineTo(x+S*.06,S);ctx.stroke();
+    }
+    ctx.restore();
+    var g=ctx.createRadialGradient(w*.5,h*.42,0,w*.5,h*.42,Math.min(w,h)*.55);
+    g.addColorStop(0,'rgba(8,122,88,.16)');g.addColorStop(1,'rgba(5,8,7,0)');
+    ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+  });
+
+  var job='ТО',urg='На неделе';
+  var out=document.getElementById('auOut');
+  var map={
+    'ТО':{bay:'Пост 1',why:'регламентная работа с известной длительностью',next:'напоминание о следующем ТО'},
+    'Диагностика':{bay:'Пост 2',why:'нужен свободный подъёмник и мастер',next:'согласование работ после осмотра'},
+    'Детейлинг':{bay:'Пост 3',why:'длинная работа, окно ставится отдельно',next:'подтверждение и инструкция по подготовке'},
+    'Шины':{bay:'Пост 1',why:'короткая работа, ставится в ближайшее окно',next:'напоминание о сезонной замене'}
+  };
+  function render(){
+    var m=map[job];
+    var when=urg==='Сегодня'?'ближайшее окно':'окно на этой неделе';
+    out.innerHTML='<b>Пример маршрута:</b> '+job+' → '+m.bay+' ('+when+') → подтверждение клиенту → '+m.next+'.<br>Основание: '+m.why+'.<br><b>Демонстрационный макет, реальная запись не создаётся.</b>';
+  }
+  document.querySelectorAll('[data-job]').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('[data-job]').forEach(function(x){x.setAttribute('aria-pressed','false');});
+      b.setAttribute('aria-pressed','true');job=b.getAttribute('data-job');render();
+    });
+  });
+  document.querySelectorAll('[data-urg]').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('[data-urg]').forEach(function(x){x.setAttribute('aria-pressed','false');});
+      b.setAttribute('aria-pressed','true');urg=b.getAttribute('data-urg');render();
+    });
+  });
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="ru" class="gsap-ready">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Сайт, смета и CRM для строительной компании — KINETIA</title>
+<meta name="description" content="Digital-система для строительной компании: сайт с портфолио, реклама на объекты, CRM со сметой и автоматизация длинного цикла сделки.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/industries/construction">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KINETIA">
+<meta property="og:title" content="Digital-решения для строительных компаний — KINETIA">
+<meta property="og:description" content="Длинный цикл сделки, смета и дорогая заявка: сайт, реклама, CRM и автоматизация для строительных компаний.">
+<meta property="og:locale" content="ru_RU">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='5.8'%20y1='27'%20x2='26.2'%20y2='5'%20gradientUnits='userSpaceOnUse'%3E%3Cstop%20offset='0'%20stop-color='%23087A58'/%3E%3Cstop%20offset='.5'%20stop-color='%2319DFA0'/%3E%3Cstop%20offset='1'%20stop-color='%237AFFCB'/%3E%3C/linearGradient%3E%3CradialGradient%20id='h'%20cx='.5'%20cy='.5'%20r='.5'%3E%3Cstop%20offset='0'%20stop-color='%2319DFA0'%20stop-opacity='.5'/%3E%3Cstop%20offset='.65'%20stop-color='%23087A58'%20stop-opacity='.18'/%3E%3Cstop%20offset='1'%20stop-color='%23087A58'%20stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%23050807'/%3E%3Ccircle%20cx='16'%20cy='16'%20r='14'%20fill='url%28%23h%29'/%3E%3Cpath%20d='M16%202.2%2018.4%2013.6%2026.2%2016%2018.4%2018.4%2016%2029.8%2013.6%2018.4%205.8%2016%2013.6%2013.6Z'%20fill='url%28%23g%29'/%3E%3Cpath%20d='M16%2013.5%2018.5%2016%2016%2018.5%2013.5%2016Z'%20fill='%23E8FFF7'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/industries/assets/base.css">
+<style>
+/* construction concept: blueprint grid, isometric frame, estimate stack */
+.cs-hero{padding:clamp(16px,2.4vw,28px) 0 clamp(30px,4.6vw,60px);overflow:hidden}
+.cs-hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(24px,3.8vw,54px);align-items:center}
+.cs-hero h1{font-size:clamp(33px,5vw,60px);max-width:16ch;margin-top:16px}
+.cs-hero .lead{max-width:47ch}
+.cs-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:30px}
+.cs-meta div{padding:14px 15px;background:rgba(5,8,7,.6)}
+.cs-meta b{display:block;font:700 8.5px/1 var(--mono);letter-spacing:.16em;color:var(--em3);text-transform:uppercase;margin-bottom:7px}
+.cs-meta span{font-size:11.5px;color:var(--mut);line-height:1.4;display:block}
+.cs-vis{position:relative;min-height:440px;border:1px solid rgba(25,223,160,.14);border-radius:20px;background:
+ linear-gradient(rgba(25,223,160,.045) 1px,transparent 1px) 0 0/100% 34px,
+ linear-gradient(90deg,rgba(25,223,160,.045) 1px,transparent 1px) 0 0/34px 100%,
+ radial-gradient(70% 60% at 50% 42%,rgba(8,122,88,.16),transparent 68%),#040706}
+.cs-vis canvas{position:absolute;inset:0;width:100%;height:100%;border-radius:20px}
+.cs-deal{position:absolute;left:6%;right:6%;bottom:9%;z-index:2}
+.cs-deal-body{padding:13px 14px}
+.cs-deal-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px}
+.cs-deal-head b{font-size:12.5px}
+.cs-deal-head em{font-style:normal;font:700 8px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--em3);border:1px solid rgba(25,223,160,.35);border-radius:3px;padding:4px 6px}
+.cs-stages{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.cs-stage{padding:7px 5px;border-radius:4px;border:1px solid var(--line2);font:600 7.5px/1.3 var(--mono);letter-spacing:.06em;color:rgba(146,157,151,.7);text-align:center;text-transform:uppercase}
+.cs-stage.on{border-color:rgba(25,223,160,.45);background:rgba(25,223,160,.1);color:var(--em3)}
+.cs-stage.done{color:rgba(25,223,160,.5);border-color:rgba(25,223,160,.2)}
+.cs-deal-row{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-top:1px solid var(--line2);margin-top:9px;font-size:10.5px;color:var(--mut)}
+.cs-deal-row b{color:var(--fg);font-weight:700}
+/* problems: stacked blocks */
+.cs-probs{display:grid;gap:10px;margin-top:clamp(24px,3.4vw,38px)}
+.cs-prob{display:grid;grid-template-columns:auto 1fr;gap:clamp(14px,2.4vw,26px);padding:clamp(18px,2.4vw,26px);border:1px solid var(--line);border-left:2px solid rgba(25,223,160,.3);border-radius:0 12px 12px 0;background:linear-gradient(90deg,rgba(8,122,88,.07),transparent 62%);transition:border-color .35s,transform .35s}
+.cs-prob:hover{border-left-color:var(--em3);transform:translateX(3px)}
+.cs-prob b{font:700 10px/1.6 var(--mono);letter-spacing:.14em;color:var(--em3);white-space:nowrap}
+.cs-prob h3{font-size:clamp(16px,1.9vw,19px);margin-bottom:5px}
+.cs-prob p{font-size:13.5px;color:var(--mut);line-height:1.6;max-width:76ch}
+/* solutions: estimate table */
+.cs-sol{margin-top:clamp(24px,3.4vw,38px);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.cs-sol-row{display:grid;grid-template-columns:26px 150px 1fr;gap:clamp(10px,2vw,26px);padding:16px clamp(14px,2.4vw,24px);border-bottom:1px solid var(--line);align-items:baseline;background:rgba(255,255,255,.012);transition:background .3s}
+.cs-sol-row:last-child{border:0}
+.cs-sol-row:hover{background:rgba(8,122,88,.07)}
+.cs-sol-row i{font:700 9px/1 var(--mono);color:rgba(25,223,160,.6);font-style:normal}
+.cs-sol-row h3{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--em3)}
+.cs-sol-row p{font-size:13.5px;color:var(--mut);line-height:1.6}
+.cs-sol-row p b{color:var(--fg);font-weight:700}
+/* system: estimate builder */
+.cs-sys{background:linear-gradient(180deg,transparent,rgba(6,61,48,.13) 45%,transparent)}
+.cs-sys-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(22px,3.6vw,46px);align-items:start;margin-top:clamp(24px,3.4vw,38px)}
+.cs-builder-body{padding:clamp(13px,2vw,18px)}
+.cs-blk{margin-bottom:13px}
+.cs-blk>b{display:block;font:700 8.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:rgba(146,157,151,.85);margin-bottom:7px}
+.cs-opts{display:flex;flex-wrap:wrap;gap:6px}
+.cs-opt{appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.02);border-radius:5px;padding:7px 9px;font:600 10.5px/1.2 var(--mono);color:var(--mut);cursor:pointer;transition:.2s}
+.cs-opt:hover{border-color:rgba(25,223,160,.4);color:var(--fg)}
+.cs-opt[aria-pressed=true]{background:rgba(25,223,160,.12);border-color:rgba(25,223,160,.55);color:var(--em3)}
+.cs-check{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:11.5px;color:var(--mut);cursor:pointer;border-bottom:1px dashed rgba(244,247,245,.07)}
+.cs-check:last-child{border:0}
+.cs-check input{appearance:none;width:14px;height:14px;flex:none;border:1px solid rgba(244,247,245,.26);border-radius:3px;background:rgba(255,255,255,.03);display:grid;place-items:center;cursor:pointer;transition:.2s;margin:0}
+.cs-check input:checked{background:rgba(25,223,160,.85);border-color:transparent}
+.cs-check input:checked:after{content:"";width:7px;height:4px;border-left:1.6px solid #03130e;border-bottom:1.6px solid #03130e;transform:rotate(-45deg) translate(1px,-1px)}
+.cs-check b{color:var(--fg);font-weight:600;font-size:11.5px}
+.cs-est{margin-top:4px;border:1px solid rgba(25,223,160,.24);border-radius:8px;background:rgba(5,8,7,.6);overflow:hidden}
+.cs-est-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 10px;border-bottom:1px solid var(--line2);font:700 8px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--em3)}
+.cs-est-head span{color:rgba(146,157,151,.7);letter-spacing:.1em}
+.cs-est-list{padding:4px 10px 8px;min-height:78px}
+.cs-est-line{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:10.5px;color:var(--mut);border-bottom:1px dashed rgba(244,247,245,.06)}
+.cs-est-line:last-child{border:0}
+.cs-est-line em{font-style:normal;color:rgba(25,223,160,.55);font:700 8px/1 var(--mono)}
+.cs-est-line b{margin-left:auto;color:var(--fg);font-weight:600;font-size:10px;text-align:right}
+.cs-est-note{padding:7px 10px;border-top:1px solid var(--line2);font:600 8px/1.5 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:rgba(146,157,151,.55)}
+.cs-side{display:grid;gap:10px}
+.cs-card{padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.014)}
+.cs-card b{display:block;font:700 9px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--em3);margin-bottom:8px}
+.cs-card h3{font-size:15px;margin-bottom:5px}
+.cs-card p{font-size:12.5px;color:var(--mut);line-height:1.55}
+/* strategy: gantt-ish rows */
+.cs-gantt{margin-top:clamp(24px,3.4vw,38px);border-top:1px solid var(--line)}
+.cs-grow{display:grid;grid-template-columns:190px 1fr;gap:clamp(12px,2.4vw,26px);padding:16px 0;border-bottom:1px solid var(--line);align-items:center}
+.cs-grow>b{font:700 10.5px/1.4 var(--mono);letter-spacing:.1em;color:var(--em3);text-transform:uppercase}
+.cs-grow h3{font-size:14.5px;margin-bottom:4px}
+.cs-grow p{font-size:12.5px;color:var(--mut);line-height:1.5;max-width:70ch}
+.cs-bars{display:flex;gap:3px;margin-top:9px}
+.cs-bars i{height:3px;flex:1;border-radius:2px;background:rgba(244,247,245,.1)}
+.cs-bars i.on{background:linear-gradient(90deg,var(--em2),var(--em3))}
+/* process: numbered ladder */
+.cs-ladder{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:clamp(24px,3.4vw,38px)}
+.cs-rung{padding:16px 13px;border:1px solid var(--line);border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);position:relative}
+.cs-rung b{display:block;font:700 9px/1 var(--mono);color:var(--em3);letter-spacing:.12em;margin-bottom:14px}
+.cs-rung:after{content:"";position:absolute;left:13px;right:13px;top:34px;height:1px;background:rgba(25,223,160,.18)}
+.cs-rung h3{font-size:13.5px;line-height:1.25;margin-bottom:5px}
+.cs-rung p{font-size:11.5px;color:var(--mut);line-height:1.45}
+@media(max-width:1040px){
+.cs-hero-grid{grid-template-columns:1fr}.cs-vis{min-height:360px;order:-1}
+.cs-sys-grid{grid-template-columns:1fr}
+.cs-ladder{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:760px){
+.cs-meta{grid-template-columns:1fr}
+.cs-sol-row{grid-template-columns:20px 1fr;gap:6px 10px}.cs-sol-row p{grid-column:2}
+.cs-grow{grid-template-columns:1fr;gap:6px}
+.cs-ladder{grid-template-columns:1fr 1fr}
+.cs-deal{left:4%;right:4%;bottom:5%}
+.cs-stages{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body data-industry="Строительные компании">
+<header id="hd"><div class="wrap nav">
+<a href="/" class="logo" aria-label="KINETIA — на главную"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><defs><linearGradient id="kstarNav" x1="5.8" y1="27" x2="26.2" y2="5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#087A58"/><stop offset=".5" stop-color="#19DFA0"/><stop offset="1" stop-color="#7AFFCB"/></linearGradient><radialGradient id="kstarCoreNav" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#F2FFFA"/><stop offset=".55" stop-color="#9BFFDD"/><stop offset="1" stop-color="#7AFFCB" stop-opacity="0"/></radialGradient></defs><path d="M16 3.6 18.19 13.81 26.2 16 18.19 18.19 16 28.4 13.81 18.19 5.8 16 13.81 13.81Z" fill="url(#kstarNav)"/><path d="M16 13.8 18.2 16 16 18.2 13.8 16Z" fill="url(#kstarCoreNav)"/></svg>KINETIA</a>
+<ul><li><a href="/#services">Услуги</a></li><li><a href="/industries" aria-current="page">Решения</a></li><li><a href="/#results">Результаты</a></li><li><a href="/#faq">FAQ</a></li></ul>
+<a class="btn pri" href="#consult">Обсудить проект</a>
+<button class="burger" id="bg" aria-label="Меню" aria-expanded="false"><i></i><i></i></button>
+</div></header>
+<nav class="menu" id="mn" aria-label="Мобильное меню">
+<a href="/#services">Услуги</a><a href="/industries">Решения</a><a href="/#results">Результаты</a><a href="/#faq">FAQ</a><a href="#consult">Обсудить проект</a>
+<div class="menu-sub"><a href="/industries/beauty">Beauty</a><a href="/industries/dentistry">Dentistry</a><a href="/industries/auto">Auto</a><a href="/industries/ecommerce">E-commerce</a></div>
+</nav>
+
+<main>
+<nav class="crumbs wrap" aria-label="Хлебные крошки"><a href="/">Главная</a><span class="sep">/</span><a href="/industries">Решения</a><span class="sep">/</span><span>Строительство</span></nav>
+
+<section class="cs-hero"><div class="wrap">
+<div class="cs-hero-grid">
+<div>
+<p class="kicker" data-anim>Construction / Строительство</p>
+<h1 data-anim>Заявка на объект не должна жить в переписке.</h1>
+<p class="lead" data-anim>В строительстве клиент выбирает долго и стоит дорого. Он изучает портфолио, сравнивает сметы и возвращается через недели. Проблема не в трафике, а в том, что происходит с обращением между первым сообщением и подписанным договором.</p>
+<div class="cs-meta" data-anim>
+<div><b>Цикл</b><span>Недели и месяцы вместо одного дня</span></div>
+<div><b>Решение</b><span>Не цена, а предсказуемость этапов</span></div>
+<div><b>Потери</b><span>Забытые заявки и сметы без продолжения</span></div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px" data-anim><a class="btn pri" href="#consult">Обсудить объект<span class="arw">→</span></a><a class="btn sec" href="#system">Пример сметы</a></div>
+</div>
+<div class="cs-vis" data-anim="fade">
+<canvas id="csviz" aria-hidden="true"></canvas>
+<div class="cs-deal mock">
+<div class="mock-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><b>Сделка / демо</b><span class="demo-tag">Макет</span></div>
+<div class="cs-deal-body">
+<div class="cs-deal-head"><b>Объект: загородный дом</b><em>в работе</em></div>
+<div class="cs-stages"><span class="cs-stage done">заявка</span><span class="cs-stage done">замер</span><span class="cs-stage on">смета</span><span class="cs-stage">договор</span><span class="cs-stage">объект</span></div>
+<div class="cs-deal-row"><span>Следующий шаг</span><b>согласование сметы</b></div>
+<div class="cs-deal-row"><span>Ответственный</span><b>менеджер объекта</b></div>
+</div>
+</div>
+</div>
+</div>
+</div></section>
+
+<section id="problems"><div class="wrap">
+<div class="sec-head" data-anim>
+<p class="kicker">Проблемы ниши</p>
+<h2>Дорогая заявка теряется на третьем касании.</h2>
+<p class="lead">Строительная сделка почти никогда не закрывается в первом диалоге. Поэтому решает не скорость ответа сама по себе, а память системы.</p>
+</div>
+<div class="cs-probs">
+<div class="cs-prob" data-anim><b>01</b><div><h3>Одинаковые заявки в разных каналах</h3><p>Один человек пишет в Instagram, звонит с сайта и оставляет форму на картах. В системе это три разных обращения, и никто не видит, что это одна сделка.</p></div></div>
+<div class="cs-prob" data-anim><b>02</b><div><h3>Смета собирается вручную</h3><p>Каждый расчёт начинается с нуля в новом файле. Версии расходятся, менеджер не помнит, что именно отправлял клиенту неделю назад.</p></div></div>
+<div class="cs-prob" data-anim><b>03</b><div><h3>Портфолио без контекста</h3><p>Фотографии объектов есть, но непонятно, что входило в работу, сколько заняло и какие были ограничения. Клиент не может сопоставить пример со своей задачей.</p></div></div>
+<div class="cs-prob" data-anim><b>04</b><div><h3>Долгое молчание после расчёта</h3><p>Смета отправлена и... тишина. Без запланированного следующего касания сделка остывает, а менеджер узнаёт об этом только в конце месяца.</p></div></div>
+</div>
+</div></section>
+
+<section id="solutions"><div class="wrap">
+<div class="sec-head-row">
+<div class="sec-head" data-anim><p class="kicker">Решения KINETIA</p><h2>Пять статей, которые закрывают потери.</h2><p class="lead">Как смета: не «всё сразу», а конкретные позиции под конкретную задачу.</p></div>
+<a class="btn sec" href="/#services" data-anim>Все услуги агентства</a>
+</div>
+<div class="cs-sol">
+<div class="cs-sol-row" data-anim><i>01</i><h3>Сайт и портфолио</h3><p>Страницы по типам объектов и услугам: что входит в работу, этапы, ограничения, <b>примеры с описанием</b>. Не галерея ради галереи, а аргумент для выбора.</p></div>
+<div class="cs-sol-row" data-anim><i>02</i><h3>Реклама</h3><p>Кампании на конкретный тип запроса: дом, ремонт, фасад, инженерия. Трафик ведём на релевантную страницу, а не на общий перечень услуг.</p></div>
+<div class="cs-sol-row" data-anim><i>03</i><h3>CRM</h3><p>Сделка с этапами, объектом, ответственным и <b>историей касаний</b>. Повторное обращение через месяц не начинается с нуля.</p></div>
+<div class="cs-sol-row" data-anim><i>04</i><h3>Смета и документы</h3><p>Шаблон расчёта с фиксированными статьями, версиями и статусом согласования. Меньше ручных файлов — меньше расхождений.</p></div>
+<div class="cs-sol-row" data-anim><i>05</i><h3>Автоматизация</h3><p>Напоминания менеджеру о следующем шаге, письма клиенту после замера, возврат «остывших» обращений в работу по сценарию.</p></div>
+</div>
+</div></section>
+
+<section id="system" class="cs-sys"><div class="wrap">
+<div class="sec-head" data-anim>
+<p class="kicker">Digital-система</p>
+<h2>Смета как структура, а не как файл.</h2>
+<p class="lead">Демонстрационный макет. Выберите тип объекта и состав работ — макет покажет, как формируется структура расчёта и что фиксируется в сделке. Суммы намеренно не показаны.</p>
+</div>
+<div class="cs-sys-grid">
+<div class="mock" data-anim>
+<div class="mock-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><b>Estimate / демо</b><span class="demo-tag">Макет</span></div>
+<div class="cs-builder-body">
+<div class="cs-blk"><b>Тип объекта</b>
+<div class="cs-opts" role="group" aria-label="Тип объекта (демо)">
+<button class="cs-opt" type="button" data-obj="Дом" aria-pressed="true">Дом</button>
+<button class="cs-opt" type="button" data-obj="Квартира" aria-pressed="false">Квартира</button>
+<button class="cs-opt" type="button" data-obj="Коммерция" aria-pressed="false">Коммерция</button>
+</div></div>
+<div class="cs-blk"><b>Состав работ</b>
+<label class="cs-check"><input type="checkbox" data-work="Проектирование" checked><span>Проектирование</span></label>
+<label class="cs-check"><input type="checkbox" data-work="Черновые работы" checked><span>Черновые работы</span></label>
+<label class="cs-check"><input type="checkbox" data-work="Инженерия" checked><span>Инженерия</span></label>
+<label class="cs-check"><input type="checkbox" data-work="Отделка"><span>Отделка</span></label>
+<label class="cs-check"><input type="checkbox" data-work="Наружные работы"><span>Наружные работы</span></label>
+</div>
+<div class="cs-est">
+<div class="cs-est-head"><b>Структура сметы</b><span id="csObj">Дом</span></div>
+<div class="cs-est-list" id="csEst" aria-live="polite"></div>
+<div class="cs-est-note">Демонстрационный макет. Статьи без цен: стоимость считается после замера.</div>
+</div>
+</div>
+</div>
+<div class="cs-side" data-anim>
+<div class="cs-card"><b>01 / Что фиксируется</b><h3>Объект и вводные</h3><p>Тип, площадь, состояние, ограничения на участке. Менеджер не переспрашивает одно и то же на каждом звонке.</p></div>
+<div class="cs-card"><b>02 / Что нельзя терять</b><h3>Версия сметы</h3><p>Каждая отправленная версия сохраняется с датой и составом. Видно, что именно обсуждали и что изменилось.</p></div>
+<div class="cs-card"><b>03 / Что происходит дальше</b><h3>Следующий шаг</h3><p>У сделки всегда есть задача и срок. Если клиент молчит — система возвращает её в работу, а не хоронит в переписке.</p></div>
+<div class="cs-card"><b>04 / Границы</b><h3>Без выдуманных цифр</h3><p>Мы не обещаем «рост конверсии на 40%». Сначала наводим порядок в данных, потом улучшаем там, где видно потери.</p></div>
+</div>
+</div>
+</div></section>
+
+<section id="strategy"><div class="wrap">
+<div class="sec-head" data-anim>
+<p class="kicker">Пример стратегии</p>
+<h2>Сначала доверие, потом бюджет.</h2>
+<p class="lead">Пример последовательности для строительной компании. Демонстрационный сценарий: сроки и приоритеты определяются после диагностики, а не берутся из шаблона.</p>
+</div>
+<div class="cs-gantt">
+<div class="cs-grow" data-anim><b>Этап 01 / Основа</b><div><h3>Структура сайта и портфолио</h3><p>Разбираем типы объектов и вопросов, с которыми приходит клиент. Собираем страницы, где у каждого примера есть контекст, а не только фотография.</p><div class="cs-bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></div></div></div>
+<div class="cs-grow" data-anim><b>Этап 02 / Доверие</b><div><h3>Ответы на страхи до звонка</h3><p>Что входит в смету, как проходит замер, кто отвечает за сроки. Честные ограничения работают лучше обещаний: они отсеивают нецелевые обращения.</p><div class="cs-bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div></div>
+<div class="cs-grow" data-anim><b>Этап 03 / Спрос</b><div><h3>Кампании по типам объектов</h3><p>Отдельные объявления и страницы под дом, ремонт и коммерцию. Смотрим на дошедшие до замера заявки, а не на количество кликов.</p><div class="cs-bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div></div>
+<div class="cs-grow" data-anim><b>Этап 04 / Дожим</b><div><h3>Работа с длинным циклом</h3><p>Напоминания, повторные касания, возврат тех, кто отложил решение. Здесь чаще всего и находятся потерянные сделки.</p><div class="cs-bars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div></div>
+</div>
+</div></section>
+
+<section id="process"><div class="wrap">
+<div class="sec-head" data-anim><p class="kicker">Этапы сотрудничества</p><h2>От первой заявки до управляемого объекта.</h2></div>
+<div class="cs-ladder">
+<div class="cs-rung" data-anim><b>01</b><h3>Диагностика</h3><p>Смотрим, как приходят и обрабатываются обращения.</p></div>
+<div class="cs-rung" data-anim><b>02</b><h3>Структура</h3><p>Типы объектов, страницы, этапы сделки.</p></div>
+<div class="cs-rung" data-anim><b>03</b><h3>Сборка</h3><p>Сайт, формы, CRM и шаблон сметы.</p></div>
+<div class="cs-rung" data-anim><b>04</b><h3>Трафик</h3><p>Кампании по типам запросов и аналитика.</p></div>
+<div class="cs-rung" data-anim><b>05</b><h3>Контроль</h3><p>Задачи, сроки и статусы вместо ручной памяти.</p></div>
+<div class="cs-rung" data-anim><b>06</b><h3>Улучшение</h3><p>Правки там, где сделки зависают.</p></div>
+</div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+<div class="faq-grid">
+<div class="faq-aside" data-anim>
+<p class="kicker">FAQ / Construction</p>
+<h2 style="font-size:clamp(26px,3.4vw,40px);margin-top:16px">Частые вопросы строительных компаний.</h2>
+<p class="lead">Если вопроса нет в списке — опишите объект и текущий процесс в форме.</p>
+<a class="btn sec" href="#consult" style="margin-top:22px">Задать вопрос</a>
+</div>
+<div class="faq-list">
+<div class="fq"><h3><button class="fq-q" type="button" id="cq1" aria-expanded="false" aria-controls="ca1"><span class="fq-i">01</span><span class="fq-t">Можно ли связать сайт с существующей CRM?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="ca1" role="region" aria-labelledby="cq1" inert><div><p>Да, если у системы есть API или готовый коннектор. На практике сначала проверяем, какие поля и этапы поддерживает текущая CRM: иногда достаточно перенастроить её, а не менять. Замена оправдана только когда система не хранит нужные данные о сделке.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="cq2" aria-expanded="false" aria-controls="ca2"><span class="fq-i">02</span><span class="fq-t">Нужно ли публиковать цены на сайте?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="ca2" role="region" aria-labelledby="cq2" inert><div><p>Для типовых работ — да, хотя бы диапазон и состав. Для объектов, где стоимость зависит от замера, честнее объяснить, из чего складывается расчёт. Полное отсутствие цен повышает количество пустых обращений, а выдуманные цифры создают конфликт на этапе сметы.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="cq3" aria-expanded="false" aria-controls="ca3"><span class="fq-i">03</span><span class="fq-t">Как считать заявки, если сделка длится месяцами?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="ca3" role="region" aria-labelledby="cq3" inert><div><p>Считать не только обращения, но и переходы между этапами: заявка → замер → смета → договор. Тогда видно, где именно теряется клиент. Одна цифра «стоимость заявки» без этих этапов почти ничего не объясняет.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="cq4" aria-expanded="false" aria-controls="ca4"><span class="fq-i">04</span><span class="fq-t">Кто отвечает на обращения из рекламы?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="ca4" role="region" aria-labelledby="cq4" inert><div><p>Компания. Мы настраиваем маршрутизацию, шаблоны и контроль сроков ответа, но диалог с клиентом ведёт ваш менеджер. Подменять продажи мы не беремся: без человека, который знает объект, система останется набором полей.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="cq5" aria-expanded="false" aria-controls="ca5"><span class="fq-i">05</span><span class="fq-t">Можно ли начать только с сайта?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="ca5" role="region" aria-labelledby="cq5" inert><div><p>Да. Сайт с понятной структурой и портфолио — самостоятельный шаг, который уже снижает количество нецелевых звонков. CRM и рекламу можно подключить позже, когда есть что обрабатывать и что измерять.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="cq6" aria-expanded="false" aria-controls="ca6"><span class="fq-i">06</span><span class="fq-t">Как вы работаете с сезонностью?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="ca6" role="region" aria-labelledby="cq6" inert><div><p>Заранее планируем контент и кампании под периоды спроса, а не запускаем всё в пик. Часть работ — портфолио, структура страниц, база объектов — делается в низкий сезон, чтобы к активному периоду сайт и процессы уже были готовы.</p></div></div></div>
+</div>
+</div>
+</div></section>
+
+<section id="consult"><div class="wrap">
+<div class="cta-band" data-anim>
+<div class="cta-row" style="margin-bottom:8px">
+<div><h2>Разберём путь заявки на вашем объекте.</h2><p>Расскажите, какие объекты ведёте и где сейчас теряются обращения. Предложим структуру и следующий шаг — без обязательств.</p></div>
+</div>
+<div class="form-wrap" style="margin-top:clamp(20px,3vw,30px)">
+<div class="form-side">
+<p class="small">Если удобнее в мессенджере — укажите Telegram в контакте, ответим туда.</p>
+<ul><li>Разбор обработки заявок</li><li>Структура страниц и портфолио</li><li>Предложение по этапам</li></ul>
+</div>
+<form data-lead-form novalidate>
+<input type="hidden" name="industry" value="Строительные компании">
+<div class="fld" data-f="name"><label for="cs-name">Ваше имя <i>*</i></label><input type="text" id="cs-name" name="name" autocomplete="name" maxlength="100"><span class="msg"></span></div>
+<div class="fld" data-f="contact"><label for="cs-contact">Telegram или телефон <i>*</i></label><input type="text" id="cs-contact" name="contact" placeholder="@username или +380…" maxlength="120"><span class="msg"></span></div>
+<div class="fld full"><label for="cs-company">Компания</label><input type="text" id="cs-company" name="company" autocomplete="organization" maxlength="150"></div>
+<div class="fld full"><label for="cs-msg">Какие объекты ведёте</label><textarea id="cs-msg" name="message" maxlength="1500" placeholder="Например: частные дома и ремонт квартир, заявки идут с карт и сайта, сметы считаем вручную"></textarea></div>
+<input class="hp" type="text" name="website_hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="sub full">
+<div class="banner bad" role="alert">Не удалось отправить заявку. Попробуйте ещё раз или напишите нам в Telegram.</div>
+<div class="consent-wrap"><label class="consent" for="cs-consent"><input type="checkbox" id="cs-consent" name="consent" required aria-required="true"><span>Я согласен с <a href="/privacy-policy" target="_blank" rel="noopener">политикой конфиденциальности</a> и даю согласие на обработку персональных данных.</span></label><span class="msg" role="alert"></span></div>
+<button class="btn pri" type="submit"><span class="sp"></span><span class="sl">Отправить заявку</span></button>
+</div>
+<div class="thanks" role="status"><h3>Спасибо за обращение!</h3><p>Заявка отправлена. Команда KINETIA свяжется с вами, чтобы обсудить объекты и процессы.</p></div>
+</form>
+</div>
+</div>
+
+<div class="niche-strip">
+<h2>Другие отрасли</h2>
+<div class="niche-grid">
+<a class="niche-card" href="/industries/beauty"><b>Салоны красоты</b><span>Beauty</span></a>
+<a class="niche-card" href="/industries/dentistry"><b>Стоматологии</b><span>Dentistry</span></a>
+<a class="niche-card" href="/industries/auto"><b>Автосервисы</b><span>Auto</span></a>
+<a class="niche-card" href="/industries/ecommerce"><b>Интернет-магазины</b><span>E-commerce</span></a>
+<a class="niche-card" href="/industries"><b>Все решения</b><span>Industry Solutions</span></a>
+</div>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+<div class="fgrid">
+<div><a href="/" class="logo" aria-label="KINETIA — на главную"><svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><defs><linearGradient id="kstarFoot" x1="5.8" y1="27" x2="26.2" y2="5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#087A58"/><stop offset=".5" stop-color="#19DFA0"/><stop offset="1" stop-color="#7AFFCB"/></linearGradient></defs><path d="M16 3.6 18.19 13.81 26.2 16 18.19 18.19 16 28.4 13.81 18.19 5.8 16 13.81 13.81Z" fill="url(#kstarFoot)"/><path d="M16 13.8 18.2 16 16 18.2 13.8 16Z" fill="#F2FFFA"/></svg>KINETIA</a><p>Digital Growth Agency.<br>Создаём движение. Системно развиваем бизнес.</p></div>
+<ul><li><a href="/">Главная</a></li><li><a href="/#services">Услуги</a></li><li><a href="/#process">Процесс</a></li><li><a href="/#results">Результаты</a></li><li><a href="/#faq">FAQ</a></li><li><a href="/#form">Контакты</a></li></ul>
+<ul><li><a href="/industries">Все решения</a></li><li><a href="/industries/beauty">Beauty</a></li><li><a href="/industries/dentistry">Dentistry</a></li><li><a href="/industries/auto">Auto</a></li><li><a href="/industries/ecommerce">E-commerce</a></li><li><a href="/privacy-policy">Политика конфиденциальности</a></li></ul>
+</div>
+<div class="fniche"><b>Отрасли</b><a href="/industries/beauty">Салоны красоты</a><a href="/industries/dentistry">Стоматологии</a><a href="/industries/construction">Строительство</a><a href="/industries/auto">Автосервисы</a><a href="/industries/ecommerce">E-commerce</a></div>
+<p class="copy">© <span data-year>2026</span> KINETIA. All rights reserved.</p>
+</div></footer>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Digital-система для строительных компаний","serviceType":"Сайт, реклама, CRM и автоматизация для строительных компаний","provider":{"@type":"Organization","name":"KINETIA"},"areaServed":"UA","description":"Сайт с портфолио, реклама на типы объектов, CRM со стадиями сделки и автоматизация длинного цикла для строительных компаний.","url":"/industries/construction"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Можно ли связать сайт с существующей CRM?","acceptedAnswer":{"@type":"Answer","text":"Да, если у системы есть API или готовый коннектор. На практике сначала проверяем, какие поля и этапы поддерживает текущая CRM: иногда достаточно перенастроить её, а не менять. Замена оправдана только когда система не хранит нужные данные о сделке."}},{"@type":"Question","name":"Нужно ли публиковать цены на сайте?","acceptedAnswer":{"@type":"Answer","text":"Для типовых работ — да, хотя бы диапазон и состав. Для объектов, где стоимость зависит от замера, честнее объяснить, из чего складывается расчёт. Полное отсутствие цен повышает количество пустых обращений, а выдуманные цифры создают конфликт на этапе сметы."}},{"@type":"Question","name":"Как считать заявки, если сделка длится месяцами?","acceptedAnswer":{"@type":"Answer","text":"Считать не только обращения, но и переходы между этапами: заявка → замер → смета → договор. Тогда видно, где именно теряется клиент. Одна цифра «стоимость заявки» без этих этапов почти ничего не объясняет."}},{"@type":"Question","name":"Кто отвечает на обращения из рекламы?","acceptedAnswer":{"@type":"Answer","text":"Компания. Мы настраиваем маршрутизацию, шаблоны и контроль сроков ответа, но диалог с клиентом ведёт ваш менеджер. Подменять продажи мы не беремся: без человека, который знает объект, система останется набором полей."}},{"@type":"Question","name":"Можно ли начать только с сайта?","acceptedAnswer":{"@type":"Answer","text":"Да. Сайт с понятной структурой и портфолио — самостоятельный шаг, который уже снижает количество нецелевых звонков. CRM и рекламу можно подключить позже, когда есть что обрабатывать и что измерять."}},{"@type":"Question","name":"Как вы работаете с сезонностью?","acceptedAnswer":{"@type":"Answer","text":"Заранее планируем контент и кампании под периоды спроса, а не запускаем всё в пик. Часть работ — портфолио, структура страниц, база объектов — делается в низкий сезон, чтобы к активному периоду сайт и процессы уже были готовы."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"/"},{"@type":"ListItem","position":2,"name":"Решения для отраслей","item":"/industries"},{"@type":"ListItem","position":3,"name":"Строительные компании","item":"/industries/construction"}]}</script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="/industries/assets/base.js"></script>
+<script>
+(function(){
+  /* isometric wireframe */
+  window.KViz(document.getElementById('csviz'),function(ctx,w,h,t){
+    var cx=w*.5,cy=h*.40,S=Math.min(w,h)*.30;
+    function iso(x,y,z){
+      return [cx+(x-z)*S*.86,cy+(x+z)*S*.42-y*S*.9];
+    }
+    function box(x,y,z,dx,dy,dz,alpha){
+      var p=[iso(x,y,z),iso(x+dx,y,z),iso(x+dx,y,z+dz),iso(x,y,z+dz),
+             iso(x,y+dy,z),iso(x+dx,y+dy,z),iso(x+dx,y+dy,z+dz),iso(x,y+dy,z+dz)];
+      var e=[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
+      ctx.strokeStyle='rgba(25,223,160,'+alpha+')';ctx.lineWidth=1;
+      e.forEach(function(q){ctx.beginPath();ctx.moveTo(p[q[0]][0],p[q[0]][1]);ctx.lineTo(p[q[1]][0],p[q[1]][1]);ctx.stroke();});
+    }
+    var bob=Math.sin(t*.7)*.035;
+    box(-1,-.2+bob,-1,2,.2,2,.30);
+    box(-.62,.02+bob,-.62,1.24,1.1,1.24,.42);
+    box(-.75,1.16+bob,-.75,1.5,.1,1.5,.5);
+    /* roof */
+    var a=iso(-.9,1.16+bob,-.9),b=iso(.9,1.16+bob,-.9),c=iso(.9,1.16+bob,.9),d=iso(-.9,1.16+bob,.9);
+    var e1=iso(0,1.62+bob,0);
+    ctx.strokeStyle='rgba(122,255,203,.55)';
+    [[a,e1],[b,e1],[c,e1],[d,e1]].forEach(function(q){ctx.beginPath();ctx.moveTo(q[0][0],q[0][1]);ctx.lineTo(q[1][0],q[1][1]);ctx.stroke();});
+    /* measurement marks */
+    ctx.strokeStyle='rgba(25,223,160,.18)';
+    ctx.beginPath();ctx.moveTo(cx-S*1.45,cy+S*1.02);ctx.lineTo(cx+S*1.45,cy+S*1.02);ctx.stroke();
+    ctx.fillStyle='rgba(122,255,203,.6)';
+    [[cx-S*1.45,cy+S*1.02],[cx+S*1.45,cy+S*1.02]].forEach(function(q){ctx.beginPath();ctx.arc(q[0],q[1],1.6,0,6.283);ctx.fill();});
+  });
+
+  /* estimate structure */
+  var obj='Дом';
+  var est=document.getElementById('csEst'),objEl=document.getElementById('csObj');
+  function rows(){
+    var out=[];
+    out.push({t:'Подготовка объекта',d:'вводные и ограничения'});
+    document.querySelectorAll('[data-work]').forEach(function(c){
+      if(!c.checked) return;
+      var v=c.getAttribute('data-work');
+      var d={'Проектирование':'разделы и согласование','Черновые работы':'материалы и работы','Инженерия':'электрика, вода, вентиляция','Отделка':'финишные работы','Наружные работы':'фасад и благоустройство'}[v]||'работы';
+      out.push({t:v,d:d});
+      if(v==='Инженерия') out.push({t:'Пусконаладка',d:'проверка систем'});
+    });
+    out.push({t:'Управление объектом',d:'этапы и приёмка'});
+    return out;
+  }
+  function render(){
+    var list=rows();
+    objEl.textContent=obj;
+    est.innerHTML=list.map(function(r,i){
+      return '<div class="cs-est-line"><em>'+String(i+1).padStart(2,'0')+'</em><span>'+r.t+'</span><b>'+r.d+'</b></div>';
+    }).join('')+'<div class="cs-est-line" style="border:0;padding-top:7px"><em>Σ</em><span>Статей в смете</span><b>'+list.length+'</b></div>';
+  }
+  document.querySelectorAll('[data-obj]').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('[data-obj]').forEach(function(x){x.setAttribute('aria-pressed','false');});
+      b.setAttribute('aria-pressed','true');obj=b.getAttribute('data-obj');render();
+    });
+  });
+  document.querySelectorAll('[data-work]').forEach(function(c){c.addEventListener('change',render);});
+  render();
+})();
+</script>
+</body>
+</html>

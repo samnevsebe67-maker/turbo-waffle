@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="ru" class="gsap-ready">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Сайт, реклама и CRM для стоматологии — KINETIA</title>
+<meta name="description" content="Digital-система для стоматологий и клиник: сайт с записью, контент для доверия, реклама на услуги, CRM и маршрутизация обращений между врачами и филиалами.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/industries/dentistry">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KINETIA">
+<meta property="og:title" content="Digital-решения для стоматологий — KINETIA">
+<meta property="og:description" content="Сайт, доверие до звонка, реклама на услуги и CRM-маршрутизация для стоматологий и клиник.">
+<meta property="og:locale" content="ru_RU">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='5.8'%20y1='27'%20x2='26.2'%20y2='5'%20gradientUnits='userSpaceOnUse'%3E%3Cstop%20offset='0'%20stop-color='%23087A58'/%3E%3Cstop%20offset='.5'%20stop-color='%2319DFA0'/%3E%3Cstop%20offset='1'%20stop-color='%237AFFCB'/%3E%3C/linearGradient%3E%3CradialGradient%20id='h'%20cx='.5'%20cy='.5'%20r='.5'%3E%3Cstop%20offset='0'%20stop-color='%2319DFA0'%20stop-opacity='.5'/%3E%3Cstop%20offset='.65'%20stop-color='%23087A58'%20stop-opacity='.18'/%3E%3Cstop%20offset='1'%20stop-color='%23087A58'%20stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%23050807'/%3E%3Ccircle%20cx='16'%20cy='16'%20r='14'%20fill='url%28%23h%29'/%3E%3Cpath%20d='M16%202.2%2018.4%2013.6%2026.2%2016%2018.4%2018.4%2016%2029.8%2013.6%2018.4%205.8%2016%2013.6%2013.6Z'%20fill='url%28%23g%29'/%3E%3Cpath%20d='M16%2013.5%2018.5%2016%2016%2018.5%2013.5%2016Z'%20fill='%23E8FFF7'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/industries/assets/base.css">
+<style>
+/* dentistry concept: clinical grid, arch, protocol */
+.dn-hero{padding:clamp(18px,2.6vw,30px) 0 clamp(34px,5vw,64px);border-bottom:1px solid var(--line);overflow:hidden}
+.dn-hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(26px,4vw,60px);align-items:center}
+.dn-hero h1{font-size:clamp(34px,5.1vw,62px);max-width:15ch;margin-top:16px}
+.dn-hero .lead{max-width:45ch}
+.dn-trust{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.dn-trust span{font:600 9.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(25,223,160,.78);border:1px solid rgba(25,223,160,.22);border-radius:4px;padding:6px 8px;background:rgba(25,223,160,.045)}
+.dn-vis{position:relative;min-height:420px}
+.dn-vis canvas{position:absolute;inset:0;width:100%;height:100%}
+.dn-plan{position:absolute;left:8%;bottom:7%;width:min(290px,86%);z-index:2}
+.dn-plan .mock-bar b{font-size:9px}
+.dn-plan-body{padding:14px}
+.dn-plan-row{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid var(--line2);font-size:11.5px;color:var(--mut)}
+.dn-plan-row:last-child{border:0}
+.dn-plan-row i{flex:none;width:15px;height:15px;border-radius:50%;border:1px solid rgba(25,223,160,.4);display:grid;place-items:center;font:700 7.5px/1 var(--mono);color:var(--em3);font-style:normal}
+.dn-plan-row.done i{background:rgba(25,223,160,.16)}
+.dn-plan-row b{margin-left:auto;color:var(--fg);font-weight:700;font-size:10.5px}
+.dn-meta{position:absolute;right:4%;top:8%;z-index:2;text-align:right}
+.dn-meta b{display:block;font:700 9px/1.6 var(--mono);letter-spacing:.18em;color:rgba(146,157,151,.7);text-transform:uppercase}
+.dn-meta span{display:block;margin-top:4px;font:700 8px/1 var(--mono);color:rgba(25,223,160,.55)}
+/* problems: protocol rows */
+.dn-probs{margin-top:clamp(24px,3.4vw,38px);border-top:1px solid var(--line)}
+.dn-prob{display:grid;grid-template-columns:56px minmax(0,1.1fr) minmax(0,1.3fr);gap:clamp(14px,2.6vw,32px);padding:clamp(18px,2.4vw,26px) 0;border-bottom:1px solid var(--line);align-items:baseline}
+.dn-prob b{font:700 11px/1.6 var(--mono);letter-spacing:.1em;color:var(--em3)}
+.dn-prob h3{font-size:clamp(16px,1.9vw,20px);line-height:1.3}
+.dn-prob p{font-size:13.5px;color:var(--mut);line-height:1.65}
+.dn-prob:hover{background:linear-gradient(90deg,rgba(8,122,88,.07),transparent 70%)}
+/* solutions: protocol grid */
+.dn-sol{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:clamp(26px,3.6vw,40px)}
+.dn-sol-card{padding:clamp(18px,2.4vw,26px);background:var(--bg);display:flex;flex-direction:column;gap:10px;transition:background .4s}
+.dn-sol-card:hover{background:rgba(8,122,88,.07)}
+.dn-sol-card:nth-child(1),.dn-sol-card:nth-child(2),.dn-sol-card:nth-child(3){grid-column:span 2}
+.dn-sol-card:nth-child(4),.dn-sol-card:nth-child(5){grid-column:span 3}
+.dn-sol-card i{font:700 9px/1 var(--mono);letter-spacing:.16em;color:var(--em3);font-style:normal}
+.dn-sol-card h3{font-size:17px}
+.dn-sol-card p{font-size:13px;color:var(--mut);line-height:1.6;max-width:none}
+/* system: tabbed protocol */
+.dn-sys-grid{display:grid;grid-template-columns:.84fr 1.16fr;gap:clamp(24px,3.6vw,50px);align-items:start;margin-top:clamp(26px,3.6vw,40px)}
+.dn-tabs{display:flex;flex-direction:column;gap:0;border-left:1px solid var(--line)}
+.dn-tab{appearance:none;background:none;border:0;border-bottom:1px solid var(--line);padding:15px 14px 15px 18px;text-align:left;cursor:pointer;color:var(--mut);font-size:14px;font-weight:700;position:relative;transition:.3s}
+.dn-tab:before{content:"";position:absolute;left:-1px;top:0;bottom:0;width:2px;background:var(--em3);transform:scaleY(0);transition:transform .3s}
+.dn-tab[aria-selected=true]{color:var(--em3);background:rgba(8,122,88,.08)}
+.dn-tab[aria-selected=true]:before{transform:scaleY(1)}
+.dn-tab span{display:block;font:600 9px/1.5 var(--mono);letter-spacing:.1em;color:rgba(146,157,151,.6);margin-top:4px}
+.dn-panel{padding:clamp(18px,2.6vw,28px);border:1px solid var(--line);border-radius:18px;background:linear-gradient(150deg,rgba(10,16,14,.85),rgba(5,8,7,.5));min-height:290px}
+.dn-panel h3{font-size:clamp(18px,2.2vw,23px);margin-bottom:8px}
+.dn-panel>p{font-size:14px;color:var(--mut);line-height:1.65}
+.dn-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}
+.dn-field{padding:9px 11px;border:1px solid var(--line);border-radius:8px;font-size:11.5px;color:var(--mut);background:rgba(255,255,255,.015)}
+.dn-field b{display:block;font:700 7.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:rgba(25,223,160,.65);margin-bottom:5px}
+.dn-field.v{grid-column:1/-1}
+.dn-panel-note{margin-top:14px;font:600 8.5px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(146,157,151,.55)}
+/* strategy: confidence stack */
+.dn-funnel{display:grid;gap:8px;margin-top:clamp(26px,3.6vw,40px)}
+.dn-layer{position:relative;display:grid;grid-template-columns:64px 1fr auto;gap:18px;align-items:center;padding:18px 20px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(90deg,rgba(8,122,88,.1),rgba(5,8,7,.4));transition:transform .35s,border-color .35s}
+.dn-layer:hover{transform:translateX(4px);border-color:rgba(25,223,160,.34)}
+.dn-layer b{font:700 10px/1 var(--mono);letter-spacing:.1em;color:var(--em3)}
+.dn-layer h3{font-size:15.5px;margin-bottom:3px}
+.dn-layer p{font-size:13px;color:var(--mut);line-height:1.5;max-width:64ch}
+.dn-layer em{font-style:normal;font:700 9px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(146,157,151,.55);white-space:nowrap}
+/* process: vertical numbered */
+.dn-flow{display:grid;gap:0;margin-top:clamp(24px,3.4vw,38px);border-top:1px solid var(--line)}
+.dn-flow-row{display:grid;grid-template-columns:110px 1fr;gap:clamp(14px,3vw,34px);padding:18px 0;border-bottom:1px solid var(--line)}
+.dn-flow-row b{font:700 10px/1.6 var(--mono);letter-spacing:.14em;color:var(--em3)}
+.dn-flow-row h3{font-size:15.5px;margin-bottom:4px}
+.dn-flow-row p{font-size:13.5px;color:var(--mut);line-height:1.55}
+@media(max-width:1000px){
+.dn-hero-grid{grid-template-columns:1fr}.dn-vis{min-height:340px;order:-1}
+.dn-sys-grid{grid-template-columns:1fr}
+.dn-sol{grid-template-columns:1fr 1fr}
+.dn-sol-card:nth-child(n){grid-column:span 1}
+}
+@media(max-width:760px){
+.dn-prob{grid-template-columns:40px 1fr;gap:6px 14px}.dn-prob p{grid-column:2}
+.dn-sol{grid-template-columns:1fr}
+.dn-fields{grid-template-columns:1fr}
+.dn-layer{grid-template-columns:1fr;gap:6px}.dn-layer em{display:none}
+.dn-flow-row{grid-template-columns:1fr;gap:4px}
+.dn-plan{left:0;bottom:0;width:100%}
+}
+</style>
+</head>
+<body data-industry="Стоматологии и клиники">
+<header id="hd"><div class="wrap nav">
+<a href="/" class="logo" aria-label="KINETIA — на главную"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><defs><linearGradient id="kstarNav" x1="5.8" y1="27" x2="26.2" y2="5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#087A58"/><stop offset=".5" stop-color="#19DFA0"/><stop offset="1" stop-color="#7AFFCB"/></linearGradient><radialGradient id="kstarCoreNav" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#F2FFFA"/><stop offset=".55" stop-color="#9BFFDD"/><stop offset="1" stop-color="#7AFFCB" stop-opacity="0"/></radialGradient></defs><path d="M16 3.6 18.19 13.81 26.2 16 18.19 18.19 16 28.4 13.81 18.19 5.8 16 13.81 13.81Z" fill="url(#kstarNav)"/><path d="M16 13.8 18.2 16 16 18.2 13.8 16Z" fill="url(#kstarCoreNav)"/></svg>KINETIA</a>
+<ul><li><a href="/#services">Услуги</a></li><li><a href="/industries" aria-current="page">Решения</a></li><li><a href="/#results">Результаты</a></li><li><a href="/#faq">FAQ</a></li></ul>
+<a class="btn pri" href="#consult">Обсудить проект</a>
+<button class="burger" id="bg" aria-label="Меню" aria-expanded="false"><i></i><i></i></button>
+</div></header>
+<nav class="menu" id="mn" aria-label="Мобильное меню">
+<a href="/#services">Услуги</a><a href="/industries">Решения</a><a href="/#results">Результаты</a><a href="/#faq">FAQ</a><a href="#consult">Обсудить проект</a>
+<div class="menu-sub"><a href="/industries/beauty">Beauty</a><a href="/industries/construction">Construction</a><a href="/industries/auto">Auto</a><a href="/industries/ecommerce">E-commerce</a></div>
+</nav>
+
+<main>
+<nav class="crumbs wrap" aria-label="Хлебные крошки"><a href="/">Главная</a><span class="sep">/</span><a href="/industries">Решения</a><span class="sep">/</span><span>Стоматологии</span></nav>
+
+<section class="dn-hero"><div class="wrap">
+<div class="dn-hero-grid">
+<div>
+<p class="kicker" data-anim>Dentistry / Стоматологии</p>
+<h1 data-anim>Стоматология, которой доверяют до звонка.</h1>
+<p class="lead" data-anim>Пациент не готов разбираться в клинических терминах. Он ищет понятный ответ: что со мной, сколько это стоит и к кому записаться. Сайт и обработка обращений должны снять этот вопрос раньше, чем человек позвонит.</p>
+<div class="dn-trust" data-anim><span>услуги</span><span>врачи</span><span>цены</span><span>запись</span><span>маршрутизация</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:27px" data-anim><a class="btn pri" href="#consult">Обсудить клинику<span class="arw">→</span></a><a class="btn sec" href="#system">Смотреть маршрут</a></div>
+</div>
+<div class="dn-vis" data-anim="fade">
+<canvas id="dnviz" aria-hidden="true"></canvas>
+<div class="dn-meta" aria-hidden="true"><b>Protocol view</b><span>demo / 01</span></div>
+<div class="dn-plan mock">
+<div class="mock-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><b>Карта обращения</b><span class="demo-tag">Пример</span></div>
+<div class="dn-plan-body">
+<div class="dn-plan-row done"><i>1</i><span>Обращение с сайта</span><b>принято</b></div>
+<div class="dn-plan-row done"><i>2</i><span>Запись на консультацию</span><b>подтверждено</b></div>
+<div class="dn-plan-row"><i>3</i><span>Диагностика и план</span><b>следующий шаг</b></div>
+<div class="dn-plan-row"><i>4</i><span>Контрольный визит</span><b>напоминание</b></div>
+</div>
+</div>
+</div>
+</div>
+</div></section>
+
+<section id="problems"><div class="wrap">
+<div class="sec-head" data-anim>
+<p class="kicker">Проблемы ниши</p>
+<h2>Почему пациент уходит к другой клинике.</h2>
+<p class="lead">Выбор стоматологии — это решение с высоким риском для человека. Он оценивает не оборудование, а предсказуемость.</p>
+</div>
+<div class="dn-probs">
+<div class="dn-prob" data-anim><b>01</b><h3>Непонятно, что будет дальше</h3><p>На сайте есть список услуг, но нет объяснения процесса: что происходит на консультации, как составляется план, от чего зависит стоимость.</p></div>
+<div class="dn-prob" data-anim><b>02</b><h3>Страх цены и навязывания</h3><p>Человек боится, что ему назначат лишнее. Прозрачная структура услуг и честное объяснение этапов снимают этот страх лучше скидок.</p></div>
+<div class="dn-prob" data-anim><b>03</b><h3>Обращения распределяются вручную</h3><p>Администратор пересылает заявки в чат, часть теряется, повторные обращения остаются без истории. Врач не видит контекст до звонка.</p></div>
+<div class="dn-prob" data-anim><b>04</b><h3>Реклама на всё сразу</h3><p>Кампании ведут на главную страницу, где человеку нужно самому выбрать услугу. В итоге дорогой трафик уходит в общий список и не конвертируется в запись.</p></div>
+</div>
+</div></section>
+
+<section id="solutions"><div class="wrap">
+<div class="sec-head-row">
+<div class="sec-head" data-anim><p class="kicker">Решения KINETIA</p><h2>Что входит в отраслевое решение.</h2><p class="lead">Пять слоёв, которые работают как один протокол: от первого поиска до повторного визита.</p></div>
+<a class="btn sec" href="/#services" data-anim>Все услуги агентства</a>
+</div>
+<div class="dn-sol">
+<article class="dn-sol-card" data-anim><i>01 / САЙТ</i><h3>Страницы услуг и врачей</h3><p>Отдельная страница под каждое направление: показания, этапы, подготовка, ограничения. Пациент понимает, что его ждёт, ещё до записи.</p></article>
+<article class="dn-sol-card" data-anim><i>02 / РЕКЛАМА</i><h3>Кампании на конкретную услугу</h3><p>Трафик ведём на релевантную страницу, а не на главную. Поиск, карты и ретаргетинг по тем, кто изучал лечение.</p></article>
+<article class="dn-sol-card" data-anim><i>03 / CRM</i><h3>Единая карта обращений</h3><p>Источник, услуга, филиал, врач, статус и история контактов. Повторное обращение не начинается с нуля.</p></article>
+<article class="dn-sol-card" data-anim><i>04 / АВТОМАТИЗАЦИЯ</i><h3>Подтверждения и напоминания</h3><p>Запись подтверждается автоматически, пациент получает напоминание, а неотвеченные обращения возвращаются в работу по сценарию.</p></article>
+<article class="dn-sol-card" data-anim><i>05 / ЛИДОГЕНЕРАЦИЯ</i><h3>Запись на консультацию</h3><p>Понятный первый шаг вместо «оставьте заявку». Форма, мессенджер и звонок сводятся в один поток с фиксацией источника.</p></article>
+</div>
+</div></section>
+
+<section id="system"><div class="wrap">
+<div class="sec-head" data-anim>
+<p class="kicker">Digital-система</p>
+<h2>Маршрут обращения: от первого касания до плана лечения.</h2>
+<p class="lead">Демонстрационный макет. Переключайте этапы, чтобы увидеть, какие данные фиксируются и что происходит автоматически.</p>
+</div>
+<div class="dn-sys-grid">
+<div class="dn-tabs" role="tablist" aria-label="Этапы обращения" data-anim>
+<button class="dn-tab" role="tab" id="dnt1" aria-controls="dnp1" aria-selected="true">Первичное обращение<span>источник и услуга</span></button>
+<button class="dn-tab" role="tab" id="dnt2" aria-controls="dnp2" aria-selected="false" tabindex="-1">Консультация<span>запись и подтверждение</span></button>
+<button class="dn-tab" role="tab" id="dnt3" aria-controls="dnp3" aria-selected="false" tabindex="-1">План лечения<span>этапы и стоимость</span></button>
+<button class="dn-tab" role="tab" id="dnt4" aria-controls="dnp4" aria-selected="false" tabindex="-1">Контроль<span>напоминания и возврат</span></button>
+</div>
+<div>
+<div class="dn-panel" role="tabpanel" id="dnp1" aria-labelledby="dnt1">
+<h3>Обращение не теряется</h3>
+<p>Человек оставляет контакт на странице услуги. Заявка попадает в CRM с источником, выбранным направлением и филиалом. Администратор видит её в общем списке, а не в трёх разных чатах.</p>
+<div class="dn-fields"><div class="dn-field"><b>Источник</b>Поиск / карты / соцсети</div><div class="dn-field"><b>Направление</b>Выбрано на странице</div><div class="dn-field v"><b>Статус</b>Новое → в работе → запись</div></div>
+<p class="dn-panel-note">Поля показаны как пример структуры, а не как реальные данные.</p>
+</div>
+<div class="dn-panel" role="tabpanel" id="dnp2" aria-labelledby="dnt2" hidden>
+<h3>Запись подтверждается автоматически</h3>
+<p>После выбора времени пациент получает подтверждение с адресом и инструкцией по подготовке. Если запись создана вручную, тот же сценарий запускается из CRM.</p>
+<div class="dn-fields"><div class="dn-field"><b>Канал</b>Telegram / SMS / звонок</div><div class="dn-field"><b>Ответственный</b>Администратор</div><div class="dn-field v"><b>Автоматизация</b>Подтверждение и напоминание</div></div>
+<p class="dn-panel-note">Каналы подключаются по возможностям клиники.</p>
+</div>
+<div class="dn-panel" role="tabpanel" id="dnp3" aria-labelledby="dnt3" hidden>
+<h3>План фиксируется в карточке</h3>
+<p>После консультации этапы лечения и согласованная стоимость сохраняются в карточке. Пациент получает понятное резюме, а клиника — прозрачную историю, к которой можно вернуться.</p>
+<div class="dn-fields"><div class="dn-field"><b>Этапы</b>Согласованы с пациентом</div><div class="dn-field"><b>Стоимость</b>Зафиксирована в плане</div><div class="dn-field v"><b>Следующий шаг</b>Запись на процедуру</div></div>
+<p class="dn-panel-note">Медицинские решения и назначения остаются за врачом.</p>
+</div>
+<div class="dn-panel" role="tabpanel" id="dnp4" aria-labelledby="dnt4" hidden>
+<h3>Возврат не зависит от памяти</h3>
+<p>Система напоминает о контрольном визите и предлагает записаться, если пациент давно не был. Коммуникация остаётся корректной и не превращается в навязчивые рассылки.</p>
+<div class="dn-fields"><div class="dn-field"><b>Напоминание</b>Перед визитом</div><div class="dn-field"><b>Реактивация</b>По сценарию клиники</div><div class="dn-field v"><b>Отказ</b>Учитывается и соблюдается</div></div>
+<p class="dn-panel-note">Частота и содержание сообщений настраиваются индивидуально.</p>
+</div>
+</div>
+</div>
+</div></section>
+
+<section id="strategy"><div class="wrap">
+<div class="sec-head" data-anim>
+<p class="kicker">Пример стратегии</p>
+<h2>Доверие как часть воронки, а не украшение сайта.</h2>
+<p class="lead">Пример логики продвижения стоматологии. Это демонстрационный сценарий, а не гарантия результата: приоритеты зависят от города, конкуренции и загрузки врачей.</p>
+</div>
+<div class="dn-funnel">
+<div class="dn-layer" data-anim><b>01 / ВИДИМОСТЬ</b><div><h3>Найти клинику по услуге и району</h3><p>Страницы под направления, карточка на картах, локальный поиск. Человек должен попасть на страницу своей проблемы, а не на общий сайт.</p></div><em>слой 1</em></div>
+<div class="dn-layer" data-anim><b>02 / ДОВЕРИЕ</b><div><h3>Понять, что и как будет происходить</h3><p>Этапы лечения, подготовка, ограничения, ответы на частые вопросы. Контент снижает страх и уменьшает количество пустых звонков.</p></div><em>слой 2</em></div>
+<div class="dn-layer" data-anim><b>03 / КОНТАКТ</b><div><h3>Записаться на понятный первый шаг</h3><p>Консультация вместо абстрактной заявки. Форма, мессенджер и звонок сводятся в один поток с фиксацией источника.</p></div><em>слой 3</em></div>
+<div class="dn-layer" data-anim><b>04 / ВОЗВРАТ</b><div><h3>Вернуться на контрольный визит</h3><p>Напоминания и работа с теми, кто отложил лечение. Удержание дешевле нового трафика, но требует порядка в данных.</p></div><em>слой 4</em></div>
+</div>
+</div></section>
+
+<section id="process"><div class="wrap">
+<div class="sec-head" data-anim><p class="kicker">Этапы сотрудничества</p><h2>Как строится работа с клиникой.</h2></div>
+<div class="dn-flow">
+<div class="dn-flow-row" data-anim><b>01 / АУДИТ</b><div><h3>Разбор обращений и точек потерь</h3><p>Смотрим, откуда приходят пациенты, кто отвечает, где заявка зависает и какие данные не фиксируются.</p></div></div>
+<div class="dn-flow-row" data-anim><b>02 / СТРУКТУРА</b><div><h3>Карта услуг и маршрутов</h3><p>Определяем, какие направления нужны на сайте, какие страницы ведут в запись и как распределяются обращения.</p></div></div>
+<div class="dn-flow-row" data-anim><b>03 / СБОРКА</b><div><h3>Сайт, CRM и сценарии</h3><p>Собираем страницы, формы, карточки обращений и автоматические подтверждения.</p></div></div>
+<div class="dn-flow-row" data-anim><b>04 / ТРАФИК</b><div><h3>Кампании по направлениям</h3><p>Запускаем рекламу на конкретные услуги и подключаем аналитику источников записи.</p></div></div>
+<div class="dn-flow-row" data-anim><b>05 / КОНТРОЛЬ</b><div><h3>Улучшения по данным</h3><p>Правим страницы и сценарии там, где обращения не доходят до записи.</p></div></div>
+</div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+<div class="faq-grid">
+<div class="faq-aside" data-anim>
+<p class="kicker">FAQ / Dentistry</p>
+<h2 style="font-size:clamp(26px,3.4vw,40px);margin-top:16px">Частые вопросы клиник.</h2>
+<p class="lead">Отвечаем на то, что чаще всего спрашивают до начала работы.</p>
+<a class="btn sec" href="#consult" style="margin-top:22px">Задать вопрос</a>
+</div>
+<div class="faq-list">
+<div class="fq"><h3><button class="fq-q" type="button" id="dq1" aria-expanded="false" aria-controls="da1"><span class="fq-i">01</span><span class="fq-t">Можно ли вести несколько филиалов в одной системе?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="da1" role="region" aria-labelledby="dq1" inert><div><p>Да, если это заложить в структуру CRM и сайта: филиал становится отдельным полем обращения и фильтром, а не отдельной таблицей. Тогда администратор видит заявки своего филиала, а руководство — общую картину без ручной сверки.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="dq2" aria-expanded="false" aria-controls="da2"><span class="fq-i">02</span><span class="fq-t">Нужен ли отдельный сайт под каждую услугу?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="da2" role="region" aria-labelledby="dq2" inert><div><p>Не обязательно, но у ключевых направлений должна быть своя страница. Реклама на имплантацию и на гигиену требует разного объяснения и разного первого шага. Одна общая страница услуг заставляет человека искать нужное самостоятельно.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="dq3" aria-expanded="false" aria-controls="da3"><span class="fq-i">03</span><span class="fq-t">Как не нарушить медицинские ограничения в рекламе?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="da3" role="region" aria-labelledby="dq3" inert><div><p>Формулировки согласуем с клиникой и не обещаем результат лечения. В текстах избегаем гарантий и сравнений, которые нельзя подтвердить. Ответственность за медицинскую часть коммуникации остаётся на враче, а мы отвечаем за структуру и точность формулировок.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="dq4" aria-expanded="false" aria-controls="da4"><span class="fq-i">04</span><span class="fq-t">Можно ли сохранить текущую CRM?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="da4" role="region" aria-labelledby="dq4" inert><div><p>Часто да. Сначала проверяем, поддерживает ли система нужные поля, статусы и интеграции. Если текущая CRM закрывает задачи — не меняем её ради смены. Если нет, показываем, чего именно не хватает.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="dq5" aria-expanded="false" aria-controls="da5"><span class="fq-i">05</span><span class="fq-t">Кто отвечает на обращения?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="da5" role="region" aria-labelledby="dq5" inert><div><p>Коммуникацию с пациентами ведёт клиника. Мы настраиваем систему, сценарии и отчётность, но не подменяем администратора и не даём медицинских консультаций. При необходимости помогаем с шаблонами ответов.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="dq6" aria-expanded="false" aria-controls="da6"><span class="fq-i">06</span><span class="fq-t">Что делать, если заявок пока мало?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="da6" role="region" aria-labelledby="dq6" inert><div><p>Начинать с структуры, а не с бюджета: страницы услуг, запись и порядок в обращениях. Реклама на слабую основу просто увеличит расход. После сборки можно подключать трафик и смотреть, где именно теряются пациенты.</p></div></div></div>
+</div>
+</div>
+</div></section>
+
+<section id="consult"><div class="wrap">
+<div class="cta-band" data-anim>
+<div class="cta-row" style="margin-bottom:8px">
+<div><h2>Разберём маршрут пациента в вашей клинике.</h2><p>Покажите, как сейчас принимаются обращения, — предложим структуру системы и честно скажем, что имеет смысл делать первым.</p></div>
+</div>
+<div class="form-wrap" style="margin-top:clamp(20px,3vw,30px)">
+<div class="form-side">
+<p class="small">Если удобнее в мессенджере — укажите Telegram в контакте, ответим туда.</p>
+<ul><li>Аудит обращений и источников</li><li>Структура страниц услуг</li><li>План внедрения с этапами</li></ul>
+</div>
+<form data-lead-form novalidate>
+<input type="hidden" name="industry" value="Стоматологии и клиники">
+<div class="fld" data-f="name"><label for="dn-name">Ваше имя <i>*</i></label><input type="text" id="dn-name" name="name" autocomplete="name" maxlength="100"><span class="msg"></span></div>
+<div class="fld" data-f="contact"><label for="dn-contact">Telegram или телефон <i>*</i></label><input type="text" id="dn-contact" name="contact" placeholder="@username или +380…" maxlength="120"><span class="msg"></span></div>
+<div class="fld full"><label for="dn-company">Клиника или сеть</label><input type="text" id="dn-company" name="company" autocomplete="organization" maxlength="150"></div>
+<div class="fld full"><label for="dn-msg">Что хотите изменить</label><textarea id="dn-msg" name="message" maxlength="1500" placeholder="Например: заявки идут из карт и Instagram, часть теряется, нет истории обращений"></textarea></div>
+<input class="hp" type="text" name="website_hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="sub full">
+<div class="banner bad" role="alert">Не удалось отправить заявку. Попробуйте ещё раз или напишите нам в Telegram.</div>
+<div class="consent-wrap"><label class="consent" for="dn-consent"><input type="checkbox" id="dn-consent" name="consent" required aria-required="true"><span>Я согласен с <a href="/privacy-policy" target="_blank" rel="noopener">политикой конфиденциальности</a> и даю согласие на обработку персональных данных.</span></label><span class="msg" role="alert"></span></div>
+<button class="btn pri" type="submit"><span class="sp"></span><span class="sl">Отправить заявку</span></button>
+</div>
+<div class="thanks" role="status"><h3>Спасибо за обращение!</h3><p>Заявка отправлена. Команда KINETIA свяжется с вами по вопросам клиники.</p></div>
+</form>
+</div>
+</div>
+
+<div class="niche-strip">
+<h2>Другие отрасли</h2>
+<div class="niche-grid">
+<a class="niche-card" href="/industries/beauty"><b>Салоны красоты</b><span>Beauty</span></a>
+<a class="niche-card" href="/industries/construction"><b>Строительство</b><span>Construction</span></a>
+<a class="niche-card" href="/industries/auto"><b>Автосервисы</b><span>Auto</span></a>
+<a class="niche-card" href="/industries/ecommerce"><b>Интернет-магазины</b><span>E-commerce</span></a>
+<a class="niche-card" href="/industries"><b>Все решения</b><span>Industry Solutions</span></a>
+</div>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+<div class="fgrid">
+<div><a href="/" class="logo" aria-label="KINETIA — на главную"><svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><defs><linearGradient id="kstarFoot" x1="5.8" y1="27" x2="26.2" y2="5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#087A58"/><stop offset=".5" stop-color="#19DFA0"/><stop offset="1" stop-color="#7AFFCB"/></linearGradient></defs><path d="M16 3.6 18.19 13.81 26.2 16 18.19 18.19 16 28.4 13.81 18.19 5.8 16 13.81 13.81Z" fill="url(#kstarFoot)"/><path d="M16 13.8 18.2 16 16 18.2 13.8 16Z" fill="#F2FFFA"/></svg>KINETIA</a><p>Digital Growth Agency.<br>Создаём движение. Системно развиваем бизнес.</p></div>
+<ul><li><a href="/">Главная</a></li><li><a href="/#services">Услуги</a></li><li><a href="/#process">Процесс</a></li><li><a href="/#results">Результаты</a></li><li><a href="/#faq">FAQ</a></li><li><a href="/#form">Контакты</a></li></ul>
+<ul><li><a href="/industries">Все решения</a></li><li><a href="/industries/beauty">Beauty</a></li><li><a href="/industries/construction">Construction</a></li><li><a href="/industries/auto">Auto</a></li><li><a href="/industries/ecommerce">E-commerce</a></li><li><a href="/privacy-policy">Политика конфиденциальности</a></li></ul>
+</div>
+<div class="fniche"><b>Отрасли</b><a href="/industries/beauty">Салоны красоты</a><a href="/industries/dentistry">Стоматологии</a><a href="/industries/construction">Строительство</a><a href="/industries/auto">Автосервисы</a><a href="/industries/ecommerce">E-commerce</a></div>
+<p class="copy">© <span data-year>2026</span> KINETIA. All rights reserved.</p>
+</div></footer>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Digital-система для стоматологий и клиник","serviceType":"Сайт, реклама, CRM и автоматизация для стоматологий","provider":{"@type":"Organization","name":"KINETIA"},"areaServed":"UA","description":"Сайт со страницами услуг, локальная реклама, CRM-маршрутизация обращений и автоматизация напоминаний для стоматологий и клиник.","url":"/industries/dentistry"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Можно ли вести несколько филиалов в одной системе?","acceptedAnswer":{"@type":"Answer","text":"Да, если это заложить в структуру CRM и сайта: филиал становится отдельным полем обращения и фильтром, а не отдельной таблицей. Тогда администратор видит заявки своего филиала, а руководство — общую картину без ручной сверки."}},{"@type":"Question","name":"Нужен ли отдельный сайт под каждую услугу?","acceptedAnswer":{"@type":"Answer","text":"Не обязательно, но у ключевых направлений должна быть своя страница. Реклама на имплантацию и на гигиену требует разного объяснения и разного первого шага. Одна общая страница услуг заставляет человека искать нужное самостоятельно."}},{"@type":"Question","name":"Как не нарушить медицинские ограничения в рекламе?","acceptedAnswer":{"@type":"Answer","text":"Формулировки согласуем с клиникой и не обещаем результат лечения. В текстах избегаем гарантий и сравнений, которые нельзя подтвердить. Ответственность за медицинскую часть коммуникации остаётся на враче, а мы отвечаем за структуру и точность формулировок."}},{"@type":"Question","name":"Можно ли сохранить текущую CRM?","acceptedAnswer":{"@type":"Answer","text":"Часто да. Сначала проверяем, поддерживает ли система нужные поля, статусы и интеграции. Если текущая CRM закрывает задачи — не меняем её ради смены. Если нет, показываем, чего именно не хватает."}},{"@type":"Question","name":"Кто отвечает на обращения?","acceptedAnswer":{"@type":"Answer","text":"Коммуникацию с пациентами ведёт клиника. Мы настраиваем систему, сценарии и отчётность, но не подменяем администратора и не даём медицинских консультаций. При необходимости помогаем с шаблонами ответов."}},{"@type":"Question","name":"Что делать, если заявок пока мало?","acceptedAnswer":{"@type":"Answer","text":"Начинать с структуры, а не с бюджета: страницы услуг, запись и порядок в обращениях. Реклама на слабую основу просто увеличит расход. После сборки можно подключать трафик и смотреть, где именно теряются пациенты."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"/"},{"@type":"ListItem","position":2,"name":"Решения для отраслей","item":"/industries"},{"@type":"ListItem","position":3,"name":"Стоматологии","item":"/industries/dentistry"}]}</script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="/industries/assets/base.js"></script>
+<script>
+(function(){
+  window.KViz(document.getElementById('dnviz'),function(ctx,w,h,t){
+    var cx=w/2,cy=h*.46,Rx=Math.min(w,h)*.42,Ry=Math.min(w,h)*.3;
+    ctx.lineWidth=1;
+    /* arch */
+    ctx.strokeStyle='rgba(25,223,160,.35)';
+    ctx.beginPath();ctx.ellipse(cx,cy,Rx,Ry,0,Math.PI*1.04,Math.PI*1.96);ctx.stroke();
+    ctx.strokeStyle='rgba(25,223,160,.12)';
+    ctx.beginPath();ctx.ellipse(cx,cy,Rx*.72,Ry*.72,0,Math.PI*1.04,Math.PI*1.96);ctx.stroke();
+    /* teeth */
+    for(var i=0;i<12;i++){
+      var a=Math.PI*1.06+i*(Math.PI*.88/11);
+      var x=cx+Math.cos(a)*Rx*.92,y=cy+Math.sin(a)*Ry*.92;
+      var s=10+4*Math.sin(i*1.7+t*.8);
+      ctx.strokeStyle='rgba(25,223,160,'+(.28+.22*Math.sin(t*1.1+i))+')';
+      ctx.beginPath();ctx.arc(x,y,s*.42,0,6.283);ctx.stroke();
+      if(i%3===0){ctx.fillStyle='rgba(122,255,203,.7)';ctx.beginPath();ctx.arc(x,y,1.6,0,6.283);ctx.fill();}
+    }
+    /* scan line */
+    var p=(t*.11)%1;
+    var y2=cy-Ry*1.2+p*Ry*2.4;
+    var g=ctx.createLinearGradient(0,y2,0,y2+50);
+    g.addColorStop(0,'rgba(25,223,160,.18)');g.addColorStop(1,'rgba(25,223,160,0)');
+    ctx.fillStyle=g;ctx.fillRect(cx-Rx*1.12,y2,Rx*2.24,50);
+    ctx.strokeStyle='rgba(122,255,203,.35)';ctx.beginPath();ctx.moveTo(cx-Rx*1.12,y2);ctx.lineTo(cx+Rx*1.12,y2);ctx.stroke();
+    /* center cross */
+    ctx.strokeStyle='rgba(25,223,160,.2)';
+    ctx.beginPath();ctx.moveTo(cx-9,cy);ctx.lineTo(cx+9,cy);ctx.moveTo(cx,cy-9);ctx.lineTo(cx,cy+9);ctx.stroke();
+  });
+})();
+</script>
+</body>
+</html>

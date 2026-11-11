@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="ru" class="gsap-ready">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Сайт, запись и CRM для салона красоты — KINETIA</title>
+<meta name="description" content="Digital-система для салона красоты: сайт с онлайн-записью, локальная реклама, CRM и напоминания. Меньше потерь в переписках, больше повторных визитов.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/industries/beauty">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KINETIA">
+<meta property="og:title" content="Digital-решения для салонов красоты — KINETIA">
+<meta property="og:description" content="Онлайн-запись, локальный спрос, CRM и удержание клиентов для салонов красоты и косметологии.">
+<meta property="og:locale" content="ru_RU">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='5.8'%20y1='27'%20x2='26.2'%20y2='5'%20gradientUnits='userSpaceOnUse'%3E%3Cstop%20offset='0'%20stop-color='%23087A58'/%3E%3Cstop%20offset='.5'%20stop-color='%2319DFA0'/%3E%3Cstop%20offset='1'%20stop-color='%237AFFCB'/%3E%3C/linearGradient%3E%3CradialGradient%20id='h'%20cx='.5'%20cy='.5'%20r='.5'%3E%3Cstop%20offset='0'%20stop-color='%2319DFA0'%20stop-opacity='.5'/%3E%3Cstop%20offset='.65'%20stop-color='%23087A58'%20stop-opacity='.18'/%3E%3Cstop%20offset='1'%20stop-color='%23087A58'%20stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%23050807'/%3E%3Ccircle%20cx='16'%20cy='16'%20r='14'%20fill='url%28%23h%29'/%3E%3Cpath%20d='M16%202.2%2018.4%2013.6%2026.2%2016%2018.4%2018.4%2016%2029.8%2013.6%2018.4%205.8%2016%2013.6%2013.6Z'%20fill='url%28%23g%29'/%3E%3Cpath%20d='M16%2013.5%2018.5%2016%2016%2018.5%2013.5%2016Z'%20fill='%23E8FFF7'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/industries/assets/base.css">
+<style>
+/* beauty concept: rings, ritual, booking */
+.bt-hero{padding:clamp(20px,3vw,34px) 0 clamp(30px,5vw,64px);overflow:hidden}
+.bt-hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(24px,4vw,56px);align-items:center}
+.bt-hero h1{font-size:clamp(34px,5.2vw,64px);max-width:14ch;margin-top:16px}
+.bt-hero .lead{max-width:44ch}
+.bt-hero-vis{position:relative;min-height:420px;display:grid;place-items:center}
+.bt-hero-vis canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.bt-phone{position:relative;z-index:1;width:min(320px,86%);transform:rotate(-3deg);transition:transform .5s}
+.bt-phone:hover{transform:rotate(-1deg) translateY(-3px)}
+.bt-p-body{padding:16px}
+.bt-p-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.bt-p-head b{font-size:13px;letter-spacing:.02em}
+.bt-avatar{width:30px;height:30px;border-radius:50%;border:1px solid rgba(25,223,160,.4);background:radial-gradient(circle at 34% 30%,rgba(122,255,203,.55),rgba(8,122,88,.25));display:grid;place-items:center;font:700 9px/1 var(--mono);color:#03130e}
+.bt-next{border:1px solid rgba(25,223,160,.24);border-radius:13px;padding:13px;background:linear-gradient(140deg,rgba(8,122,88,.18),rgba(5,8,7,.4))}
+.bt-next span{display:block;font:700 8.5px/1 var(--mono);letter-spacing:.18em;color:var(--em3);text-transform:uppercase}
+.bt-next b{display:block;margin-top:8px;font-size:16px}
+.bt-next em{display:block;font-style:normal;margin-top:3px;font-size:11.5px;color:var(--mut)}
+.bt-p-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--line2);font-size:11.5px;color:var(--mut)}
+.bt-p-row b{color:var(--fg);font-weight:700;font-size:11.5px}
+.bt-p-row:last-child{border:0}
+.bt-p-note{margin-top:12px;font:600 8.5px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(146,157,151,.6)}
+.bt-intro{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:clamp(30px,4vw,46px)}
+.bt-intro div{padding:18px 18px 16px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.014)}
+.bt-intro b{display:block;font:700 9.5px/1 var(--mono);letter-spacing:.16em;color:var(--em3);text-transform:uppercase;margin-bottom:8px}
+.bt-intro p{font-size:13px;color:var(--mut);line-height:1.5}
+/* problems */
+.bt-probs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:clamp(30px,4vw,46px)}
+.bt-prob{position:relative;padding:clamp(22px,3vw,32px);background:var(--bg);transition:background .4s}
+.bt-prob:hover{background:rgba(8,122,88,.06)}
+.bt-prob b{display:block;font:800 clamp(34px,4.6vw,54px)/.9 var(--font);letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1px rgba(25,223,160,.42);margin-bottom:16px}
+.bt-prob h3{font-size:clamp(16.5px,1.8vw,20px);margin-bottom:8px}
+.bt-prob p{font-size:13.5px;color:var(--mut);line-height:1.6;max-width:40ch}
+/* solutions */
+.bt-sol{margin-top:clamp(28px,4vw,44px);border-top:1px solid var(--line)}
+.bt-sol-row{display:grid;grid-template-columns:180px 1fr;gap:clamp(16px,3vw,40px);padding:clamp(20px,2.6vw,28px) 0;border-bottom:1px solid var(--line);align-items:start}
+.bt-sol-row>div:first-child{display:flex;align-items:center;gap:10px;color:var(--em3)}
+.bt-sol-row svg{width:22px;height:22px;flex:none;overflow:visible}
+.bt-sol-row h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--em3)}
+.bt-sol-row p{font-size:14.5px;color:var(--mut);line-height:1.65;max-width:62ch}
+.bt-sol-row p b{color:var(--fg);font-weight:700}
+/* system demo */
+.bt-sys{background:linear-gradient(180deg,transparent,rgba(6,61,48,.12) 40%,transparent)}
+.bt-sys-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,52px);align-items:start;margin-top:clamp(28px,4vw,44px)}
+.bt-book-body{padding:clamp(14px,2.2vw,20px)}
+.bt-book-lbl{display:flex;align-items:center;gap:9px;font:700 9px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:rgba(146,157,151,.85);margin:14px 0 8px}
+.bt-serv{display:flex;flex-wrap:wrap;gap:7px}
+.bt-serv-b{appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.02);border-radius:10px;padding:9px 11px;font-size:11.5px;font-weight:700;color:var(--mut);cursor:pointer;transition:.25s;text-align:left}
+.bt-serv-b em{display:block;font-style:normal;font:500 9px/1.4 var(--mono);color:rgba(146,157,151,.6);margin-top:3px}
+.bt-serv-b[aria-pressed=true]{border-color:rgba(25,223,160,.5);background:rgba(25,223,160,.1);color:var(--em3)}
+.bt-days,.bt-slots{display:grid;gap:6px}
+.bt-days{grid-template-columns:repeat(7,1fr)}
+.bt-slots{grid-template-columns:repeat(4,1fr)}
+.bt-day,.bt-slot{appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.02);border-radius:8px;padding:7px 2px;font:700 10px/1.4 var(--mono);color:var(--mut);cursor:pointer;transition:.2s;text-align:center}
+.bt-day span,.bt-slot span{display:block;font-size:8px;font-weight:600;letter-spacing:.06em;color:rgba(146,157,151,.55)}
+.bt-day:hover,.bt-slot:hover{border-color:rgba(25,223,160,.4);color:var(--fg)}
+.bt-day[aria-pressed=true],.bt-slot[aria-pressed=true]{background:rgba(25,223,160,.14);border-color:rgba(25,223,160,.6);color:var(--em3)}
+.bt-slot[disabled]{opacity:.34;cursor:not-allowed;text-decoration:line-through}
+.bt-book-out{margin-top:14px;padding:11px 12px;border-radius:10px;border:1px dashed rgba(25,223,160,.3);background:rgba(8,122,88,.07);font-size:11.5px;color:var(--mut);line-height:1.5;min-height:58px}
+.bt-book-out b{color:var(--em3);font-weight:700}
+.bt-flow{position:relative;padding-left:26px}
+.bt-flow:before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,rgba(25,223,160,.5),rgba(25,223,160,.08))}
+.bt-flow-step{position:relative;padding-bottom:20px}
+.bt-flow-step:last-child{padding-bottom:0}
+.bt-flow-step:before{content:"";position:absolute;left:-24px;top:6px;width:9px;height:9px;border-radius:50%;border:1px solid rgba(25,223,160,.6);background:var(--bg);box-shadow:0 0 12px -2px rgba(25,223,160,.7)}
+.bt-flow-step b{display:block;font:700 9.5px/1 var(--mono);letter-spacing:.14em;color:var(--em3);text-transform:uppercase;margin-bottom:6px}
+.bt-flow-step h3{font-size:15.5px;margin-bottom:4px}
+.bt-flow-step p{font-size:13px;color:var(--mut);line-height:1.55;max-width:44ch}
+/* strategy */
+.bt-strat{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(24px,4vw,54px);align-items:start}
+.bt-strat-list{display:grid;gap:10px}
+.bt-strat-item{position:relative;padding:18px 20px 18px 58px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.014);transition:border-color .35s,background .35s}
+.bt-strat-item:hover{border-color:rgba(25,223,160,.32);background:rgba(25,223,160,.045)}
+.bt-strat-item b{position:absolute;left:18px;top:18px;font:700 10px/1 var(--mono);letter-spacing:.1em;color:var(--em3)}
+.bt-strat-item h3{font-size:15.5px;margin-bottom:5px}
+.bt-strat-item p{font-size:13.5px;color:var(--mut);line-height:1.55;max-width:56ch}
+.bt-strat-note{margin-top:16px;padding:14px 16px;border-radius:12px;border:1px dashed rgba(25,223,160,.28);font-size:12px;color:var(--mut);line-height:1.55}
+/* process */
+.bt-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:clamp(28px,4vw,44px)}
+.bt-step{position:relative;padding:20px 16px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.014)}
+.bt-step b{display:block;font:700 10px/1 var(--mono);color:var(--em3);letter-spacing:.14em;margin-bottom:10px}
+.bt-step h3{font-size:14.5px;line-height:1.25;margin-bottom:6px}
+.bt-step p{font-size:12px;color:var(--mut);line-height:1.5}
+.bt-step:after{content:"";position:absolute;top:28px;right:-10px;width:10px;height:1px;background:rgba(25,223,160,.3)}
+.bt-step:last-child:after{display:none}
+@media(max-width:1000px){
+.bt-hero-grid{grid-template-columns:1fr}.bt-hero-vis{min-height:360px;order:-1}
+.bt-hero .lead{max-width:52ch}
+.bt-sys-grid,.bt-strat{grid-template-columns:1fr}
+.bt-steps{grid-template-columns:repeat(2,1fr)}.bt-step:after{display:none}
+}
+@media(max-width:700px){
+.bt-probs{grid-template-columns:1fr}
+.bt-sol-row{grid-template-columns:1fr;gap:10px}
+.bt-intro{grid-template-columns:1fr}
+.bt-steps{grid-template-columns:1fr}
+.bt-days{grid-template-columns:repeat(4,1fr)}
+}
+</style>
+</head>
+<body data-industry="Салоны красоты и косметология">
+<header id="hd"><div class="wrap nav">
+<a href="/" class="logo" aria-label="KINETIA — на главную"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><defs><linearGradient id="kstarNav" x1="5.8" y1="27" x2="26.2" y2="5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#087A58"/><stop offset=".5" stop-color="#19DFA0"/><stop offset="1" stop-color="#7AFFCB"/></linearGradient><radialGradient id="kstarCoreNav" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#F2FFFA"/><stop offset=".55" stop-color="#9BFFDD"/><stop offset="1" stop-color="#7AFFCB" stop-opacity="0"/></radialGradient></defs><path d="M16 3.6 18.19 13.81 26.2 16 18.19 18.19 16 28.4 13.81 18.19 5.8 16 13.81 13.81Z" fill="url(#kstarNav)"/><path d="M16 13.8 18.2 16 16 18.2 13.8 16Z" fill="url(#kstarCoreNav)"/></svg>KINETIA</a>
+<ul><li><a href="/#services">Услуги</a></li><li><a href="/industries" aria-current="page">Решения</a></li><li><a href="/#results">Результаты</a></li><li><a href="/#faq">FAQ</a></li></ul>
+<a class="btn pri" href="#consult">Обсудить проект</a>
+<button class="burger" id="bg" aria-label="Меню" aria-expanded="false"><i></i><i></i></button>
+</div></header>
+<nav class="menu" id="mn" aria-label="Мобильное меню">
+<a href="/#services">Услуги</a><a href="/industries">Решения</a><a href="/#results">Результаты</a><a href="/#faq">FAQ</a><a href="#consult">Обсудить проект</a>
+<div class="menu-sub"><a href="/industries/dentistry">Dentistry</a><a href="/industries/construction">Construction</a><a href="/industries/auto">Auto</a><a href="/industries/ecommerce">E-commerce</a></div>
+</nav>
+
+<main>
+<nav class="crumbs wrap" aria-label="Хлебные крошки"><a href="/">Главная</a><span class="sep">/</span><a href="/industries">Решения</a><span class="sep">/</span><span>Салоны красоты</span></nav>
+
+<section class="bt-hero"><div class="wrap">
+<div class="bt-hero-grid">
+<div>
+<p class="kicker" data-anim>Beauty / Салоны красоты</p>
+<h1 data-anim>Салон, который не теряет записи.</h1>
+<p class="lead" data-anim>Клиент выбирает не «лучший салон», а удобный способ записаться. Пока администратор отвечает в переписке через час, человек уже записался в другом месте. Мы собираем запись, напоминания и повторные визиты в один управляемый процесс.</p>
+<div class="hub-ctas" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px" data-anim>
+<a class="btn pri" href="#consult">Обсудить салон<span class="arw">→</span></a>
+<a class="btn sec" href="#system">Пример системы</a>
+</div>
+</div>
+<div class="bt-hero-vis" data-anim="fade">
+<canvas id="btviz" aria-hidden="true"></canvas>
+<div class="bt-phone mock">
+<div class="mock-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><b>Запись</b><span class="demo-tag">Пример</span></div>
+<div class="bt-p-body">
+<div class="bt-p-head"><b>Ваш визит</b><span class="bt-avatar" aria-hidden="true">К</span></div>
+<div class="bt-next"><span>Подтверждено</span><b>Стрижка и укладка</b><em>Сегодня · 14:30 · мастер Анна</em></div>
+<div class="bt-p-row"><span>Напоминание</span><b>за 2 часа</b></div>
+<div class="bt-p-row"><span>Контакт</span><b>Telegram</b></div>
+<div class="bt-p-row"><span>Повторный визит</span><b>через 4 недели</b></div>
+<p class="bt-p-note">Демонстрационный макет. Данные условные.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bt-intro" data-anim>
+<div><b>Запись</b><p>Клиент выбирает услугу и окно сам — без звонка и ожидания ответа.</p></div>
+<div><b>Загрузка</b><p>Администратор видит окна мастеров и не продаёт занятое время.</p></div>
+<div><b>Возврат</b><p>Напоминания и повторная запись не зависят от памяти клиента.</p></div>
+</div>
+</div></section>
+
+<section id="problems"><div class="wrap">
+<div class="sec-head" data-anim>
+<p class="kicker">Проблемы ниши</p>
+<h2>Где салон теряет деньги до первого визита.</h2>
+<p class="lead">Проблема редко в качестве услуги. Чаще — в скорости ответа и в том, что происходит после заявки.</p>
+</div>
+<div class="bt-probs">
+<article class="bt-prob" data-anim><b>01</b><h3>Переписка вместо записи</h3><p>Клиент пишет в мессенджер, ответ приходит через час. За это время он уже записался в другом месте, а администратор даже не знает, что заявка была.</p></article>
+<article class="bt-prob" data-anim><b>02</b><h3>Занятые окна и накладки</h3><p>Расписание живёт в блокноте, телефоне и голове администратора. Два клиента на одно время — это не только конфликт, но и потеря репутации.</p></article>
+<article class="bt-prob" data-anim><b>03</b><h3>Клиент не возвращается</h3><p>Про визит забыли напомнить, про повторную запись — тоже. Салон каждый месяц платит за новых клиентов, хотя часть старых можно было удержать.</p></article>
+<article class="bt-prob" data-anim><b>04</b><h3>Нет видимого спроса</h3><p>Карточка на картах заполнена наполовину, сайта нет, отзывы копятся без ответов. Человек рядом с салоном просто не находит его в поиске.</p></article>
+</div>
+</div></section>
+
+<section id="solutions"><div class="wrap">
+<div class="sec-head-row">
+<div class="sec-head" data-anim><p class="kicker">Решения KINETIA</p><h2>Что собираем для салона.</h2><p class="lead">Не весь набор услуг сразу, а те элементы, которые закрывают потери из предыдущего блока.</p></div>
+<a class="btn sec" href="/#services" data-anim>Все услуги агентства</a>
+</div>
+<div class="bt-sol">
+<div class="bt-sol-row" data-anim>
+<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg><h3>Сайт</h3></div>
+<p>Страница салона с услугами, мастерами, ценами и <b>записью в два клика</b>. Мобильная версия — основная: клиент приходит из карт и соцсетей, чаще всего с телефона. Прайс и расписание не дублируются вручную.</p>
+</div>
+<div class="bt-sol-row" data-anim>
+<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 17l4-5 4 3 4-7 4 4"/><path d="M3 21h18"/></svg><h3>Реклама</h3></div>
+<p>Локальный спрос: поиск рядом, карты, соцсети, ретаргетинг на тех, кто смотрел услуги. <b>География и радиус</b> важнее широкого охвата: салону не нужен клиент из другого города.</p>
+</div>
+<div class="bt-sol-row" data-anim>
+<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 20c.6-3.4 2.8-5 5.5-5s4.9 1.6 5.5 5"/><path d="M16 8h5M18.5 5.5v5"/></svg><h3>CRM</h3></div>
+<p>Карточка клиента с историей визитов, услугами, мастером и предпочтениями. Заявки не остаются в переписке: у каждой есть статус, ответственный и <b>следующий шаг</b>.</p>
+</div>
+<div class="bt-sol-row" data-anim>
+<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v4M12 17v4M4.2 7.5l3.4 2M16.4 14.5l3.4 2M4.2 16.5l3.4-2M16.4 9.5l3.4-2"/><circle cx="12" cy="12" r="3"/></svg><h3>Автоматизация</h3></div>
+<p>Подтверждение записи, напоминание о визите, возврат к мастеру, реактивация тех, кто давно не был. Сообщения уходят по <b>заданному сценарию</b>, а не по настроению администратора.</p>
+</div>
+<div class="bt-sol-row" data-anim>
+<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg><h3>Лидогенерация</h3></div>
+<p>Понятный оффер для первого визита и посадочная страница под конкретную услугу. Заявка сразу попадает в CRM и к администратору — <b>без ручного переноса</b> из форм и чатов.</p>
+</div>
+</div>
+</div></section>
+
+<section id="system" class="bt-sys"><div class="wrap">
+<div class="sec-head" data-anim>
+<p class="kicker">Digital-система</p>
+<h2>Как выглядит запись изнутри.</h2>
+<p class="lead">Ниже — интерактивный демонстрационный макет. Выберите услугу, день и время: макет покажет, как заявка проходит путь от выбора окна до подтверждения и напоминания.</p>
+</div>
+<div class="bt-sys-grid">
+<div class="mock" data-anim>
+<div class="mock-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><b>Booking / демо</b><span class="demo-tag">Макет</span></div>
+<div class="bt-book-body">
+<p class="bt-book-lbl">Услуга</p>
+<div class="bt-serv" role="group" aria-label="Выбор демонстрационной услуги">
+<button class="bt-serv-b" type="button" data-serv="Стрижка" aria-pressed="true">Стрижка<em>60 мин · пример</em></button>
+<button class="bt-serv-b" type="button" data-serv="Окрашивание" aria-pressed="false">Окрашивание<em>120 мин · пример</em></button>
+<button class="bt-serv-b" type="button" data-serv="Уход" aria-pressed="false">Уход<em>45 мин · пример</em></button>
+</div>
+<p class="bt-book-lbl">День</p>
+<div class="bt-days" role="group" aria-label="Выбор демонстрационного дня">
+<button class="bt-day" type="button" data-day="Пн" aria-pressed="true">Пн<span>12</span></button>
+<button class="bt-day" type="button" data-day="Вт" aria-pressed="false">Вт<span>13</span></button>
+<button class="bt-day" type="button" data-day="Ср" aria-pressed="false">Ср<span>14</span></button>
+<button class="bt-day" type="button" data-day="Чт" aria-pressed="false">Чт<span>15</span></button>
+<button class="bt-day" type="button" data-day="Пт" aria-pressed="false">Пт<span>16</span></button>
+<button class="bt-day" type="button" data-day="Сб" aria-pressed="false">Сб<span>17</span></button>
+<button class="bt-day" type="button" data-day="Вс" aria-pressed="false" disabled>Вс<span>18</span></button>
+</div>
+<p class="bt-book-lbl">Свободное время <span class="demo-tag">пример</span></p>
+<div class="bt-slots" id="btSlots" role="group" aria-label="Выбор демонстрационного времени">
+<button class="bt-slot" type="button" data-slot="10:00" aria-pressed="false">10:00</button>
+<button class="bt-slot" type="button" data-slot="11:30" aria-pressed="false">11:30</button>
+<button class="bt-slot" type="button" data-slot="14:30" aria-pressed="false">14:30</button>
+<button class="bt-slot" type="button" data-slot="16:00" aria-pressed="false" disabled>16:00</button>
+<button class="bt-slot" type="button" data-slot="17:30" aria-pressed="false">17:30</button>
+<button class="bt-slot" type="button" data-slot="18:30" aria-pressed="false">18:30</button>
+</div>
+<div class="bt-book-out" id="btOut" aria-live="polite">Выберите услугу, день и время — здесь появится путь заявки. <b>Демонстрационный макет, реальная запись не создаётся.</b></div>
+</div>
+</div>
+<div class="bt-flow" data-anim>
+<div class="bt-flow-step"><b>01 / Заявка</b><h3>Клиент выбирает окно</h3><p>На сайте или в карточке он видит только реально свободное время. Заявка создаётся сразу с услугой, мастером и контактом.</p></div>
+<div class="bt-flow-step"><b>02 / Подтверждение</b><h3>Администратор видит заявку</h3><p>Она приходит в CRM и рабочий чат. Подтверждение уходит клиенту автоматически, а не после ручного ответа.</p></div>
+<div class="bt-flow-step"><b>03 / Напоминание</b><h3>Визит не забывается</h3><p>За день и за несколько часов до визита клиент получает напоминание с адресом и возможностью перенести запись.</p></div>
+<div class="bt-flow-step"><b>04 / Возврат</b><h3>Следующий визит запланирован</h3><p>После визита система предлагает записаться снова — с учётом периодичности услуги и загрузки мастера.</p></div>
+</div>
+</div>
+</div></section>
+
+<section id="strategy"><div class="wrap">
+<div class="bt-strat">
+<div class="sec-head" data-anim>
+<p class="kicker">Пример стратегии</p>
+<h2>Последовательность, а не разовый запуск.</h2>
+<p class="lead">Ниже — пример логики продвижения салона. Это не обещание результата и не фиксированный план: состав и приоритет зависят от города, конкуренции и текущей загрузки.</p>
+<div class="bt-strat-note">Демонстрационный сценарий. Сроки, бюджеты и показатели не зашиты — они определяются после диагностики.</div>
+</div>
+<div class="bt-strat-list">
+<article class="bt-strat-item" data-anim><b>01</b><h3>База: сайт и карточки</h3><p>Собираем понятную страницу салона, приводим в порядок карточку на картах, отвечаем на отзывы. Это фундамент, без которого реклама приводит людей в пустоту.</p></article>
+<article class="bt-strat-item" data-anim><b>02</b><h3>Локальный спрос</h3><p>Подключаем поиск и карты по услугам и району, запускаем кампании на конкретные процедуры. Смотрим не на клики, а на дошедшие записи.</p></article>
+<article class="bt-strat-item" data-anim><b>03</b><h3>Контент и доверие</h3><p>Показываем работы мастеров, объясняем уход и подготовку. Контент снимает страх «не знаю, что выбрать» и работает дольше рекламного объявления.</p></article>
+<article class="bt-strat-item" data-anim><b>04</b><h3>Удержание</h3><p>Напоминания, повторная запись, возврат к мастеру и реактивация. Здесь CRM и автоматизация дают больше, чем новый рекламный бюджет.</p></article>
+</div>
+</div>
+</div></section>
+
+<section id="process"><div class="wrap">
+<div class="sec-head" data-anim><p class="kicker">Этапы сотрудничества</p><h2>От разбора записи до работающей системы.</h2></div>
+<div class="bt-steps">
+<div class="bt-step" data-anim><b>01</b><h3>Диагностика</h3><p>Смотрим, как сейчас принимаются заявки, где теряются и сколько времени занимает ответ.</p></div>
+<div class="bt-step" data-anim><b>02</b><h3>Оффер и структура</h3><p>Формулируем, что предлагаем новому клиенту и как устроена запись.</p></div>
+<div class="bt-step" data-anim><b>03</b><h3>Сборка</h3><p>Сайт, форма записи, CRM и сценарии сообщений.</p></div>
+<div class="bt-step" data-anim><b>04</b><h3>Запуск трафика</h3><p>Локальные кампании и аналитика источников записи.</p></div>
+<div class="bt-step" data-anim><b>05</b><h3>Улучшение</h3><p>Правим узкие места по фактическим данным, а не по догадкам.</p></div>
+</div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+<div class="faq-grid">
+<div class="faq-aside" data-anim>
+<p class="kicker">FAQ / Beauty</p>
+<h2 style="font-size:clamp(26px,3.4vw,40px);margin-top:16px">Частые вопросы салонов.</h2>
+<p class="lead">Если вашего вопроса нет — опишите ситуацию в форме, ответим по существу.</p>
+<a class="btn sec" href="#consult" style="margin-top:22px">Задать вопрос</a>
+</div>
+<div class="faq-list">
+<div class="fq"><h3><button class="fq-q" type="button" id="bq1" aria-expanded="false" aria-controls="aq1"><span class="fq-i">01</span><span class="fq-t">Можно ли подключить запись к существующему сайту?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="aq1" role="region" aria-labelledby="bq1" inert><div><p>Да, если платформа позволяет встроить форму или виджет. Сначала проверяем текущий сайт: иногда дешевле и надёжнее собрать отдельную страницу под запись, чем дорабатывать старую. Решение принимаем после технической проверки, а не заранее.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="bq2" aria-expanded="false" aria-controls="aq2"><span class="fq-i">02</span><span class="fq-t">Нужна ли CRM, если салон небольшой?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="aq2" role="region" aria-labelledby="bq2" inert><div><p>Зависит от объёма заявок и количества мастеров. Если запись ведётся в одном чате и администратор всё помнит, CRM может быть избыточна. Если заявки идут из нескольких источников и теряются — без единого списка с историей визитов управлять загрузкой сложно.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="bq3" aria-expanded="false" aria-controls="aq3"><span class="fq-i">03</span><span class="fq-t">Какие сообщения можно автоматизировать?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="aq3" role="region" aria-labelledby="bq3" inert><div><p>Подтверждение записи, напоминание о визите, перенос, благодарность после визита и предложение записаться снова. Важно не превращать это в спам: частота и содержание сообщений настраиваются под салон, а у клиента остаётся возможность отказаться.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="bq4" aria-expanded="false" aria-controls="aq4"><span class="fq-i">04</span><span class="fq-t">Работает ли реклама салона в соцсетях?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="aq4" role="region" aria-labelledby="bq4" inert><div><p>Да, но у неё своя роль: соцсети показывают работы и формируют доверие, а поиск и карты ловят тех, кто уже ищет услугу рядом. Обычно это не альтернативы, а два слоя одной системы. Приоритет зависит от того, есть ли у салона постоянный поток контента.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="bq5" aria-expanded="false" aria-controls="aq5"><span class="fq-i">05</span><span class="fq-t">Как понять, что заявки не теряются?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="aq5" role="region" aria-labelledby="bq5" inert><div><p>У каждой заявки должен быть источник, статус и ответственный. Тогда видно, сколько обращений пришло, сколько подтверждено и где зависло. Без этого любые отчёты о «хорошей рекламе» остаются предположением.</p></div></div></div>
+<div class="fq"><h3><button class="fq-q" type="button" id="bq6" aria-expanded="false" aria-controls="aq6"><span class="fq-i">06</span><span class="fq-t">Сколько времени занимает запуск?</span><i class="fq-ic" aria-hidden="true"></i></button></h3><div class="fq-a" id="aq6" role="region" aria-labelledby="bq6" inert><div><p>Зависит от состава: одна страница с записью запускается быстрее, чем сайт с CRM и автоматизацией. После диагностики фиксируем этапы и контрольные точки в плане. Мы не называем сроки до того, как понятен объём.</p></div></div></div>
+</div>
+</div>
+</div></section>
+
+<section id="consult"><div class="wrap">
+<div class="cta-band" data-anim>
+<div class="cta-row" style="margin-bottom:8px">
+<div><h2>Покажем, как это будет работать в вашем салоне.</h2><p>Расскажите, сколько мастеров, откуда приходят клиенты и что сейчас ломается. Предложим следующий шаг — без обязательств.</p></div>
+</div>
+<div class="form-wrap" style="margin-top:clamp(20px,3vw,30px)">
+<div class="form-side">
+<p class="small">Ответим в рабочее время. Если удобнее в мессенджере — укажите Telegram, напишем туда.</p>
+<ul><li>Разбор текущей записи и потока заявок</li><li>Честная оценка: что нужно, а что нет</li><li>Предложение с этапами и стоимостью после брифа</li></ul>
+</div>
+<form data-lead-form novalidate>
+<input type="hidden" name="industry" value="Салоны красоты и косметология">
+<div class="fld" data-f="name"><label for="bt-name">Ваше имя <i>*</i></label><input type="text" id="bt-name" name="name" autocomplete="name" maxlength="100"><span class="msg"></span></div>
+<div class="fld" data-f="contact"><label for="bt-contact">Telegram или телефон <i>*</i></label><input type="text" id="bt-contact" name="contact" placeholder="@username или +380…" maxlength="120"><span class="msg"></span></div>
+<div class="fld full"><label for="bt-company">Салон или студия</label><input type="text" id="bt-company" name="company" autocomplete="organization" maxlength="150"></div>
+<div class="fld full"><label for="bt-msg">Что хотите изменить</label><textarea id="bt-msg" name="message" maxlength="1500" placeholder="Например: заявки идут в Instagram и Telegram, администратор не успевает отвечать"></textarea></div>
+<input class="hp" type="text" name="website_hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="sub full">
+<div class="banner bad" role="alert">Не удалось отправить заявку. Попробуйте ещё раз или напишите нам в Telegram.</div>
+<div class="consent-wrap"><label class="consent" for="bt-consent"><input type="checkbox" id="bt-consent" name="consent" required aria-required="true"><span>Я согласен с <a href="/privacy-policy" target="_blank" rel="noopener">политикой конфиденциальности</a> и даю согласие на обработку персональных данных.</span></label><span class="msg" role="alert"></span></div>
+<button class="btn pri" type="submit"><span class="sp"></span><span class="sl">Отправить заявку</span></button>
+</div>
+<div class="thanks" role="status"><h3>Спасибо за обращение!</h3><p>Заявка отправлена. Команда KINETIA свяжется с вами, чтобы обсудить салон.</p></div>
+</form>
+</div>
+</div>
+
+<div class="niche-strip">
+<h2>Другие отрасли</h2>
+<div class="niche-grid">
+<a class="niche-card" href="/industries/dentistry"><b>Стоматологии</b><span>Dentistry</span></a>
+<a class="niche-card" href="/industries/construction"><b>Строительство</b><span>Construction</span></a>
+<a class="niche-card" href="/industries/auto"><b>Автосервисы</b><span>Auto</span></a>
+<a class="niche-card" href="/industries/ecommerce"><b>Интернет-магазины</b><span>E-commerce</span></a>
+<a class="niche-card" href="/industries"><b>Все решения</b><span>Industry Solutions</span></a>
+</div>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+<div class="fgrid">
+<div><a href="/" class="logo" aria-label="KINETIA — на главную"><svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><defs><linearGradient id="kstarFoot" x1="5.8" y1="27" x2="26.2" y2="5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#087A58"/><stop offset=".5" stop-color="#19DFA0"/><stop offset="1" stop-color="#7AFFCB"/></linearGradient></defs><path d="M16 3.6 18.19 13.81 26.2 16 18.19 18.19 16 28.4 13.81 18.19 5.8 16 13.81 13.81Z" fill="url(#kstarFoot)"/><path d="M16 13.8 18.2 16 16 18.2 13.8 16Z" fill="#F2FFFA"/></svg>KINETIA</a><p>Digital Growth Agency.<br>Создаём движение. Системно развиваем бизнес.</p></div>
+<ul><li><a href="/">Главная</a></li><li><a href="/#services">Услуги</a></li><li><a href="/#process">Процесс</a></li><li><a href="/#results">Результаты</a></li><li><a href="/#faq">FAQ</a></li><li><a href="/#form">Контакты</a></li></ul>
+<ul><li><a href="/industries">Все решения</a></li><li><a href="/industries/dentistry">Dentistry</a></li><li><a href="/industries/construction">Construction</a></li><li><a href="/industries/auto">Auto</a></li><li><a href="/industries/ecommerce">E-commerce</a></li><li><a href="/privacy-policy">Политика конфиденциальности</a></li></ul>
+</div>
+<div class="fniche"><b>Отрасли</b><a href="/industries/beauty">Салоны красоты</a><a href="/industries/dentistry">Стоматологии</a><a href="/industries/construction">Строительство</a><a href="/industries/auto">Автосервисы</a><a href="/industries/ecommerce">E-commerce</a></div>
+<p class="copy">© <span data-year>2026</span> KINETIA. All rights reserved.</p>
+</div></footer>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Digital-система для салонов красоты и косметологии","serviceType":"Сайт, реклама, CRM и автоматизация для салонов красоты","provider":{"@type":"Organization","name":"KINETIA"},"areaServed":"UA","description":"Сайт с онлайн-записью, локальная реклама, CRM и автоматизация напоминаний для салонов красоты и косметологии.","url":"/industries/beauty"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Можно ли подключить запись к существующему сайту?","acceptedAnswer":{"@type":"Answer","text":"Да, если платформа позволяет встроить форму или виджет. Сначала проверяем текущий сайт: иногда дешевле и надёжнее собрать отдельную страницу под запись, чем дорабатывать старую. Решение принимаем после технической проверки, а не заранее."}},{"@type":"Question","name":"Нужна ли CRM, если салон небольшой?","acceptedAnswer":{"@type":"Answer","text":"Зависит от объёма заявок и количества мастеров. Если запись ведётся в одном чате и администратор всё помнит, CRM может быть избыточна. Если заявки идут из нескольких источников и теряются — без единого списка с историей визитов управлять загрузкой сложно."}},{"@type":"Question","name":"Какие сообщения можно автоматизировать?","acceptedAnswer":{"@type":"Answer","text":"Подтверждение записи, напоминание о визите, перенос, благодарность после визита и предложение записаться снова. Важно не превращать это в спам: частота и содержание сообщений настраиваются под салон, а у клиента остаётся возможность отказаться."}},{"@type":"Question","name":"Работает ли реклама салона в соцсетях?","acceptedAnswer":{"@type":"Answer","text":"Да, но у неё своя роль: соцсети показывают работы и формируют доверие, а поиск и карты ловят тех, кто уже ищет услугу рядом. Обычно это не альтернативы, а два слоя одной системы. Приоритет зависит от того, есть ли у салона постоянный поток контента."}},{"@type":"Question","name":"Как понять, что заявки не теряются?","acceptedAnswer":{"@type":"Answer","text":"У каждой заявки должен быть источник, статус и ответственный. Тогда видно, сколько обращений пришло, сколько подтверждено и где зависло. Без этого любые отчёты о «хорошей рекламе» остаются предположением."}},{"@type":"Question","name":"Сколько времени занимает запуск?","acceptedAnswer":{"@type":"Answer","text":"Зависит от состава: одна страница с записью запускается быстрее, чем сайт с CRM и автоматизацией. После диагностики фиксируем этапы и контрольные точки в плане. Мы не называем сроки до того, как понятен объём."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"/"},{"@type":"ListItem","position":2,"name":"Решения для отраслей","item":"/industries"},{"@type":"ListItem","position":3,"name":"Салоны красоты","item":"/industries/beauty"}]}</script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="/industries/assets/base.js"></script>
+<script>
+(function(){
+  /* ripple field */
+  window.KViz(document.getElementById('btviz'),function(ctx,w,h,t){
+    var cx=w*.52,cy=h*.48,R=Math.min(w,h);
+    ctx.lineWidth=1;
+    for(var i=0;i<7;i++){
+      var r=(R*.10)+i*R*.062+Math.sin(t*.5+i*.8)*3;
+      var a=.16-i*.016;
+      ctx.strokeStyle='rgba(25,223,160,'+Math.max(0,a)+')';
+      ctx.beginPath();ctx.arc(cx,cy,r,0,6.283);ctx.stroke();
+    }
+    for(var j=0;j<5;j++){
+      var ang=t*.22+j*1.256;
+      var rr=R*.19+Math.sin(t*.6+j)*4;
+      ctx.fillStyle='rgba(122,255,203,'+(.5+.3*Math.sin(t+j))+')';
+      ctx.beginPath();ctx.arc(cx+Math.cos(ang)*rr,cy+Math.sin(ang)*rr,1.9,0,6.283);ctx.fill();
+    }
+    var g=ctx.createRadialGradient(cx,cy,0,cx,cy,R*.42);
+    g.addColorStop(0,'rgba(8,122,88,.16)');g.addColorStop(1,'rgba(8,122,88,0)');
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,R*.42,0,6.283);ctx.fill();
+  });
+
+  /* booking demo */
+  var serv='Стрижка',day='Пн',slot=null;
+  var slotsFor={'Пн':['10:00','11:30','14:30','17:30'],'Вт':['10:00','14:30','16:00','18:30'],'Ср':['11:30','14:30','17:30','18:30'],'Чт':['10:00','11:30','17:30','18:30'],'Пт':['10:00','14:30','16:00','18:30'],'Сб':['11:30','14:30','16:00','17:30']};
+  var out=document.getElementById('btOut');
+  function render(){
+    var s=document.getElementById('btSlots');
+    var list=slotsFor[day]||[];
+    s.innerHTML=list.map(function(v){
+      return '<button class="bt-slot" type="button" data-slot="'+v+'" aria-pressed="'+(v===slot)+'">'+v+'</button>';
+    }).join('')+'<button class="bt-slot" type="button" disabled>занято</button>';
+    s.querySelectorAll('[data-slot]').forEach(function(b){
+      b.addEventListener('click',function(){slot=b.dataset.slot;render();});
+    });
+    out.innerHTML=slot
+      ? '<b>Пример пути:</b> '+serv+', '+day+', '+slot+' → заявка в CRM → подтверждение клиенту → напоминание перед визитом.<br>Демонстрационный макет, реальная запись не создаётся.'
+      : 'Выберите услугу, день и время — здесь появится путь заявки. <b>Демонстрационный макет, реальная запись не создаётся.</b>';
+  }
+  document.querySelectorAll('.bt-serv-b').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.bt-serv-b').forEach(function(x){x.setAttribute('aria-pressed','false')});
+      b.setAttribute('aria-pressed','true');serv=b.dataset.serv;slot=null;render();
+    });
+  });
+  document.querySelectorAll('.bt-day').forEach(function(b){
+    b.addEventListener('click',function(){
+      if(b.disabled)return;
+      document.querySelectorAll('.bt-day').forEach(function(x){x.setAttribute('aria-pressed','false')});
+      b.setAttribute('aria-pressed','true');day=b.dataset.day;slot=null;render();
+    });
+  });
+  var slotBox=document.getElementById('btSlots');
+  render();
+})();
+</script>
+</body>
+</html>
